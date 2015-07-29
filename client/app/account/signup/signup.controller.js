@@ -6,6 +6,7 @@ angular.module('oneDayJobApp')
     $scope.errors = {};
 
     $scope.register = function(form) {
+      alert();
       $scope.submitted = true;
 
       if(form.$valid) {
