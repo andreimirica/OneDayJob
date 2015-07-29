@@ -27,3 +27,4 @@ angular.module('oneDayJobApp')
       $window.location.href = '/auth/' + provider;
     };
   });
+
