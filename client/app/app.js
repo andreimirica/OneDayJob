@@ -6,8 +6,12 @@ angular.module('oneDayJobApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
+<<<<<<< HEAD
   'ngMaterial',
   'ngMessages'
+=======
+  'ngMaterial'
+>>>>>>> 237e607349f3360867675388a24b1ec91f7025c7
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -54,3 +58,4 @@ angular.module('oneDayJobApp', [
       });
     });
   });
+
