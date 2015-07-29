@@ -15,3 +15,11 @@
   background-color: #fafafa;
   border-color: #ccc;
 }
+
+.form-group { 
+	position: relative; 
+	margin-bottom: 45px; 
+}
+html, body {
+    background-color: #F2F5A9 !important;
+  }
