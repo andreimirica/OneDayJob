@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
   <div class="row">
@@ -77,3 +77,27 @@
   </div>
   <hr>
 </div>
+-->
+<md-content layout-padding layout="row" layout-sm="column">
+  <form class="form" name="form" ng-submit="register(form)" novalidate>
+        
+        <md-input-container>        
+          <label>Name</label>
+          <input ng-model="user.name" required/>
+        </md-input-container>
+
+        <md-input-container>
+         <label>Email</label>
+         <input ng-model="user.email" type="email" required/> 
+        </md-input-container>
+
+        <md-input-container>
+         <label>Password</label>
+         <input ng-model="user.password" type="password" ng-minlength="3" required/>
+        </md-input-container>
+        
+        <md-input-container>
+         <md-button class="md-raised">Sign Up</md-button>
+        </md-input-container>
+  </form>
+</md-content>
