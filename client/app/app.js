@@ -6,8 +6,8 @@ angular.module('oneDayJobApp', [
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ngMessages',
-  'ngMaterial'
+  'ngMaterial',
+  'ngMessages'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

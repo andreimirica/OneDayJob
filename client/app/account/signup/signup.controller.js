@@ -16,7 +16,7 @@ angular.module('oneDayJobApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/login');
         })
         .catch( function(err) {
           err = err.data;
