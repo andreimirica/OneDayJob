@@ -19,7 +19,8 @@ angular.module('oneDayJobApp')
 
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
-    };
+    }; 
+
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
