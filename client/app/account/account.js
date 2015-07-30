@@ -18,5 +18,10 @@ angular.module('oneDayJobApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('post', {
+        url: '/post',
+        templateUrl: 'app/account/post/post.html',
+        controller: 'PostCtrl'
       });
   });
