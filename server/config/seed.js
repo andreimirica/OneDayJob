@@ -12,9 +12,11 @@ var Category = require('../api/category/category.model');
 
 Category.find({}).remove(function() {
     Category.create({
-        name: 'Development Tools'
+        name: 'Gradinarit'
     }, {
-        name: 'Server and Client integration'
+        name: 'Tamplarie'
+    }, {
+        name: 'Agricultura, pana mea'
     });
 });
 
