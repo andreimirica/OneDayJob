@@ -37,3 +37,7 @@
     margin: 10px;
     border-radius: 100px;
 }
+.newJob{
+    position: fixed;
+    right : 350px;
+}
