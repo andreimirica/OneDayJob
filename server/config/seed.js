@@ -35,6 +35,19 @@ Job.find({}).remove(function() {
     	PostEndDate : "2003-05-23",
     	Owner:"Mihaita",
     	Category:"Sapat"
+    },
+    {
+      Title: 'Side kick recruitment',
+      Description:'Looking for partner to wear Robin suit',
+      Location : "Arad",
+      StartDate : "2015-08-04",
+      EndDate : "2015-09-07",
+      PayRange : 10000,
+      NumberOfHelpers : 1,
+      PostStartDate : "2015-02-23",
+      PostEndDate : "2015-05-23",
+      Owner:"Bruce Wayne",
+      Category:"Other"
     });
 });
 

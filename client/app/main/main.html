@@ -10,7 +10,7 @@
 <div class="container">
   <md-content>
     <md-list>
-      <md-list-item class="md-3-line" ng-repeat="item in tasks | orderBy: '-date'">
+      <md-list-item class="md-3-line" ng-repeat="item in tasks | orderBy: '-EndDate'">
         <a href="#">
         <md-tooltip> Visit profile</md-tooltip>
         <img ng-src="{{item.face}}?-{{$index}}" src="/assets/images/yeoman.png" class = "face avatar" alt="Picture"></a>
