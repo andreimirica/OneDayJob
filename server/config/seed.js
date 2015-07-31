@@ -7,6 +7,37 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Job = require('../api/job/job.model');
+
+Job.find({}).remove(function() {
+    Job.create({
+        Title: 'Development Tools',
+        Description:'fdhbfjsdhbfsd',
+         Location : "Bucuresti",
+    	 StartDate : "2015-07-02",
+    	EndDate : "2015-07-02",
+    	 PayRange :"56",
+    	 "NumberOfHelpers" : "546",
+    	 "PostStartDate" : "2015-5-12",
+    	 "PostEndDate" : "2015-10-23",
+    	 "Owner":"Gica",
+    	 "Category":"Not safe"
+    }, {
+        Title: 'Server and Client integration',
+        Description:'jdfhbkdfbdbfksdbk',
+         Location : "dsgfg",
+    	  StartDate : "2010-08-04",
+    	 "EndDate" : "2004-03-07",
+    	 "PayRange" : "5465",
+    	 "NumberOfHelpers" : "2",
+    	 "PostStartDate" : "2015-02-23",
+    	 "PostEndDate" : "2003-05-23",
+    	 "Owner":"Mihaita",
+    	 "Category":"not safe"
+    });
+});
+
+
 
 Thing.find({}).remove(function() {
   Thing.create({

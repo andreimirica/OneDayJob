@@ -2,7 +2,31 @@
 
 angular.module('oneDayJobApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+    $scope.awesomeJobs = [];
+
+    $http.get('/api/jobs').success(function(awesomeJobs) {
+      $scope.awesomeJobs = awesomeJobs;
+      socket.syncUpdates('job', $scope.awesomeJobs);
+    });
+
+    $scope.addJob = function() {
+      if($scope.newJob === '') {
+        return;
+      }
+      $http.post('/api/jobs', { Title: $scope.newJob });
+      $scope.newJob = '';
+    };
+
+    $scope.deleteJob = function(job) {
+      $http.delete('/api/jobs/' + job._id);
+    };
+
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('job');
+    });
+
+
+$scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
@@ -24,4 +48,5 @@ angular.module('oneDayJobApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
   });
