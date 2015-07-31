@@ -25,6 +25,12 @@ angular.module('oneDayJobApp')
       socket.unsyncUpdates('thing');
     }); 
 
-    $scope.tasks = taskFactory.getTasks();
+    $scope.tasks = {};
+    taskFactory.getMongoStuff()
+      .then(function(jobs){
+        $scope.tasks = jobs;
+      }),function(error){
+        console.error(error);
+      }
     $scope.isLoggedIn = Auth.isLoggedIn;
   });

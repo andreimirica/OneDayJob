@@ -11,29 +11,30 @@ var Job = require('../api/job/job.model');
 
 Job.find({}).remove(function() {
     Job.create({
-        Title: 'Development Tools',
-        Description:'fdhbfjsdhbfsd',
-         Location : "Bucuresti",
-    	 StartDate : "2015-07-02",
+      Title: 'Development Tools',
+      Description:'How turn on computer. Halp!',
+      Location : "Bucuresti",
+    	StartDate : "2015-07-02",
     	EndDate : "2015-07-02",
-    	 PayRange :"56",
-    	 "NumberOfHelpers" : "546",
-    	 "PostStartDate" : "2015-5-12",
-    	 "PostEndDate" : "2015-10-23",
-    	 "Owner":"Gica",
-    	 "Category":"Not safe"
-    }, {
-        Title: 'Server and Client integration',
-        Description:'jdfhbkdfbdbfksdbk',
-         Location : "dsgfg",
-    	  StartDate : "2010-08-04",
-    	 "EndDate" : "2004-03-07",
-    	 "PayRange" : "5465",
-    	 "NumberOfHelpers" : "2",
-    	 "PostStartDate" : "2015-02-23",
-    	 "PostEndDate" : "2003-05-23",
-    	 "Owner":"Mihaita",
-    	 "Category":"not safe"
+    	PayRange :56,
+    	NumberOfHelpers : 1,
+    	PostStartDate : "2015-5-12",
+    	PostEndDate : "2015-10-23",
+    	Owner:"Gica",
+    	Category:"Not safe"
+    }, 
+    {
+      Title: 'Server and Client integration',
+      Description:'Descriere sugestiva',
+      Location : "Cluj",
+    	StartDate : "2010-08-04",
+    	EndDate : "2004-03-07",
+    	PayRange : 100,
+    	NumberOfHelpers : 3,
+    	PostStartDate : "2015-02-23",
+    	PostEndDate : "2003-05-23",
+    	Owner:"Mihaita",
+    	Category:"Sapat"
     });
 });
 
