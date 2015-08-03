@@ -21,7 +21,7 @@ angular.module('oneDayJobApp')
                 description: $scope.newDescription,
                 owner: $scope.getCurrentUser().name,
                 location: $scope.ctrl.userState,
-                category: $scope.newCategory,
+                category: $scope.ctrl.category,
                 helpers: $scope.helpers,
                 paycheck: $scope.paycheck,
                 jobDate: $scope.newJobDate.setDate($scope.newJobDate.getDate() + 1)
