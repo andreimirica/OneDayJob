@@ -1,5 +1,5 @@
 <div ng-controller="PostCtrl as ctrl" class="md-padding">
-    <form name="postForm">
+    <form novalidate class="form" name="postForm">
         <div>
             <h1 class="md-title">Post Description</h1>
             <div layout="row">
@@ -14,14 +14,24 @@
                     <textarea ng-model="user.biography" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
                 </md-input-container>
             </div>
+
+            <div layout="row">
+                <label>Select category:
+                    <md-select required placeholder="Category" ng-model="ctrl.category">
+                        <md-option ng-repeat="category in cat" value="{{category.name}}">{{category.name}}</md-option>
+                    </md-select>
+                </label>
+            </div>
+
             <div layout="row">
                 <label>Select your city:
-                    <md-select placeholder="Location" ng-model="ctrl.userState">
+                    <md-select required placeholder="Location" ng-model="ctrl.userState">
                         <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
                     </md-select>
                 </label>
             </div>
         </div>
+
         <div layout='row'>
             <md-input-container>
                 <label>Paycheck</label>
@@ -45,14 +55,17 @@
         <div layout='row'>
             <md-input-container>
                 <label>Job Date</label>
-                <input required type="date" name="newJobDate" ng-model="newJobDate">
+                <input required type="date" name="newJobDate" ng-model="newJobDate" min="{{currentDate}}">
                 <div ng-messages="postForm.newJobDate.$error">
                     <div ng-message="required">Select a date.</div>
+                     <div ng-message="min">You live in the past.</div>
                 </div>
             </md-input-container>
         </div>
-        <section layout="row" layout-sm="column">
-            <md-button ng-click="addJob()" class="md-raised md-primary">Add Post</md-button>
-        </section>
+        <div layout='row'>
+            <md-input-container>
+                <md-button ng-click="addJob()" class="md-raised md-primary" ng-disabled="postForm.$invalid" >Add Post</md-button>
+            </md-input-container>
+        </div>
     </form>
 </div>
