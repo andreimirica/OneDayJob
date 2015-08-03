@@ -1,18 +1,6 @@
 'use strict';
 
 angular.module('oneDayJobApp', [
-<<<<<<< HEAD
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'btford.socket-io',
-  'ui.router',
-  'ngMaterial'
-])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    $urlRouterProvider
-      .otherwise('/');
-=======
         'ngCookies',
         'ngResource',
         'ngSanitize',
@@ -24,7 +12,6 @@ angular.module('oneDayJobApp', [
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
             .otherwise('/');
->>>>>>> e429cf45f6b94809aa9bb9f164a1eb880318155e
 
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
@@ -65,8 +52,4 @@ angular.module('oneDayJobApp', [
             }
         });
     });
-<<<<<<< HEAD
-  });
-=======
 });
->>>>>>> e429cf45f6b94809aa9bb9f164a1eb880318155e
