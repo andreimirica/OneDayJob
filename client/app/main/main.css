@@ -1,6 +1,7 @@
 .thing-form {
     margin: 20px 0;
 }
+
 #banner {
     border-bottom: none;
     margin-top: -20px;
@@ -31,13 +32,15 @@
 .navbar-text {
     margin-left: 15px;
 }
-.avatar{
+
+.avatar {
     height: 48px;
     width: 48px;
     margin: 10px;
     border-radius: 100px;
 }
-.newJob{
+
+.newJob {
     position: fixed;
-    right : 350px;
+    right: 350px;
 }

@@ -1,43 +1,18 @@
-
-
-
-
-
-        <h1 class="md-toolbar">
+<h1 class="md-toolbar">
           Login
         </h1>
-      </md-toolbar>
-
-      <form class="form" name="form" ng-submit="login(form)">
-
-          <md-input-container >
-            <label>Email</label>
-            <input ng-model="user.email" type="email" required>
-          </md-input-container>
-
-          <md-input-container flex>
-            <label>Password</label>
-            <input ng-model="user.password" type="password" required>
-          </md-input-container>
-
-        <div>
-          <md-button class="md-raised md-primary" ng-click="login(form)">Login</md-button>
-          <md-button class="md-raised" href="/signup">Register</md-button>
-        </div>
-
-        <hr>
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-        </div>
-      </form>
-   
-  <hr>
-
-
-
- 
+<form class="form" name="form" ng-submit="login(form)">
+    <md-input-container>
+        <label>Email</label>
+        <input ng-model="user.email" type="email" required>
+    </md-input-container>
+    <md-input-container flex>
+        <label>Password</label>
+        <input ng-model="user.password" type="password" required>
+    </md-input-container>
+    <div>
+        <md-button class="md-raised md-primary" ng-click="login(form)">Login</md-button>
+        <md-button class="md-raised" href="/signup">Register</md-button>
+    </div>
+</form>
+<hr>

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="app/app.css">
   <!-- injector:css -->
   <link rel="stylesheet" href="app/account/login/login.css">
+  <link rel="stylesheet" href="app/account/post/post.css">
   <link rel="stylesheet" href="app/admin/admin.css">
   <link rel="stylesheet" href="app/app.css">
   <link rel="stylesheet" href="app/main/main.css">
@@ -53,23 +54,8 @@
 
 
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+<div ng-include="'components/navbar/navbar.html'"></div>
 
-      <md-toolbar layout="row" class="md-whiteframe-z1" ng-controller="NavbarCtrl">
-      <md-button class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
-      <md-icon md-svg-icon="assets/images/menu.svg" ></md-icon>
-    </md-button>
-    <h2>One day job</h2>
-    <span flex></span>
-
-    <div layout="row">
-      <md-button class=class="md-icon-button" ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}" href="/login" >Login</md-button>
-      <md-button class=class="md-icon-button" ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}" href="/signup" >Sign Up</md-button>
-    </div>
-
-    <h3 ng-show="isLoggedIn()" flex="10"><p>Hello {{ getCurrentUser().name }}</p> </h3>
-
-    <h3 ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></h3>        <md-button class="md-icon-button" ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" href="" ng-click="logout()" flex="5">Logout</md-button>
-    </md-toolbar>
 
     <md-content flex id="content">
     <div ui-view=""></div>
@@ -115,11 +101,15 @@ ga('send', 'pageview');
     <script src="app/app.js"></script>
     <!-- injector:js -->
     <script src="app/account/account.js"></script>
+    <script src="app/account/addPost/postController.js"></script>
     <script src="app/account/login/login.controller.js"></script>
+    <script src="app/account/post/post.controller.js"></script>
+    <script src="app/account/post/post.factory.js"></script>
     <script src="app/account/settings/settings.controller.js"></script>
     <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
+    <script src="app/admin/category.service.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="app/main/main.factory.js"></script>
     <script src="app/main/main.js"></script>
@@ -127,6 +117,7 @@ ga('send', 'pageview');
     <script src="components/auth/user.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/sidenav/sidenav.controller.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->
