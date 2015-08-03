@@ -1,23 +1,33 @@
-/**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
- */
-
 'use strict';
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Category = require('../api/category/category.model');
+var Job = require('../api/job/job.model');
 
 
 Category.find({}).remove(function() {
     Category.create({
-        name: 'Development Tools'
+        name: 'Gradinarit'
     }, {
-        name: 'Server and Client integration'
+        name: 'Tamplarie'
+    }, {
+        name: 'Agricultura, pana mea'
     });
 });
 
+Job.find({}).remove(function() {
+    Job.create({
+        title: 'Sapator',
+        description: 'Dat la sapa 100m garduri',
+        owner: 'Eusebiu',
+        location: 'Adjud',
+        category: 'munca cu carca',
+        helpers: '4',
+        paycheck: '100',
+        jobDate: '2011-07-14 19:43:37 +0100',
+    });
+});
 
 Thing.find({}).remove(function() {
     Thing.create({

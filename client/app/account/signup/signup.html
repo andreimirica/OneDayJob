@@ -1,52 +1,42 @@
-
-
-        <h1 class="md-toolbar">
+<h1 class="md-toolbar">
           Sign up
         </h1>
-     
-      <br/>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="register(form)" >
-
+<br/>
+<div class="col-sm-12">
+    <form class="form" name="form" ng-submit="register(form)">
         <div class="form-group">
-          <md-input-container class="md-icon-float"> 
-            <label>Name</label>
-            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-            <input ng-model="user.name" type="text" required>
-          </md-input-container>
+            <md-input-container class="md-icon-float">
+                <label>Name</label>
+                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+                <input ng-model="user.name" type="text" required>
+            </md-input-container>
         </div>
-
         <div class="form-group">
-          <md-input-container class="md-icon-float">
-            <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-            <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true" mongoose-error/>
-          </md-input-container>       
+            <md-input-container class="md-icon-float">
+                <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+                <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true" mongoose-error/>
+            </md-input-container>
         </div>
-
         <div class="form-group">
-
-          <md-input-container class="md-icon-float">
-            <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-            <input ng-model="user.password" type="password" placeholder="Password" required ng-minlength="3" mongoose-error/>
-          </md-input-container>
-
+            <md-input-container class="md-icon-float">
+                <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+                <input ng-model="user.password" type="password" placeholder="Password" required ng-minlength="3" mongoose-error/>
+            </md-input-container>
         </div>
-
         <div>
-          <md-button class="md-raised md-primary" ng-click="register(form)">Sign up</md-button>
-          <md-button class="md-raised" href="/login">Login</md-button>
+            <md-button class="md-raised md-primary" ng-click="register(form)">Sign up</md-button>
+            <md-button class="md-raised" href="/login">Login</md-button>
         </div>
-
         <hr>
         <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
+            <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+                <i class="fa fa-facebook"></i> Connect with Facebook
+            </a>
+            <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
+                <i class="fa fa-google-plus"></i> Connect with Google+
+            </a>
         </div>
-      </form>
-    </div>
-  </div>
-  <hr>
+    </form>
+</div>
+</div>
+<hr>
