@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
   <div class="container">
     <div class="navbar-header">
@@ -56,3 +57,43 @@
       </div>
     </md-toolbar>
   </md-content>
+=======
+<md-toolbar layout="row" class="md-whiteframe-z1 md-toolbar-tools" ng-controller="NavbarCtrl">
+    <md-button class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
+    </md-button>
+    <h3>One day job</h3>
+    <span flex></span>
+    <md-menu md-position-mode="target-right target">
+        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+            <md-icon md-menu-origin md-svg-icon="assets/images/moreVert.svg"></md-icon>
+        </md-button>
+        <md-menu-content width="4">
+            <md-menu-item ng-if="isLoggedIn()">
+                <md-button ng-click="logout()">
+                    <p>Logout</p>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item ng-if="!isLoggedIn()">
+                <md-button href="/login">
+                    <p>Login</p>
+                </md-button>
+            </md-menu-item>
+            <md-menu-item ng-if="!isLoggedIn()">
+                <md-button href="/signup">
+                    <p>Sign Up</p>
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+    <!-- <div>
+  <div style="float:left" ng-hide="isLoggedIn()" href="/login" ><h5>Login</h5></div>
+  <div style="float:left" ng-hide="isLoggedIn()" href="/signup" ><h5>Sign Up</h5></div>
+</div> -->
+    <!-- 
+
+<h3 ng-show="isLoggedIn()" flex="10"><p>Hello {{ getCurrentUser().name }}</p> </h3>
+
+<h3 ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></h3>        <md-button class="md-icon-button" ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" href="" ng-click="logout()" flex="5">Logout</md-button> -->
+</md-toolbar>
+>>>>>>> e429cf45f6b94809aa9bb9f164a1eb880318155e

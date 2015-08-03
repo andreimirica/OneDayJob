@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('oneDayJobApp', [
+<<<<<<< HEAD
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -11,45 +12,61 @@ angular.module('oneDayJobApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
       .otherwise('/');
+=======
+        'ngCookies',
+        'ngResource',
+        'ngSanitize',
+        'btford.socket-io',
+        'ui.router',
+        'ngMaterial',
+        'ngMessages'
+    ])
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+        $urlRouterProvider
+            .otherwise('/');
+>>>>>>> e429cf45f6b94809aa9bb9f164a1eb880318155e
 
-    $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-  })
+        $locationProvider.html5Mode(true);
+        $httpProvider.interceptors.push('authInterceptor');
+    })
 
-  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+.factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
     return {
-      // Add authorization token to headers
-      request: function (config) {
-        config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
-        }
-        return config;
-      },
+        // Add authorization token to headers
+        request: function(config) {
+            config.headers = config.headers || {};
+            if ($cookieStore.get('token')) {
+                config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+            }
+            return config;
+        },
 
-      // Intercept 401s and redirect you to login
-      responseError: function(response) {
-        if(response.status === 401) {
-          $location.path('/login');
-          // remove any stale tokens
-          $cookieStore.remove('token');
-          return $q.reject(response);
+        // Intercept 401s and redirect you to login
+        responseError: function(response) {
+            if (response.status === 401) {
+                $location.path('/login');
+                // remove any stale tokens
+                $cookieStore.remove('token');
+                return $q.reject(response);
+            } else {
+                return $q.reject(response);
+            }
         }
-        else {
-          return $q.reject(response);
-        }
-      }
     };
-  })
+})
 
-  .run(function ($rootScope, $location, Auth) {
+.run(function($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          event.preventDefault();
-          $location.path('/login');
-        }
-      });
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+        Auth.isLoggedInAsync(function(loggedIn) {
+            if (next.authenticate && !loggedIn) {
+                event.preventDefault();
+                $location.path('/login');
+            }
+        });
     });
+<<<<<<< HEAD
   });
+=======
+});
+>>>>>>> e429cf45f6b94809aa9bb9f164a1eb880318155e

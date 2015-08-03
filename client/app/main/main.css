@@ -32,3 +32,15 @@
 .navbar-text {
     margin-left: 15px;
 }
+
+.avatar {
+    height: 48px;
+    width: 48px;
+    margin: 10px;
+    border-radius: 100px;
+}
+
+.newJob {
+    position: fixed;
+    right: 350px;
+}
