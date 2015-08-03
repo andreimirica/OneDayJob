@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+Schema = mongoose.Schema;
 
 var JobSchema = new Schema({
   title : String,
@@ -9,13 +9,13 @@ var JobSchema = new Schema({
   owner : String,
   location : String,
   category : String,
-  manpower: String,
-  minpaycheck: String,
-  maxpaycheck: String,
-  startDate : Date,
-  endDate : Date,
-  PostStartDate : Date,
-  PostEndDate : Date, 
+  helpers: Number,
+  paycheck: Number,
+  jobDate : Date,
+  accepted : [],
+  applicants : [],
+  comments: [],
+  createdAt: Date
 });
 
 module.exports = mongoose.model('Job', JobSchema);

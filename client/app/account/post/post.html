@@ -1,8 +1,8 @@
 <div ng-controller="PostCtrl as ctrl" class="md-padding">
-  <form name="projectForm">
+  <form name="postForm">
   <div>
 
-    <h1 class="md-title">Post Desription</h1>
+    <h1 class="md-title">Post Description</h1>
     <div layout="row">
       <md-input-container>
       <label>Title</label>
@@ -16,80 +16,55 @@
   </md-input-container>
 </div>
 <div layout="row">
-<!--   <md-input-container>
-  <label>Street Name</label>
-  <input type="text"/>
-</md-input-container> -->
-<label>Select your city</label>
-<md-select placeholder="City" ng-model="ctrl.userState">
+<label>Select your city:
+<md-select placeholder="Location" ng-model="ctrl.userState">
 <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
+
 </md-select>
+</label>
 </div>
 </div>
 
-
-<div layout='row'>
-  <md-input-container>
-  <label>Start Date</label>
-  <input type="date" required ng-model="newStartDate">
-</md-input-container>
-<!-- <md-input-container>
-<label>End Date</label>
-<input type="date" ng-model="newEndDate">
-</md-input-container> -->
-</div>
 
 
 <div layout='row'>
 
     <md-input-container >
-    <label>Minimum Pay</label>
-    <input required type="number" step="any" name="rate" ng-model="project.rate" min="1" max="10">
-    <div ng-messages="projectForm.rate.$error">
+    <label>Paycheck</label>
+    <input required type="number" step="any" name="paycheck" ng-model="paycheck" min="1" max="10000">
+    <div ng-messages="postForm.paycheck.$error" >
       <div ng-message="required">Nothing's free.</div>
-      <div ng-message="max">More than 10? Are you building a missle? </div>
+      <div ng-message="max">More than 10000? Are you building a missle? </div>
     </div>
   </md-input-container>
-  <md-input-container >
-  <label>Maximum Pay</label>
-  <input required type="number" step="any" name="rate1" ng-model="project.rate1" min="{{project.rate}}" max="10">
-  <div ng-messages="projectForm.rate1.$error">
-    <div ng-message="required">Nothing's free.</div>
-    <div ng-message="min">It's smaller than it should be.</div>
-    <div ng-message="max">More than 10? Are you building a missle? </div>
-  </div>
-</md-input-container>
-
 </div>
 
 <div layout='row'>
 
     <md-input-container >
     <label>Number of Helpers</label>
-    <input required type="number" step="any" name="rate2" ng-model="project.rate2" min="1" max="10">
-    <div ng-messages="projectForm.rate2.$error">
+    <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
+    <div ng-messages="postForm.helpers.$error">
       <div ng-message="required">You've got to hire someone.</div>
       <div ng-message="max">More than 10? Are you building a missle? </div>
     </div>
   </md-input-container>
-
 </div>
 
 
 
 <div layout='row'>
-  <md-input-container>
-  <label>Post Start Date</label>
-  <input type="date" required ng-model="newPostStartDate">
+    <md-input-container>
+  <label>Job Date</label>
+  <input required type="date" name="newJobDate" ng-model="newJobDate">
+      <div ng-messages="postForm.newJobDate.$error">
+      <div ng-message="required">Select a date.</div>
+    </div>
 </md-input-container>
-<!-- <md-input-container>
-<label>Post End Date</label>
-<input type="date" ng-model="user.submissionDate2">
-</md-input-container> -->
 </div>
-
   <section layout="row" layout-sm="column">
 <md-button ng-click="addJob()" class="md-raised md-primary">Add Post</md-button>
 </section>
+
 </form>
 </div>

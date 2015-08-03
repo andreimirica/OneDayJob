@@ -20,13 +20,9 @@ angular.module('oneDayJobApp')
     			owner : $scope.getCurrentUser().name,
     			location : $scope.ctrl.userState,
     			category : $scope.newCategory,
-    			manpower: $scope.project.rate2,
-    			minpaycheck: $scope.project.rate,
-    			maxpaycheck: $scope.project.rate1,
-    			startDate : $scope.newStartDate.setDate($scope.newStartDate.getDate() + 1),
-    			// endDate : $scope.newEndDate,
-    			PostStartDate : $scope.newPostStartDate.setDate($scope.newPostStartDate.getDate() + 1)
-    			// PostEndDate : $scope.user.submissionDate2
+    			helpers: $scope.helpers,
+    			paycheck: $scope.paycheck,
+    			jobDate : $scope.newJobDate.setDate($scope.newJobDate.getDate() + 1)
     		});
     	$scope.newJob = '';
 

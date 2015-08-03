@@ -67,13 +67,9 @@ Job.find({}).remove(function(){
       owner : 'Eusebiu',
       location : 'Adjud',
       category : 'munca cu carca',
-      manpower:  '4',
-      minpaycheck: '100',
-      maxpaycheck: '200',
-      startDate : '2011-07-14 19:43:37 +0100',
-      endDate : '2011-07-14 19:43:37 +0100',
-      PostStartDate : '2011-07-14 19:43:37 +0100',
-      PostEndDate : '2011-07-14 19:43:37 +0100', 
+      helpers:  '4',
+      paycheck: '100',
+      jobDate : '2011-07-14 19:43:37 +0100',
   });
 });
 
