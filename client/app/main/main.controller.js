@@ -72,12 +72,3 @@ angular.module('oneDayJobApp')
 
 
 
-
-app.controller('AppCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog){
-  var alert;
-  $scope.showDialog = showDialog;
-  $scope.items = [1,2,3];
-  
-
-}])
-
