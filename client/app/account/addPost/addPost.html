@@ -1,0 +1,113 @@
+<h1 class="md-toolbar">
+          Add new job offer
+        </h1>
+<div layout="column" ng-controller="PostCtrl as ctrl" >
+  <br/>
+<form name="addPostForm">
+  <md-input-container>
+  <label>Name</label>
+  <md-icon md-svg-icon="social:people" style="color: #00F;" class="s48" aria-label="People Icon"></md-icon>
+  <input required name="clientName" ng-model="user.name">
+  <div ng-messages="addPostForm.clientName.$error">
+    <div ng-message="required">This is required.</div>
+  </div>
+</md-input-container>
+
+<md-input-container>
+        <label>Description</label>
+        <textarea required name="description" ng-model="user.description" ng-minlength="3" ng-required="true"></textarea>
+        <div ng-messages="addPostForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-minlength">The name has to be more than 3 characters long.</div>
+        </div>
+      </md-input-container>
+
+   <div layout="row" layout-align="start">
+    <div layout="row" layout-align="center center">
+    <md-icon md-svg-src="assets/images/city8.svg" class="s24" aria-label="City" flex="77">
+    </md-icon> 
+  </div>
+  <div layout="row" layout-align="center center">
+    <h4>Location:</h4>
+  </div>
+  <div layout="row" layout-align="center center" flex="10">
+    <md-select placeholder="State" ng-model="ctrl.userState">
+    <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
+    </md-select>
+  </div>
+
+     <md-input-container>
+         <label>Start Date</label>
+         <input type="date" name="startDate" ng-model="user.startDate" required="true">
+         <div ng-messages="addPostForm.startDate.$error">
+         <div ng-message="required">This is required.</div></div>
+       </md-input-container> 
+       <md-input-container>
+         <label>End Date</label>
+         <input type="date" name="endDate" ng-model="user.endDate" required="true">
+         <div ng-messages="addPostForm.endDate.$error">
+         <div ng-message="required">This is required.</div></div>
+       </md-input-container> 
+  </div>
+  <div layout="row" layout-align="start">
+     <md-input-container>
+        <label>Number of workers</label>
+         <input required type="number" step="any" name="rate" ng-model="project.rate" min="1" max="4999">
+      </md-input-container>
+      <md-input-container>
+         <label>Post Start Date</label>
+         <input type="date" name="postStartDate" ng-model="user.postStartDate" required="true">
+         <div ng-messages="addPostForm.postStartDate.$error">
+         <div ng-message="required">This is required.</div></div>
+       </md-input-container> 
+       <md-input-container>
+         <label>Post End Date</label>
+         <input type="date" name="postEndDate" ng-model="user.postEndDate" required="true">
+         <div ng-messages="addPostForm.postEndDate.$error">
+         <div ng-message="required">This is required.</div></div>
+       </md-input-container> 
+    </div>
+    <div layout="row" layout-align="start">
+      <md-input-container>
+         <label>Min Pay Wage</label>
+         <input required type="number" name="minPay" ng-model="user.minPay" required="true" min="1">
+       </md-input-container> 
+      <md-input-container>
+         <label>Max Pay Wage</label>
+         <input required type="number" name="maxPay" ng-model="user.maxPay" required="true" min="{{user.minPay}}">
+       </md-input-container> 
+       <h4>RON</h4>
+     </div>
+     <div layout="row" layout-align="center center">
+     <md-button class="md-raised md-primary" type="submit">Add new offer</md-button>
+   </div>
+</form>
+</div>
+
+
+
+<!--   <md-content layout-padding class="autoScroll">
+    <md-input-container class="md-icon-float" >
+      
+      <label>Name</label>
+      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float>
+      <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+      <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </md-input-container>
+    <md-input-container >
+     
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float>
+      <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+      <input ng-model="user.address" type="text" placeholder="Address" >
+    </md-input-container>
+  </md-content>
+</div>
+
+
+ -->
