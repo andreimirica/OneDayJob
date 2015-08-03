@@ -8,6 +8,7 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Category = require('../api/category/category.model');
+var Job = require('../api/job/job.model');
 
 
 Category.find({}).remove(function() {
@@ -19,6 +20,50 @@ Category.find({}).remove(function() {
         name: 'Agricultura, pana mea'
     });
 });
+
+
+Job.find({}).remove(function() {
+    Job.create({
+      Title: 'Development Tools',
+      Description:'How turn on computer. Halp!',
+      Location : "Bucuresti",
+    	StartDate : "2015-07-02",
+    	EndDate : "2015-07-02",
+    	PayRange :56,
+    	NumberOfHelpers : 1,
+    	PostStartDate : "2015-5-12",
+    	PostEndDate : "2015-10-23",
+    	Owner:"Gica",
+    	Category:"Not safe"
+    }, 
+    {
+      Title: 'Server and Client integration',
+      Description:'Descriere sugestiva',
+      Location : "Cluj",
+    	StartDate : "2010-08-04",
+    	EndDate : "2004-03-07",
+    	PayRange : 100,
+    	NumberOfHelpers : 3,
+    	PostStartDate : "2015-02-23",
+    	PostEndDate : "2003-05-23",
+    	Owner:"Mihaita",
+    	Category:"Sapat"
+    },
+    {
+      Title: 'Side kick recruitment',
+      Description:'Looking for partner to wear Robin suit',
+      Location : "Arad",
+      StartDate : "2015-08-04",
+      EndDate : "2015-09-07",
+      PayRange : 10000,
+      NumberOfHelpers : 1,
+      PostStartDate : "2015-02-23",
+      PostEndDate : "2015-05-23",
+      Owner:"Bruce Wayne",
+      Category:"Other"
+    });
+});
+
 
 
 Thing.find({}).remove(function() {
