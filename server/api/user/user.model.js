@@ -52,7 +52,6 @@ UserSchema
         return {
 
             'firstName': this.firstName,
-4
             'role': this.role
         };
     });

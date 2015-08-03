@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-<<<<<<< HEAD
-    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory) {
-=======
+
     .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory,$mdDialog) {
->>>>>>> Andrei4
+
         $scope.awesomeThings = [];
 
         $http.get('/api/things').success(function(awesomeThings) {
@@ -40,9 +38,7 @@ angular.module('oneDayJobApp')
                 console.error(error);
             }
         $scope.isLoggedIn = Auth.isLoggedIn;
-<<<<<<< HEAD
-    });
-=======
+
 
 
 
@@ -84,4 +80,4 @@ app.controller('AppCtrl', ['$scope', '$mdDialog', function($scope, $mdDialog){
   
 
 }])
->>>>>>> Andrei4
+
