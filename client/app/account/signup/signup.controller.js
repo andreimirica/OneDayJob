@@ -10,9 +10,14 @@ angular.module('oneDayJobApp')
 
             if (form.$valid) {
                 Auth.createUser({
-                        name: $scope.user.name,
+
+                        firstName: $scope.user.firstName,
+                        lastName:$scope.user.lastName,
                         email: $scope.user.email,
-                        password: $scope.user.password
+                        password: $scope.user.password,
+                        phone:$scope.user.phone,
+                        state:$scope.user.state
+
                     })
                     .then(function() {
                         // Account created, redirect to home
@@ -21,6 +26,7 @@ angular.module('oneDayJobApp')
                     .catch(function(err) {
                         err = err.data;
                         $scope.errors = {};
+
 
                         // Update validity of form fields that match the mongoose errors
                         angular.forEach(err.errors, function(error, field) {
@@ -34,4 +40,52 @@ angular.module('oneDayJobApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
+
+
+
+        $scope.states = [
+            "Alba",
+            "Arad",
+            "Arges",
+            "Bacau",
+            "Bihor",
+            "Bistrita Nasaud",
+            "Botosani",
+            "Brasov",
+            "Braila",
+            "Bucuresti",
+            "Buzau",
+            "Caras Severin",
+            "Calarasi",
+            "Cluj",
+            "Constanta",
+            "Covasna",
+            "Dambovita",
+            "Dolj",
+            "Galati",
+            "Giurgiu",
+            "Gorj",
+            "Harghita",
+            "Hunedoara",
+            "Ialomita",
+            "Iasi",
+            "Ilfov",
+            "Maramures",
+            "Mehedinti",
+            "Mures",
+            "Neamt",
+            "Olt",
+            "Prahova",
+            "Satu Mare",
+            "Salaj",
+            "Sibiu",
+            "Suceava",
+            "Teleorman",
+            "Timis",
+            "Tulcea",
+            "Vaslui",
+            "Valcea",
+            "Vrancea"
+        ];
+
     });
