@@ -1,5 +1,5 @@
 <div ng-controller="PostCtrl as ctrl" class="md-padding">
-  <form name="postForm">
+  <form class="postForm" name="postForm">
   <div>
 
     <h1 class="md-title">Post Description</h1>
@@ -56,7 +56,7 @@
 <div layout='row'>
     <md-input-container>
   <label>Job Date</label>
-  <input required type="date" name="newJobDate" ng-model="newJobDate">
+  <input required type="date" name="newJobDate" ng-model="newJobDate" >
       <div ng-messages="postForm.newJobDate.$error">
       <div ng-message="required">Select a date.</div>
     </div>
