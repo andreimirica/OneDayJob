@@ -30,53 +30,38 @@
 </head>
 <body ng-app="oneDayJobApp" layout="row">
 
-  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
-  md-component-id="left"
-  md-is-locked-open="$mdMedia('gt-sm')">
+      <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+      md-component-id="left"
+      md-is-locked-open="$mdMedia('gt-sm')">
 
-  <md-toolbar class="md-whiteframe-z1">
-  <h2>Users</h2>
-</md-toolbar>
+      <md-toolbar class="md-whiteframe-z1">
+      <h2>Users</h2>
+    </md-toolbar>
 
-<md-list>
-<md-list-item>
-<h4>Silviu</h4>
-</md-list-item>
-<md-list-item>
-<h4>Gabita</h4>
-</md-list-item>
-<md-list-item>
-<h4>Marinel</h4>
-</md-list-item>
-</md-list>
+    <md-list>
+    <md-list-item>
+    <h4>Silviu</h4>
+    </md-list-item>
+    <md-list-item>
+    <h4>Gabita</h4>
+    </md-list-item>
+    <md-list-item>
+    <h4>Marinel</h4>
+    </md-list-item>
+    </md-list>
 
-</md-sidenav>
+    </md-sidenav>
 
 
-<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+<div ng-include="'components/navbar/navbar.html'"></div>
 
-  <md-toolbar layout="row" class="md-whiteframe-z1" ng-controller="NavbarCtrl">
-  <md-button class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
-  <md-icon md-svg-icon="assets/images/menu.svg" ></md-icon>
-</md-button>
-<h2>One day job</h2>
-<span flex></span>
 
-<div layout="row">
-  <md-button class=class="md-icon-button" ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}" href="/login" >Login</md-button>
-  <md-button class=class="md-icon-button" ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}" href="/signup" >Sign Up</md-button>
-</div>
+    <md-content flex id="content">
+    <div ui-view=""></div>
+    </md-content>
 
-<h3 ng-show="isLoggedIn()" flex="10"><p>Hello {{ getCurrentUser().name }}</p> </h3>
-
-<h3 ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></h3>        <md-button class="md-icon-button" ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" href="" ng-click="logout()" flex="5">Logout</md-button>
-</md-toolbar>
-
-<md-content flex id="content">
-<div ui-view=""></div>
-</md-content>
-
-</div>
+    </div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
@@ -116,18 +101,22 @@ ga('send', 'pageview');
     <script src="app/app.js"></script>
     <!-- injector:js -->
     <script src="app/account/account.js"></script>
+    <script src="app/account/addPost/postController.js"></script>
     <script src="app/account/login/login.controller.js"></script>
     <script src="app/account/post/post.controller.js"></script>
     <script src="app/account/settings/settings.controller.js"></script>
     <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
+    <script src="app/admin/category.service.js"></script>
     <script src="app/main/main.controller.js"></script>
+    <script src="app/main/main.factory.js"></script>
     <script src="app/main/main.js"></script>
     <script src="components/auth/auth.service.js"></script>
     <script src="components/auth/user.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/sidenav/sidenav.controller.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->

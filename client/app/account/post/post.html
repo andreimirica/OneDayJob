@@ -1,70 +1,58 @@
 <div ng-controller="PostCtrl as ctrl" class="md-padding">
-  <form class="postForm" name="postForm">
-  <div>
-
-    <h1 class="md-title">Post Description</h1>
-    <div layout="row">
-      <md-input-container>
-      <label>Title</label>
-      <input required type="text" ng-model='newTitle'/>
-    </md-input-container>
-  </div>
-  <div layout="row">
-    <md-input-container flex='40' ng-model='newDescription'>
-    <label>Description</label>
-    <textarea ng-model="user.biography" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
-  </md-input-container>
-</div>
-<div layout="row">
-<label>Select your city:
-<md-select placeholder="Location" ng-model="ctrl.userState">
-<md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
-
-</md-select>
-</label>
-</div>
-</div>
-
-
-
-<div layout='row'>
-
-    <md-input-container >
-    <label>Paycheck</label>
-    <input required type="number" step="any" name="paycheck" ng-model="paycheck" min="1" max="10000">
-    <div ng-messages="postForm.paycheck.$error" >
-      <div ng-message="required">Nothing's free.</div>
-      <div ng-message="max">More than 10000? Are you building a missle? </div>
-    </div>
-  </md-input-container>
-</div>
-
-<div layout='row'>
-
-    <md-input-container >
-    <label>Number of Helpers</label>
-    <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
-    <div ng-messages="postForm.helpers.$error">
-      <div ng-message="required">You've got to hire someone.</div>
-      <div ng-message="max">More than 10? Are you building a missle? </div>
-    </div>
-  </md-input-container>
-</div>
-
-
-
-<div layout='row'>
-    <md-input-container>
-  <label>Job Date</label>
-  <input required type="date" name="newJobDate" ng-model="newJobDate" >
-      <div ng-messages="postForm.newJobDate.$error">
-      <div ng-message="required">Select a date.</div>
-    </div>
-</md-input-container>
-</div>
-  <section layout="row" layout-sm="column">
-<md-button ng-click="addJob()" class="md-raised md-primary">Add Post</md-button>
-</section>
-
-</form>
+    <form name="postForm">
+        <div>
+            <h1 class="md-title">Post Description</h1>
+            <div layout="row">
+                <md-input-container>
+                    <label>Title</label>
+                    <input required type="text" ng-model='newTitle' />
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container flex='40' ng-model='newDescription'>
+                    <label>Description</label>
+                    <textarea ng-model="user.biography" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <label>Select your city:
+                    <md-select placeholder="Location" ng-model="ctrl.userState">
+                        <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
+                    </md-select>
+                </label>
+            </div>
+        </div>
+        <div layout='row'>
+            <md-input-container>
+                <label>Paycheck</label>
+                <input required type="number" step="any" name="paycheck" ng-model="paycheck" min="1" max="10000">
+                <div ng-messages="postForm.paycheck.$error">
+                    <div ng-message="required">Nothing's free.</div>
+                    <div ng-message="max">More than 10000? Are you building a missle? </div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout='row'>
+            <md-input-container>
+                <label>Number of Helpers</label>
+                <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
+                <div ng-messages="postForm.helpers.$error">
+                    <div ng-message="required">You've got to hire someone.</div>
+                    <div ng-message="max">More than 10? Are you building a missle? </div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout='row'>
+            <md-input-container>
+                <label>Job Date</label>
+                <input required type="date" name="newJobDate" ng-model="newJobDate">
+                <div ng-messages="postForm.newJobDate.$error">
+                    <div ng-message="required">Select a date.</div>
+                </div>
+            </md-input-container>
+        </div>
+        <section layout="row" layout-sm="column">
+            <md-button ng-click="addJob()" class="md-raised md-primary">Add Post</md-button>
+        </section>
+    </form>
 </div>

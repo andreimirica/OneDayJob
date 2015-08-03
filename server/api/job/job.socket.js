@@ -4,21 +4,21 @@
 
 'use strict';
 
-var thing = require('./thing.model');
+var job = require('./job.model');
 
 exports.register = function(socket) {
-    thing.schema.post('save', function(doc) {
+    job.schema.post('save', function(doc) {
         onSave(socket, doc);
     });
-    thing.schema.post('remove', function(doc) {
+    job.schema.post('remove', function(doc) {
         onRemove(socket, doc);
     });
 }
 
 function onSave(socket, doc, cb) {
-    socket.emit('thing:save', doc);
+    socket.emit('job:save', doc);
 }
 
 function onRemove(socket, doc, cb) {
-    socket.emit('thing:remove', doc);
+    socket.emit('job:remove', doc);
 }
