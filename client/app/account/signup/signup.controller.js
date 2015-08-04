@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-    .controller('SignupCtrl', function($scope, Auth, $location, $window) {
+    .controller('SignupCtrl', function($scope, Auth, $location, $window, stateFactory) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -40,5 +40,11 @@ angular.module('oneDayJobApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
-        // De luat states din endpoint
+        stateFactory.getMongoStuff()
+            .then(function(states) {
+                $scope.states = states;
+            }),
+            function(error) {
+                console.error(error);
+            }
     });
