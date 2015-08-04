@@ -40,5 +40,52 @@ angular.module('oneDayJobApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
-        // De luat states din endpoint
+
+
+
+        $scope.states = [
+            "Alba",
+            "Arad",
+            "Arges",
+            "Bacau",
+            "Bihor",
+            "Bistrita Nasaud",
+            "Botosani",
+            "Brasov",
+            "Braila",
+            "Bucuresti",
+            "Buzau",
+            "Caras Severin",
+            "Calarasi",
+            "Cluj",
+            "Constanta",
+            "Covasna",
+            "Dambovita",
+            "Dolj",
+            "Galati",
+            "Giurgiu",
+            "Gorj",
+            "Harghita",
+            "Hunedoara",
+            "Ialomita",
+            "Iasi",
+            "Ilfov",
+            "Maramures",
+            "Mehedinti",
+            "Mures",
+            "Neamt",
+            "Olt",
+            "Prahova",
+            "Satu Mare",
+            "Salaj",
+            "Sibiu",
+            "Suceava",
+            "Teleorman",
+            "Timis",
+            "Tulcea",
+            "Vaslui",
+            "Valcea",
+            "Vrancea"
+        ];
+
     });
