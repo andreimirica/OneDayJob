@@ -23,10 +23,19 @@ Job.find({}).remove(function() {
         description: 'Dat la sapa 100m garduri',
         owner: 'Eusebiu',
         location: 'Adjud',
-        category: 'munca cu carca',
+        category: 'Gradinarit',
         helpers: '4',
         paycheck: '100',
-        jobDate: '2011-07-14 19:43:37 +0100',
+        jobDate: '2015-08-10 19:43:37 +0100',
+    }, {
+        title: 'Tamplar',
+        description: 'Dat la tamplarie',
+        owner: 'Eusebiu',
+        location: 'Cluj',
+        category: 'Tamplarie',
+        helpers: '1',
+        paycheck: '10',
+        jobDate: '2015-08-14 19:43:37 +0100',
     });
 });
 
@@ -55,64 +64,120 @@ Thing.find({}).remove(function() {
 User.find({}).remove(function() {
     User.create({
         provider: 'local',
-        name: 'Test User',
+        firstName: 'Test',
+        lastName: 'User',
         email: 'test@test.com',
-        password: 'test'
+        password: 'test',
+        phone: '2939-231-231',
+        state: 'Bihor'
     }, {
         provider: 'local',
+        firstName: 'Admin',
+        lastName: 'Adminescu',
         role: 'admin',
-        name: 'Admin',
         email: 'admin@admin.com',
-        password: 'admin'
+        password: 'admin',
+        phone: 'xxxx-xxx-xxx',
+        state: ''
+    }, {
+        provider: 'local',
+        firstName: 'Ion',
+        lastName: 'Ionescu',
+        email: 'ion@ion.com',
+        password: 'ion',
+        phone: '0838-234-213',
+        state: 'Ialomita'
     }, function() {
         console.log('finished populating users');
     });
 });
 
-State.find({}).remove(function(){
-    State.create(
-        {stateName :"Alba"},
-        {stateName :"Arad"},
-        {stateName :"Arges"},
-        {stateName :"Bacau"},
-        {stateName :"Bihor"},
-        {stateName :"Bistrita Nasaud"},
-        {stateName :"Botosani"},
-        {stateName :"Brasov"},
-        {stateName :"Braila"},
-        {stateName :"Bucuresti"},
-        {stateName :"Buzau"},
-        {stateName :"Caras Severin"},
-        {stateName :"Calarasi"},
-        {stateName :"Cluj"},
-        {stateName :"Constanta"},
-        {stateName :"Covasna"},
-        {stateName :"Dambovita"},
-        {stateName :"Dolj"},
-        {stateName :"Galati"},
-        {stateName :"Giurgiu"},
-        {stateName :"Gorj"},
-        {stateName :"Harghita"},
-        {stateName :"Hunedoara"},
-        {stateName :"Ialomita"},
-        {stateName :"Iasi"},
-        {stateName :"Ilfov"},
-        {stateName :"Maramures"},
-        {stateName :"Mehedinti"},
-        {stateName :"Mures"},
-        {stateName :"Neamt"},
-        {stateName :"Olt"},
-        {stateName :"Prahova"},
-        {stateName :"Satu Mare"},
-        {stateName :"Salaj"},
-        {stateName :"Sibiu"},
-        {stateName :"Suceava"},
-        {stateName :"Teleorman"},
-        {stateName :"Timis"},
-        {stateName :"Tulcea"},
-        {stateName :"Vaslui"},
-        {stateName :"Valcea"},
-        {stateName :"Vrancea"}, function() {
+State.find({}).remove(function() {
+    State.create({
+        stateName: "Alba"
+    }, {
+        stateName: "Arad"
+    }, {
+        stateName: "Arges"
+    }, {
+        stateName: "Bacau"
+    }, {
+        stateName: "Bihor"
+    }, {
+        stateName: "Bistrita Nasaud"
+    }, {
+        stateName: "Botosani"
+    }, {
+        stateName: "Brasov"
+    }, {
+        stateName: "Braila"
+    }, {
+        stateName: "Bucuresti"
+    }, {
+        stateName: "Buzau"
+    }, {
+        stateName: "Caras Severin"
+    }, {
+        stateName: "Calarasi"
+    }, {
+        stateName: "Cluj"
+    }, {
+        stateName: "Constanta"
+    }, {
+        stateName: "Covasna"
+    }, {
+        stateName: "Dambovita"
+    }, {
+        stateName: "Dolj"
+    }, {
+        stateName: "Galati"
+    }, {
+        stateName: "Giurgiu"
+    }, {
+        stateName: "Gorj"
+    }, {
+        stateName: "Harghita"
+    }, {
+        stateName: "Hunedoara"
+    }, {
+        stateName: "Ialomita"
+    }, {
+        stateName: "Iasi"
+    }, {
+        stateName: "Ilfov"
+    }, {
+        stateName: "Maramures"
+    }, {
+        stateName: "Mehedinti"
+    }, {
+        stateName: "Mures"
+    }, {
+        stateName: "Neamt"
+    }, {
+        stateName: "Olt"
+    }, {
+        stateName: "Prahova"
+    }, {
+        stateName: "Satu Mare"
+    }, {
+        stateName: "Salaj"
+    }, {
+        stateName: "Sibiu"
+    }, {
+        stateName: "Suceava"
+    }, {
+        stateName: "Teleorman"
+    }, {
+        stateName: "Timis"
+    }, {
+        stateName: "Tulcea"
+    }, {
+        stateName: "Vaslui"
+    }, {
+        stateName: "Valcea"
+    }, {
+        stateName: "Vrancea"
+    }, function() {
         console.log('finished populating states');
     })
 });

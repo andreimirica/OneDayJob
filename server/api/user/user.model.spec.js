@@ -5,10 +5,12 @@ var app = require('../../app');
 var User = require('./user.model');
 
 var user = new User({
-    provider: 'local',
-    name: 'Fake User',
-    email: 'test@test.com',
-    password: 'password'
+    provider:  'local',
+    firstName: 'Fake',
+    lastName:  'User',
+    email:     'test@test.com',
+    phone:     '0777887788'
+    password:  'password'
 });
 
 describe('User Model', function() {
