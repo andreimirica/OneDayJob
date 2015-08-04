@@ -13,13 +13,12 @@
                     <md-tooltip> Visit profile</md-tooltip>
                     <img ng-src="{{item.face}}?-{{$index}}" src="/assets/images/yeoman.png" class="face avatar" alt="Picture"></a>
                 <div class="md-list-item-text">
-                    <h3>{{item.Title}}</h3>
-                    <h4>{{item.Description}}</h4>
-                    <p>Location : {{item.Location}}</p>
-                    <p>People needed: {{item.NumberOfHelpers}}</p>
-                    <p>Start date: {{item.StartDate | date}}</p>
-                    <p>End date: {{item.EndDate | date}}</p>
-                    <p>Pay : ${{item.PayRange}} </p>
+                    <h3>{{item.title}}</h3>
+                    <h4>{{item.description}}</h4>
+                    <p>Location : {{item.location}}</p>
+                    <p>People needed: {{item.helpers}}</p>
+                    <p>Job date: {{item.jobDate | date}}</p>         
+                    <p>Pay : ${{item.paycheck}} </p>
                     <p>Submitted by : {{item.Owner}}</p>
                     <md-button class="md-raised md-primary" ng-show="isLoggedIn()" href="#">
                         Apply
