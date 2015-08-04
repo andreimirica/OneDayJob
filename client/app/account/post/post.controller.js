@@ -10,6 +10,7 @@ angular.module('oneDayJobApp')
         // };
         $scope.getCurrentUser = Auth.getCurrentUser;
         $scope.currentDate = new Date();
+        $scope.isLoggedIn = Auth.isLoggedIn;
 
         $scope.addJob = function() {
             if ($scope.newJob === '') {
