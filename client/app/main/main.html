@@ -2,10 +2,9 @@
     <h1 class="md-toolbar">Welcome to OneDayJobs!</h1>
 </header>
 <div class="container">
-
-    <md-button class="md-fab md-primary md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" href="/post">
+    <md-button class="md-fab md-primary md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" ng-click="showModal($event)">
         <md-tooltip>Add new announcement</md-tooltip>
-
++
     </md-button>
     <md-content>
         <md-list>
@@ -14,7 +13,7 @@
                     <md-tooltip> Visit profile</md-tooltip>
                     <img ng-src="{{item.face}}?-{{$index}}" src="/assets/images/yeoman.png" class="face avatar" alt="Picture"></a>
 
-                <div class="md-list-item-text" ng-click="showAlert($event)">
+                <div class="md-list-item-text">
                     <h3>{{item.title}}</h3>
                     <h4>{{item.tescription}}</h4>
                     <p>Location : {{item.location}}</p>
@@ -22,12 +21,13 @@
                     <p>Job Date: {{item.jobDate | date}}</p>
                     <p>Pay : ${{item.paycheck}} </p>
                     <p>Submitted by : {{item.Owner}}</p>
-                    
-                </div>
-                <md-button class="md-raised md-primary" ng-show="isLoggedIn()" href="#">
+
+                     <md-button class="md-raised md-primary" ng-show="isLoggedIn()" href="#">
                         Apply
                     </md-button>
-                    <hr>
+                    
+                </div>              
+                    </hr>
 
 
             </md-list-item>
