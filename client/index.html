@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="app/admin/admin.css">
   <link rel="stylesheet" href="app/app.css">
   <link rel="stylesheet" href="app/main/main.css">
+  <link rel="stylesheet" href="components/navbar/navbar.css">
   <!-- endinjector -->
   <!-- endbuild -->
 </head>
@@ -32,12 +33,12 @@
 
 <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
   md-component-id="left" 
-  md-is-locked-open="$mdMedia('gt-sm')" ng-include="'components/sidenav/sidenav.html'">
+  md-is-locked-open="$mdMedia('st-md')" ng-include="'components/sidenav/sidenav.html'">
 </md-sidenav>
 
 
-<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" >
+<div ng-include="'components/navbar/navbar.html'" height="500" width="800"></div>
  
 
 <div ui-view=""></div>
