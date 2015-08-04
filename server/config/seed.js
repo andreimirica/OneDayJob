@@ -4,6 +4,7 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Category = require('../api/category/category.model');
 var Job = require('../api/job/job.model');
+var State = require("../api/state/state.model");
 
 
 Category.find({}).remove(function() {
@@ -66,4 +67,52 @@ User.find({}).remove(function() {
     }, function() {
         console.log('finished populating users');
     });
+});
+
+State.find({}).remove(function(){
+    State.create(
+        {stateName :"Alba"},
+        {stateName :"Arad"},
+        {stateName :"Arges"},
+        {stateName :"Bacau"},
+        {stateName :"Bihor"},
+        {stateName :"Bistrita Nasaud"},
+        {stateName :"Botosani"},
+        {stateName :"Brasov"},
+        {stateName :"Braila"},
+        {stateName :"Bucuresti"},
+        {stateName :"Buzau"},
+        {stateName :"Caras Severin"},
+        {stateName :"Calarasi"},
+        {stateName :"Cluj"},
+        {stateName :"Constanta"},
+        {stateName :"Covasna"},
+        {stateName :"Dambovita"},
+        {stateName :"Dolj"},
+        {stateName :"Galati"},
+        {stateName :"Giurgiu"},
+        {stateName :"Gorj"},
+        {stateName :"Harghita"},
+        {stateName :"Hunedoara"},
+        {stateName :"Ialomita"},
+        {stateName :"Iasi"},
+        {stateName :"Ilfov"},
+        {stateName :"Maramures"},
+        {stateName :"Mehedinti"},
+        {stateName :"Mures"},
+        {stateName :"Neamt"},
+        {stateName :"Olt"},
+        {stateName :"Prahova"},
+        {stateName :"Satu Mare"},
+        {stateName :"Salaj"},
+        {stateName :"Sibiu"},
+        {stateName :"Suceava"},
+        {stateName :"Teleorman"},
+        {stateName :"Timis"},
+        {stateName :"Tulcea"},
+        {stateName :"Vaslui"},
+        {stateName :"Valcea"},
+        {stateName :"Vrancea"}, function() {
+        console.log('finished populating states');
+    })
 });
