@@ -47,6 +47,7 @@ angular.module('oneDayJobApp')
               templateUrl: 'app/main/modal/modal.html',
               parent: angular.element(document.body),
               targetEvent: ev,
+              clickOutsideToClose: true,
           })
         };
 
