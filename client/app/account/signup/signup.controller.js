@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-    .controller('SignupCtrl', function($scope, Auth, $location, $window) {
+    .controller('SignupCtrl', function($scope, Auth, $location, $window, stateFactory) {
         $scope.user = {};
         $scope.errors = {};
 
@@ -40,52 +40,11 @@ angular.module('oneDayJobApp')
         $scope.loginOauth = function(provider) {
             $window.location.href = '/auth/' + provider;
         };
-
-
-
-        $scope.states = [
-            "Alba",
-            "Arad",
-            "Arges",
-            "Bacau",
-            "Bihor",
-            "Bistrita Nasaud",
-            "Botosani",
-            "Brasov",
-            "Braila",
-            "Bucuresti",
-            "Buzau",
-            "Caras Severin",
-            "Calarasi",
-            "Cluj",
-            "Constanta",
-            "Covasna",
-            "Dambovita",
-            "Dolj",
-            "Galati",
-            "Giurgiu",
-            "Gorj",
-            "Harghita",
-            "Hunedoara",
-            "Ialomita",
-            "Iasi",
-            "Ilfov",
-            "Maramures",
-            "Mehedinti",
-            "Mures",
-            "Neamt",
-            "Olt",
-            "Prahova",
-            "Satu Mare",
-            "Salaj",
-            "Sibiu",
-            "Suceava",
-            "Teleorman",
-            "Timis",
-            "Tulcea",
-            "Vaslui",
-            "Valcea",
-            "Vrancea"
-        ];
-
+        stateFactory.getMongoStuff()
+            .then(function(states) {
+                $scope.states = states;
+            }),
+            function(error) {
+                console.error(error);
+            }
     });

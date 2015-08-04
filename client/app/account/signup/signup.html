@@ -1,53 +1,54 @@
-<h1 class="md-toolbar">
+<div layout="column">
+    <p></p>
+    <div layout="row">
+        <md-card flex offset-gt-md = "20" class="md-whiteframe-z3"> 
+            <md-card-content>
+                <h1 >
+                    Create Account
+                </h1>
+                <h6>*All fields are mandatory</h6>
+                <div layout="column">
+                    <form class="form" name="form" ng-submit="register(form)">
+                        <div class="form-group">
+                            <span layout = "row">
+                                <md-input-container class="md-icon-float" flex>
+                                    <label>First name</label>
+                                    <input ng-model="user.firstName" type="text" required>
+                                </md-input-container>
 
-    Sign up
-</h1>
-<h6>*All fields are mandatory</h6>
-<br/>
-<div class="col-sm-12">
-    <form class="form" name="form" ng-submit="register(form)">
-        <div class="form-group">
-            <md-input-container class="md-icon-float">
-                <label>First name</label>
-                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-                <input ng-model="user.firstName" type="text" required>
-            </md-input-container>
+                                <md-input-container class="md-icon-float" flex>
+                                    <label>Last name</label>
+                                    <input ng-model="user.lastName" type="text" required>
+                                </md-input-container>
+                            </span>
+                            <span layout="row">
+                                <md-input-container class="md-icon-float" flex>
+                                    <label>Phone number</label>
+                                    <input ng-model="user.phone" type="number" maxlength="12" required>
+                                </md-input-container>
+                                <md-select placeholder="State" ng-model="user.state" class="md-padding">
+                                    <md-option ng-repeat="item in states" value="{{item}}">{{item.stateName}}</md-option>
+                                </md-select>
+                            </span>
+                            <md-input-container class="md-icon-float">
+                                <label>Email</label>
+                                <input ng-model="user.email" type="email" ng-required="true" mongoose-error/>
+                            </md-input-container>
 
-            <md-input-container class="md-icon-float">
-                <label>Last name</label>
-                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-                <input ng-model="user.lastName" type="text" required>
-            </md-input-container>
-
-            <md-input-container class="md-icon-float">
-                <label>Phone number</label>
-                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-                <input ng-model="user.phone" type="number" maxlength="12" required>
-            </md-input-container>
-
-            <md-input-container class="md-icon-float">
-                <label>Email</label>
-                <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-                <input ng-model="user.email" type="email" ng-required="true" mongoose-error/>
-            </md-input-container>
-
-            <md-input-container class="md-icon-float">
-                <label>Password</label>
-                <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-                <input ng-model="user.password" type="password" required ng-minlength="3" mongoose-error/>
-            </md-input-container>
-
-            <md-select placeholder="State" ng-model="user.state" class="md-padding">
-                <md-option ng-repeat="item in states" value="{{item}}">{{item}}</md-option>
-            </md-select>
-
-            <md-button class="md-raised md-primary" ng-click="register(form)">Submit</md-button>
-            <hr>
-            <p>Already have an account?</p>
-            <md-button class="md-raised" href="/login">Login</md-button>
-
-        </div>
-    </form>
+                            <md-input-container class="md-icon-float">
+                                <label>Password</label>
+                                <input ng-model="user.password" type="password" required ng-minlength="3" mongoose-error/>
+                            </md-input-container>
+                        </div>
+                    </form>    
+                </div>
+            </md-card-content>
+            <div class="md-actions" layout="column" layout-align="end center">
+                <md-button class="md-raised md-primary" ng-click="register(form)">Submit</md-button>
+                <p>Already have an account?</p>
+                <md-button class="md-raised" href="/login">Login</md-button>
+            </div>
+        </md-card>
+        <div flex-gt-md="20"></div>
+    </div>
 </div>
-</div>
-<hr>
