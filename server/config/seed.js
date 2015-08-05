@@ -22,7 +22,7 @@ Job.find({}).remove(function() {
     Job.create({
         title: 'Sapator',
         description: 'Dat la sapa 100m garduri',
-        owner: 'Eusebiu',
+        owner: 'Admin',
         location: 'Adjud',
 
         category: 'Gradinarit',
@@ -32,12 +32,13 @@ Job.find({}).remove(function() {
     }, {
         title: 'Tamplar',
         description: 'Dat la tamplarie',
-        owner: 'Eusebiu',
+        owner: 'Test',
         location: 'Cluj',
         category: 'Tamplarie',
         helpers: '1',
         paycheck: '10',
         jobDate: '2015-08-14 19:43:37 +0100',
+        applicants: ['abc','Test', 'Admin']
     });
 });
 

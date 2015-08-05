@@ -11,9 +11,6 @@ angular.module('oneDayJobApp')
         $scope.getCurrentUser = Auth.getCurrentUser;
         $scope.isLoggedIn = Auth.isLoggedIn;
 
-        $scope.getJobs = function() {
-            $http.get('/api/jobs');
-        };
 
         getJob.getMongoStuff()
                 .then(function(jobs) {

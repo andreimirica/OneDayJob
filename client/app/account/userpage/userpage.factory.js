@@ -6,7 +6,7 @@ angular.module('oneDayJobApp')
         return {
             getMongoStuff: function() {
                 var deferred = $q.defer(),
-                    httpPromise = $http.get('/api/jobs');
+                    httpPromise = $http.get('/api/jobs', {title:"Sapator"});
 
                 httpPromise.success(function(jobs) {
                         deferred.resolve(jobs);

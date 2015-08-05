@@ -11,7 +11,7 @@
 	</div> -->
 
 
-	<div layout="row">
+<!-- 	<div layout="row">
 		<label>Select jobs:
 			<md-select required placeholder="Job" ng-model="UserpageCtrl.job">
 			<md-option ng-repeat="category in job" value="{{category.title}}">{{category.title}}</md-option>
@@ -29,14 +29,36 @@
   <md-content layout-padding style="height: 600px;padding: 24px;" ng-repeat="category in job | filter:{title:'a'}" value="{{category}}">
     <p>{{category}}</p>
   </md-content>
-</div>
+</div> -->
 
 <ul class="list-group">
   <li class="list-group-item"
-      ng-repeat="category in job ">
-    {{category}}
+      ng-repeat="currentjob in job" ng-show="currentjob.owner == getCurrentUser().firstName" >
+    {{currentjob}}
   </li>
 <ul>
+
+
+<!-- <ul class="list-group">
+  <li class="list-group-item"
+      ng-repeat="currentjob in job" >
+      {{currentjob.applicants}}
+  <li class="list-group-item"
+      ng-repeat="currentuser in currentjob.applicants" >
+    {{currentuser}}
+  </li>
+  </li>
+<ul> -->
+  
+
+  <div ng-repeat="currentjob in job">
+   <div ng-repeat="currentuser in currentjob.applicants" ng-show="currentuser == getCurrentUser().firstName"  >
+       <ul>
+            {{currentjob.title}}
+       </ul>
+   </div>
+</div>
+
 
 <!-- <div ng-init="friends = [{name:'John', phone:'555-1276'},
                          {name:'Mary', phone:'800-BIG-MARY'},
