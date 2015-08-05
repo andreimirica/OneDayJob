@@ -1,34 +1,36 @@
 <header class="hero-unit" id="banner">
     <h1 class="md-toolbar">Welcome to OneDayJobs!</h1>
 </header>
-<div class="container">
+<div class="card__container" layout-align="center">
     <md-button class="md-fab md-primary md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" ng-click="showModal($event)">
         <md-tooltip>Add new announcement</md-tooltip>
         +
     </md-button>
-    <md-content>
-        <md-list>
-            <md-list-item class="md-3-line" ng-repeat="item in tasks | orderBy: '-EndDate'">
-                <a href="#">
-                    <md-tooltip> Visit profile</md-tooltip>
-                    <img ng-src="{{item.face}}?-{{$index}}" src="/assets/images/yeoman.png" class="face avatar" alt="Picture"></a>
-                <div class="md-list-item-text">
-                    <h3>{{item.title}}</h3>
-                    <h4>{{item.tescription}}</h4>
-                    <p>Location : {{item.location}}</p>
-                    <p>People needed: {{item.helpers}}</p>
-                    <p>Job Date: {{item.jobDate | date}}</p>
-                    <p>Pay : ${{item.paycheck}} </p>
-                    <p>Submitted by : {{item.Owner}}</p>
+    <md-content class="cards">
+        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | orderBy: '-jobDate'">
+            <div layout="row">
+                <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
+            </div>
+            <md-divider></md-divider>
+            <md-card-content layout="row">
+                <div layout="column">
+                    <h4>Description: {{item.description | cut:true:100:' ...'}}</h4>
+                    <md-divider></md-divider>
+                    <div layout="row">
+                        <p class="text-pad">Location : {{item.location}}</p>
+                        <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
+                    </div>
                 </div>
-                <md-button class="md-raised md-primary" ng-show="isLoggedIn()" href="#">
-                    Apply
-                </md-button>
-</div>
-</hr>
-</md-list-item>
-</md-list>
-</md-content>
+                <div class="md-actions" layout="column" layout-align="end end" flex>
+                    <a href="/details//_id">
+                        <md-button>Show details</md-button>
+                    </a>
+                    <md-button class="md-raised md-primary">Apply</md-button>
+                </div>
+            </md-card-content>
+            <md-divider></md-divider>
+        </md-card>
+    </md-content>
 </div>
 <footer class="footer">
     <div class="container">

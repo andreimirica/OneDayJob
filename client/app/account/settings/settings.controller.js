@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('oneDayJobApp')
@@ -12,7 +13,7 @@ angular.module('oneDayJobApp')
                         $scope.message = 'Password successfully changed.';
                     })
                     .catch(function() {
-                        form.password.$setValidity('mongoose', false);
+                        form.firstName.$setValidity('mongoose', false);
                         $scope.errors.other = 'Incorrect password';
                         $scope.message = '';
                     });
