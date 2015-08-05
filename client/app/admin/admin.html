@@ -1,52 +1,53 @@
-<div class="container">
-    <md-toolbar md-scroll-shrink>
-        <div class="md-toolbar-tools">
-            <h3><span>List of users</span></h3>
-        </div>
-    </md-toolbar>
-    <md-content layout-padding style="height: 300px;padding: 24px;">
-        <md-list>
-            <div ng-repeat="user in users">
-                <md-list-item class="md-2-line">
-                    <div class="md-list-item-text">
-                        <h3>{{ user.name }}</h3>
-                        <p>{{user.email}}</p>
-                    </div>
-                    <md-button ng-click="showConfirm($event, user)" class="md-icon-button" aria-label="More">
-                        <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
-                    </md-button>
-                </md-list-item>
-                <md-divider></md-divider>
+<div class="container" layout="line">
+    <md-card class="md-whiteframe-z4" flex>
+        <md-toolbar md-scroll-shrink>
+            <div class="md-toolbar-tools">
+                <h3><span>List of users</span></h3>
             </div>
-        </md-list>
-    </md-content>
-</div>
-<div class="container">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h3><span>List of categories</span></h3>
-        </div>
-    </md-toolbar>
-    <md-content layout-padding style="height: 300px;padding: 24px;">
-        <md-list>
-            <div ng-repeat="category in categories">
-                <md-list-item class="md-2-line">
-                    <div class="md-list-item-text">
-                        <h3>{{category.name}}</h3>
-                    </div>
-                    <md-button ng-click="deleteCat(category)" class="md-icon-button" aria-label="More">
-                        <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
-                    </md-button>
-                </md-list-item>
-                <md-divider></md-divider>
+        </md-toolbar>
+        <md-content md-scroll-y layout-padding style="height: 300px;padding: 24px;">
+            <md-list>
+                <div ng-repeat="user in users">
+                    <md-list-item class="md-2-line">
+                        <div class="md-list-item-text">
+                            <h3>{{ user.name }}</h3>
+                            <p>{{user.email}}</p>
+                        </div>
+                        <md-button ng-click="showConfirm($event, user)" class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
+                        </md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </div>
+            </md-list>
+        </md-content>
+    </md-card>
+    <md-card class="md-whiteframe-z4" flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3><span>List of categories</span></h3>
             </div>
-        </md-list>
-    </md-content>
+        </md-toolbar>
+        <md-content md-scroll-y layout-padding style="height: 300px;padding: 24px;">
+            <md-list>
+                <div ng-repeat="category in categories">
+                    <md-list-item class="md-2-line">
+                        <div class="md-list-item-text">
+                            <h3>{{category.name}}</h3>
+                        </div>
+                        <md-button ng-click="deleteCat(category)" class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
+                        </md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </div>
+            </md-list>
+        </md-content>
+    </md-card>
+    <div class="container">
+    </div>
 </div>
-<div class="container" layout="row">
-    </md-input-container>
-    <md-input-container md-no-float>
-        <input ng-model="newCat" type="text" placeholder="Category Name">
-    </md-input-container>
-    <md-button class="md-raised md-primary" ng-click="addCat()">ADD</md-button>
-</div>
+<md-input-container md-no-float>
+    <input ng-model="newCat" type="text" placeholder="Category Name">
+</md-input-container>
+<md-button class="md-raised md-primary" ng-click="addCat()">ADD</md-button>

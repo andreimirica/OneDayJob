@@ -3,6 +3,10 @@
 angular.module('oneDayJobApp')
     .controller('AdminCtrl', function($scope, $http, $mdDialog, Auth, User, Category, socket) {
 
+        if (!Auth.isAdmin()) {
+            document.location.href='/';
+        }
+
         $scope.alert = '';
         $scope.showAlert = function(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
