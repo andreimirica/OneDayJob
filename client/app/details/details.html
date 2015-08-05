@@ -1,38 +1,18 @@
-
 <left>
-    <h1> Title </h1>
-    {{title}}
-
-    <h1> Location </h1>
-    {{location}} 
-
-    <h1> Description </h1>
-    {{description}} 
-
-    <h1> Helpers </h1>
-    {{helpers}} 
-
-    <h1> Start Date </h1>
-    {{date}} 
-
-    <h1> Paycheck </h1>
-    {{paycheck}} 
-
+    <h1> Title </h1> {{job.title}}
+    <h1> Location </h1> {{job.location}}
+    <h1> Description </h1> {{job.description}}
+    <h1> Helpers </h1> {{job.helpers}}
+    <h1> Start Date </h1> {{job.jobDate | date}}
+    <h1> Paycheck </h1> {{job.paycheck}}
 </left>
-
-
-<div>
- {{ job.title }}
-</div>
-  
 <hr>
 </hr>
 <section layout="row" layout-sm="column" layout-align="center center">
-      <md-button class="md-raised">Apply</md-button>
-      <md-button class="md-raised md-primary">Send message</md-button>
-      <md-button class="md-raised md-warn">Back</md-button>
+    <md-button class="md-raised">Apply</md-button>
+    <md-button class="md-raised md-primary">Send message</md-button>
+    <md-button class="md-raised md-warn">Back</md-button>
 </section>
-
 <!-- <form action="mailto:user@user.com" enctype="text/plain" method="post">
 <p>Name: <input name="Name" type="text" id="Name" size="40"></p>
 <p>E-mail address: <input name="E-mail" type="text" id="E-mail" size="40"></p>
