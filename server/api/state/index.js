@@ -1,13 +1,12 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./job.controller');
+var controller = require('./state.controller');
 var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.show);
 router.post('/', controller.create);
 
 module.exports = router;

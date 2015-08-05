@@ -4,50 +4,44 @@
 
 <div class="card__container" layout-align="center">
 
-    <md-button style="position:absolute" class="md-fab md-warn md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" href="/post">
-
+    <md-button class="md-fab md-primary md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" ng-click="showModal($event)">
 
         <md-tooltip>Add new announcement</md-tooltip>
         +
     </md-button>
     <md-content class="cards">
 
-
-        <md-card ng-class ="{ 'md-whiteframe-z4' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | orderBy: '-jobDate'"  >
-            <div layout="row" >
+        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | orderBy: '-jobDate'">
+            <div layout="row">
                 <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
             </div>
             <md-divider></md-divider>
-            <md-card-content layout="row"layout-sm="column" >
-                <div layout="column" >
+            <md-card-content layout="row">
+                <div layout="column">
+
                     <h4>Description: {{item.description | cut:true:100:' ...'}}</h4>
                     <md-divider></md-divider>
-                        <div layout="row">
-                            <p class="text-pad">Location : {{item.location}}</p>
-                            <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
-                        </div>
+                    <div layout="row">
+                        <p class="text-pad">Location : {{item.location}}</p>
+                        <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
+                    </div>
                 </div>
-
                 <div class="md-actions" layout="column" layout-align="end end" flex>
-                        <a href="/details//_id"><md-button>Show details</md-button></a>     
-                        <md-button class="md-raised md-primary">Apply</md-button>
+                    <a href="/details//_id">
+                        <md-button>Show details</md-button>
+                    </a>
+                    <md-button class="md-raised md-primary">Apply</md-button>
                 </div>
             </md-card-content>
             <md-divider></md-divider>
-
         </md-card>
-
-
-
-
     </md-content>
-</div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>Angular Fullstack v2.1.0 |
+                <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+                <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
 
-
-<footer class="footer">
-    <div class="container">
-        <p>Angular Fullstack v2.1.0 |
-            <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-            <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
         </div>
     </footer>

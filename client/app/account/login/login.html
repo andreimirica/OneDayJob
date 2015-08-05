@@ -1,19 +1,32 @@
-<h1 class="md-toolbar">
-          Login
-        </h1>
-<form class="form" name="form" ng-submit="login(form)">
-    <md-input-container>
-        <label>Email</label>
-        <input ng-model="user.email" type="email" required>
-    </md-input-container>
-    <md-input-container flex>
-        <label>Password</label>
-        <input ng-model="user.password" type="password" required>
-    </md-input-container>
-    <div>
-        <md-button class="md-raised md-primary" ng-click="login(form)">Login</md-button>
-        <md-button class="md-raised" href="/signup">Register</md-button>
-    </div>
+<div layout="column">
+    <p></p>
+    <div layout="row">
+        <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
+            <md-card-content>
+                <h1 >
+                    Login
+                </h1>
+                <div layout="column">
+                    <form class="form" name="form" ng-submit="login(form)">
+                        <md-input-container>
+                            <label>Email</label>
+                            <input ng-model="user.email" type="email" required>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Password</label>
+                            <input ng-model="user.password" type="password" required>
+                        </md-input-container>
 
-</form>
-<hr>
+                    </form>
+                </div>
+            </md-card-content>
+            <div class="md-actions" layout="column" layout-align="end center">
+                <md-button class="md-raised md-primary" ng-click="login(form)">Login</md-button>
+                <hr/>
+                <p>Don't have an account?</p>
+                <md-button class="md-raised" href="/signup">Register</md-button>
+            </div>
+            </md-card>
+        <div flex-gt-md="25"></div>
+    </div>
+</div>

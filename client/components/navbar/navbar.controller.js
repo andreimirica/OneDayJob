@@ -6,7 +6,7 @@ angular.module('oneDayJobApp')
             'title': 'Home',
             'link': '/'
         }];
-
+        $scope.showSearch = false;
         $scope.isCollapsed = true;
         $scope.isLoggedIn = Auth.isLoggedIn;
         $scope.isAdmin = Auth.isAdmin;

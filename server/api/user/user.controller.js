@@ -86,6 +86,21 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
+ * Change a users status
+ */
+exports.changeStatus = function(req, res, next) {
+    var userId = req.user._id;
+    var newStatus = String(req.body.newStatus);
+    User.findById(userId, function(err, user) {
+        user.status = newStatus;
+        user.save(function(err) {
+            if (err) return validationError(res, err);
+            res.status(200).send('OK');
+        });
+    });
+};
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {
