@@ -12,6 +12,16 @@ exports.index = function(req, res) {
     });
 };
 
+// Get a single job
+exports.show = function(req, res) {
+    Job.findById(req.params.id, function(err, job) {
+        if (err) {
+            return handleError(res, err);
+        }
+        return res.json(job);
+    });
+};
+
 exports.create = function(req, res) {
     Job.create(req.body, function(err, job) {
         if (err) {

@@ -38,10 +38,6 @@ angular.module('oneDayJobApp')
                 console.error(error);
             }
         $scope.isLoggedIn = Auth.isLoggedIn;
-
-
-
-
 //----------------------------------------------------------
           $scope.alert = '';
          $scope.showAlert = function(ev) {
@@ -58,17 +54,6 @@ angular.module('oneDayJobApp')
         .targetEvent(ev)
     );
   };
-
-
-
-
-  //-------------------------------------------------------------
+//-------------------------------------------------------------
     }
 );
-
-
-
-
-
-
-

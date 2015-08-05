@@ -9,3 +9,4 @@ angular.module('oneDayJobApp')
                 controller: 'AdminCtrl'
             });
     });
+
