@@ -37,7 +37,8 @@
 <body ng-app="oneDayJobApp" layout="row">
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('st-md')" ng-include="'components/sidenav/sidenav.html'">
     </md-sidenav>
-    <div flex layout="column" tabIndex="-1" role="main" >
+
+    <div flex layout="column" tabIndex="-1" role="main">
         <div ng-include="'components/navbar/navbar.html'" height="500" width="800"></div>
         <div ui-view=""></div>
     </div>
@@ -93,6 +94,7 @@
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
     <script src="app/admin/category.service.js"></script>
+    <script src="app/category/filter.controller.js"></script>
     <script src="app/createButton/button.js"></script>
     <script src="app/details/details.controller.js"></script>
     <script src="app/details/details.js"></script>

@@ -1,41 +1,23 @@
-
-<left>
-    <h1> Title </h1>
-    {{title}}
-
-    <h1> Location </h1>
-    {{location}} 
-
-    <h1> Description </h1>
-    {{description}} 
-
-    <h1> Helpers </h1>
-    {{helpers}} 
-
-    <h1> Start Date </h1>
-    {{date}} 
-
-    <h1> Paycheck </h1>
-    {{paycheck}} 
-
-</left>
-
-
 <div>
- {{ job.title }}
+    <md-card class="md-whiteframe-z4" >
+        <md-card-content layout="row">
+        <div layout="column" flex>
+            <h1> {{job.title}}</h1> 
+            <p>{{job.description}}</p>
+        </div>
+        <div layout="column" flex>
+            <h2> Posted by: </h2> {{job.owner}}
+            <h3> Helpers needed: </h3> {{job.helpers}}
+            <h3> Job Date: </h3> {{job.jobDate | date}}
+            <h3> Paycheck: </h3> {{job.paycheck}}
+            <h3> Location: </h3> {{job.location}}
+            <h3> Job Category: </h3> {{job.category}}
+        </div>
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="center center">
+            <md-button class="md-raised">Apply</md-button>
+            <md-button class="md-raised md-primary">Send message</md-button>
+            <md-button href = "/" class="md-raised md-warn">Back</md-button>
+        </div>
+    </md-card>
 </div>
-  
-<hr>
-</hr>
-<section layout="row" layout-sm="column" layout-align="center center">
-      <md-button class="md-raised">Apply</md-button>
-      <md-button class="md-raised md-primary">Send message</md-button>
-      <md-button class="md-raised md-warn">Back</md-button>
-</section>
-
-<!-- <form action="mailto:user@user.com" enctype="text/plain" method="post">
-<p>Name: <input name="Name" type="text" id="Name" size="40"></p>
-<p>E-mail address: <input name="E-mail" type="text" id="E-mail" size="40"></p>
-<p><textarea name="Comment" cols="55" rows="5"id></textarea></p>
-<p><input type="submit" name="Submit" value="Submit"></p>
-</form> -->

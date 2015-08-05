@@ -11,6 +11,5 @@ angular.module('oneDayJobApp')
                     id: 'me'
                 }
             },
-
         });
     });
