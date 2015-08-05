@@ -12,11 +12,11 @@ angular.module('oneDayJobApp')
                 Auth.createUser({
 
                         firstName: $scope.user.firstName,
-                        lastName:$scope.user.lastName,
+                        lastName: $scope.user.lastName,
                         email: $scope.user.email,
                         password: $scope.user.password,
-                        phone:$scope.user.phone,
-                        state:$scope.user.state
+                        phone: $scope.user.phone,
+                        state: $scope.user.state
 
                     })
                     .then(function() {
@@ -47,4 +47,5 @@ angular.module('oneDayJobApp')
             function(error) {
                 console.error(error);
             }
+
     });

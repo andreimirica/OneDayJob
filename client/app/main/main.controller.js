@@ -18,42 +18,40 @@ angular.module('oneDayJobApp').filter('cut', function() {
 });
 
 
-
 angular.module('oneDayJobApp')
+    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
 
-.controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
+        $scope.tasks = {};
+        taskFactory.getMongoStuff()
+            .then(function(jobs) {
+                $scope.tasks = jobs;
+            }),
+            function(error) {
+                console.error(error);
+            }
+        $scope.isLoggedIn = Auth.isLoggedIn;
 
-    $scope.tasks = {};
-    taskFactory.getMongoStuff()
-        .then(function(jobs) {
-            $scope.tasks = jobs;
-        }),
-        function(error) {
-            console.error(error);
-        }
-    $scope.isLoggedIn = Auth.isLoggedIn;
-
-    $scope.alert = '';
-    $scope.showModal = function(ev) {
-        $mdDialog.show({
-            controller: ModalController,
-            templateUrl: 'app/main/modal/modal.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: true,
-        })
-    };
-
-    function ModalController($scope, $mdDialog) {
-        $scope.hide = function() {
-            $mdDialog.hide();
+        $scope.alert = '';
+        $scope.showModal = function(ev) {
+            $mdDialog.show({
+                controller: ModalController,
+                templateUrl: 'app/main/modal/modal.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+            })
         };
-        $scope.cancel = function() {
-            $mdDialog.cancel();
-        };
-        $scope.answer = function(answer) {
-            $mdDialog.hide(answer);
-        };
-    };
 
-});
+        function ModalController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        };
+
+    });

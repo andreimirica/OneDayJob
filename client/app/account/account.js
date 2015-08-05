@@ -19,14 +19,13 @@ angular.module('oneDayJobApp')
                 controller: 'SettingsCtrl',
                 authenticate: true
             })
-
             .state('post', {
-            url: '/post',
-            templateUrl: 'app/account/post/post.html',
-            controller: 'PostCtrl'
+                url: '/post',
+                templateUrl: 'app/account/post/post.html',
+                controller: 'PostCtrl'
             })
 
-            .state('modal', {
+        .state('modal', {
             url: '/modal',
             templateUrl: 'app/modal/modal.html',
             controller: 'AppCtrl'

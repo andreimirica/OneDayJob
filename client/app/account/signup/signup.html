@@ -1,16 +1,16 @@
 <div layout="column">
     <p></p>
     <div layout="row">
-        <md-card flex offset-gt-md = "20" class="md-whiteframe-z3"> 
+        <md-card flex offset-gt-md="20" class="md-whiteframe-z3">
             <md-card-content>
-                <h1 >
+                <h1>
                     Create Account
                 </h1>
                 <h6>*All fields are mandatory</h6>
                 <div layout="column">
                     <form class="form" name="form" ng-submit="register(form)">
                         <div class="form-group">
-                            <span layout = "row">
+                            <span layout="row">
                                 <md-input-container class="md-icon-float" flex>
                                     <label>First name</label>
                                     <input ng-model="user.firstName" type="text" required>
@@ -34,13 +34,12 @@
                                 <label>Email</label>
                                 <input ng-model="user.email" type="email" ng-required="true" mongoose-error/>
                             </md-input-container>
-
                             <md-input-container class="md-icon-float">
                                 <label>Password</label>
                                 <input ng-model="user.password" type="password" required ng-minlength="3" mongoose-error/>
                             </md-input-container>
                         </div>
-                    </form>    
+                    </form>
                 </div>
             </md-card-content>
             <div class="md-actions" layout="column" layout-align="end center">
