@@ -1,4 +1,4 @@
-<md-toolbar class="md-whiteframe-z2" ng-controller="NavbarCtrl">
+<!-- <md-toolbar class="md-whiteframe-z2" ng-controller="NavbarCtrl">
     <center><img src="assets/images/profile.png" height="100" width="100"></center>
 </md-toolbar>
 <ul id="docs-menu-Demos" class="menu-toggle-list" style="height: 1200px;">
@@ -22,4 +22,36 @@
             </a>
         </menu-link>
     </li>
-</ul>
+</ul> -->
+
+<md-toolbar class="md-whiteframe-z1" style="
+   background-color: orange;
+   color: rgb(69, 90, 100);
+">
+<div layout="column" layout-align="center center">
+<img src="assets/images/profile.png" height="100" width="100" style="margin-top: 7px;">
+       <h2>One Day Job</h2>
+   </div>
+   </md-toolbar>
+
+<div align = "center">
+ <md-menu-content width="4" class="md-default-theme" style="background-color: rgb(69, 90, 100); color:whitesmoke;">
+   <md-menu-item>
+     <button class="md-button " md-ink-ripple tabindex="0" href="/post">
+       <span >
+                 Dashboard
+         </span>      <div class="md-ripple-container"></div>
+
+     </button>
+   </md-menu-item>
+   <md-menu-divider></md-menu-divider>
+   <md-menu-item>
+     <button class="md-button " md-ink-ripple tabindex="0">
+       <span >
+                  My Posts
+         </span>      <div class="md-ripple-container"></div>
+
+     </button>
+   </md-menu-item>
+ </md-menu-content>
+</div>
