@@ -54,4 +54,17 @@ angular.module('oneDayJobApp')
             };
         };
 
+        $http.get("/api/categories").success(function(response){
+            $scope.categories = response;
+        });
+        $http.get("api/states").success(function(response){
+            $scope.locations = response;
+        });
+
+        $scope.clearFilter = function(){
+            $scope.search.location ="";
+            $scope.search.category="";
+        };
+
+
     });
