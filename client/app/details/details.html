@@ -1,36 +1,19 @@
-
-
 <div layout="column">
-    <left>
-        <h1> Title </h1> {{job.title}}
-        <h1> Location </h1> {{job.location}}
-        <h1> Description </h1> {{job.description}}
-        <h1> Helpers </h1> {{job.helpers}}
-        <h1> Start Date </h1> {{job.jobDate | date}}
-        <h1> Paycheck </h1> {{job.paycheck}}
-    </left>
-
-<md-card>
-      <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-      <md-card-content>
-        <h2 class="md-title">Paracosm</h2>
-        <p>
-          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-        </p>
-      </md-card-content>
-      <div class="md-actions" layout="row" layout-align="end center">
-        <md-button>Action 1</md-button>
-        <md-button>Action 2</md-button>
-      </div>
+    <md-card class="md-whiteframe-z5">
+        <md-card-content>
+            <h1> Title </h1> {{job.title}}
+            <h1> Location </h1> {{job.location}}
+            <h1> Description </h1> {{job.description}}
+            <h1> Helpers </h1> {{job.helpers}}
+            <h1> Start Date </h1> {{job.jobDate | date}}
+            <h1> Paycheck </h1> {{job.paycheck}}
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button class="md-raised">Apply</md-button>
+            <md-button class="md-raised md-primary">Send message</md-button>
+            <md-button class="md-raised md-warn">Back</md-button>
+        </div>
     </md-card>
-
-    
-    <section layout layout-align="center center">
-        <md-button class="md-raised">Apply</md-button>
-        <md-button class="md-raised md-primary">Send message</md-button>
-        <md-button class="md-raised md-warn">Back</md-button>
-    </section>
     <!-- <form action="mailto:user@user.com" enctype="text/plain" method="post">
 <p>Name: <input name="Name" type="text" id="Name" size="40"></p>
 <p>E-mail address: <input name="E-mail" type="text" id="E-mail" size="40"></p>
