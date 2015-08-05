@@ -1,22 +1,19 @@
 <header class="hero-unit" id="banner">
     <h1 class="md-toolbar">Welcome to OneDayJobs!</h1>
 </header>
-
+    
 <div class="card__container" layout-align="center">
 
-    <md-button class="md-fab md-primary md-hue-2 newJob" aria-label="Profile" ng-show="isLoggedIn()" ng-click="showModal($event)">
+	<div my-button layout-sm="column" layout-align-sm="end end"></div>
 
-        <md-tooltip>Add new announcement</md-tooltip>
-        +
-    </md-button>
     <md-content class="cards">
 
-        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | orderBy: '-jobDate'">
+        <md-card ng-class="{ 'md-whiteframe-z4' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | orderBy: '-jobDate'">
             <div layout="row">
                 <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
             </div>
             <md-divider></md-divider>
-            <md-card-content layout="row">
+            <md-card-content layout="row" layout-sm="column">
                 <div layout="column">
 
                     <h4>Description: {{item.description | cut:true:100:' ...'}}</h4>
@@ -37,6 +34,7 @@
         </md-card>
     </md-content>
     </div>
+
     <footer class="footer">
         <div class="container">
             <p>Angular Fullstack v2.1.0 |
