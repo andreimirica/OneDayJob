@@ -29,5 +29,13 @@ angular.module('oneDayJobApp')
             url: '/modal',
             templateUrl: 'app/modal/modal.html',
             controller: 'AppCtrl'
+        })
+
+        .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: 'app/account/dashboard/dashboard.html',
+            controller: 'DashCtrl',
+            authenticate: true
         });
+
     });

@@ -26,28 +26,28 @@
     </div>
 
     <div layout="row" layout-margin>
-      <md-input-container ng-model='newDescription'>
+      <md-input-container>
       <label>Description</label>
-      <textarea ng-model="user.biography" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
+      <textarea ng-model="newDescription" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
     </md-input-container>
   </div>
 
   <div layout="row" layout-margin layout-sm="column">
 
    <div flex="33">
-    <label>Select category:
+    <label>Select category:</label>
       <md-select required placeholder="Category" ng-model="ctrl.category">
       <md-option ng-repeat="category in cat" value="{{category.name}}">{{category.name}}</md-option>
     </md-select>
-  </label>
+  
   </div>
 
 <div flex="33">
- <label>Select your city:
+ <label>Select your city:</label>
     <md-select required placeholder="Location" ng-model="ctrl.userState">
     <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
   </md-select>
-</label>
+
 </div>
 
 </div>
@@ -68,7 +68,7 @@
  <div flex="33">
  <md-input-container>
   <label>Number of Helpers</label>
-  <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="10">
+  <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
   <div ng-messages="postForm.helpers.$error">
     <div ng-message="required">You've got to hire someone.</div>
     <div ng-message="max">More than 10? Are you recruiting an army? </div>
