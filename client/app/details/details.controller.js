@@ -3,7 +3,20 @@
 angular.module('oneDayJobApp')
 
 .controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User) {
+
     $scope.job = Job.get({id: $stateParams.id});
+
+    $scope.test = false;
+    $scope.isOwner=function(){
+        $scope.job.$promise.then(function(response){
+            if ($scope.getCurrentUser()._id == response.owner){
+                $scope.test = true;
+            }
+        })
+    }
+    $scope.isOwner();
+
+
 
       $scope.selected = [];
       $scope.toggle = function (item, list) {

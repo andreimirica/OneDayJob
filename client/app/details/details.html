@@ -1,4 +1,4 @@
-
+<div style="padding-top:50px;"></div>
 <md-content layout="row">
     <md-card flex class="md-whiteframe-z3"> 
         <md-card-content>
@@ -25,7 +25,8 @@
     </md-card>
 </md-content>
 
-    <!-- checkbox -->
+<!-- checkbox -->
+<div ng-show="test">
   <div layout="row">
     <div flex="50" flex-md="100" layout="column">
       <fieldset class="standard" flex>
@@ -36,11 +37,13 @@
               {{ item.firstName + " "+item.lastName }} <span ng-if="exists(item, selected)">selected</span>
             </md-checkbox>
           </div>
+          <md-button class="md-raised md-warn">Confirm</md-button>
         </div>
       </fieldset>
     </div>
   </div>
   <h2 class="md-title">Selected applicants ({{selected.length}}) </h2>
+</div>
 <!--  end checkbox -->
 <br>
 <md-content>
