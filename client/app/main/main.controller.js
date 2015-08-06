@@ -28,7 +28,7 @@ angular.module('oneDayJobApp')
     };
 
 
-        $scope.tasks = {};
+        $scope.tasks = [];
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
