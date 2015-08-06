@@ -54,13 +54,13 @@ angular.module('oneDayJobApp')
         // }
     	
         $scope.job.comments.push({owner:$scope.getCurrentUser().firstName, text:$scope.commentText});
-                $http.put('api/jobs/'+ $stateParams.id,{
-                    _id:$stateParams.id,
-                    newComment:$scope.commentText,
-                    userName:$scope.getCurrentUser().firstName,
-                    userId:$scope.getCurrentUser()._id,
+        $http.put('api/jobs/'+ $stateParams.id,{
+            _id:$stateParams.id,
+            newComment:$scope.commentText,
+            userName:$scope.getCurrentUser().firstName,
+            userId:$scope.getCurrentUser()._id,
 
-                });
+        });
         $scope.commentText='';
     };
 
