@@ -1,0 +1,82 @@
+<div ng-controller="UserpageCtrl" class="md-padding">
+	<div class="container">
+		<md-button class="md-raised" ng-show="isLoggedIn()" ng-click="getJobs()">Get jobs</md-button>
+
+<!-- 		<div layout="row">
+			<label>
+				<md-select required placeholder="Category" ng-model="ctrl.category">
+				<md-option ng-repeat="category in job" value="{{category.email}}">{{category.email}}</md-option>
+			</md-select>
+		</label>
+	</div> -->
+
+
+<!-- 	<div layout="row">
+		<label>Select jobs:
+			<md-select required placeholder="Job" ng-model="UserpageCtrl.job">
+			<md-option ng-repeat="category in job" value="{{category.title}}">{{category.title}}</md-option>
+		</md-select>
+	</label>
+</div>
+
+
+            <div layout="column" style="padding-bottom: 15px;">
+  <md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">Jobs</h2>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding style="height: 600px;padding: 24px;" ng-repeat="category in job | filter:{title:'a'}" value="{{category}}">
+    <p>{{category}}</p>
+  </md-content>
+</div> -->
+
+<ul class="list-group">
+  <li class="list-group-item"
+      ng-repeat="currentjob in job" ng-show="currentjob.owner == getCurrentUser().firstName" >
+    {{currentjob}}
+  </li>
+<ul>
+
+
+<!-- <ul class="list-group">
+  <li class="list-group-item"
+      ng-repeat="currentjob in job" >
+      {{currentjob.applicants}}
+  <li class="list-group-item"
+      ng-repeat="currentuser in currentjob.applicants" >
+    {{currentuser}}
+  </li>
+  </li>
+<ul> -->
+  
+
+  <div ng-repeat="currentjob in job">
+   <div ng-repeat="currentuser in currentjob.applicants" ng-show="currentuser == getCurrentUser().firstName"  >
+       <ul>
+            {{currentjob.title}}
+       </ul>
+   </div>
+</div>
+
+
+<!-- <div ng-init="friends = [{name:'John', phone:'555-1276'},
+                         {name:'Mary', phone:'800-BIG-MARY'},
+                         {name:'Mike', phone:'555-4321'},
+                         {name:'Adam', phone:'555-5678'},
+                         {name:'Julie', phone:'555-8765'},
+                         {name:'Juliette', phone:'555-5678'}]"></div>
+<label>Search: <input ng-model="searchText"></label>
+<table id="searchTextResults">
+  <tr><th>Name</th><th>Phone</th></tr>
+  <tr ng-repeat="friend in friends | filter:searchText">
+    <td>{{friend.name}}</td>
+    <td>{{friend.phone}}</td>
+  </tr>
+</table> -->
+
+
+</div>
+</div>
+</div>
+</div>

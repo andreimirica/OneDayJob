@@ -38,10 +38,12 @@
 <body ng-app="oneDayJobApp" layout="row">
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('st-md')" style="background-color: rgb(0, 204, 102); color:whitesmoke; opacity:0.95;" ng-include="'components/sidenav/sidenav.html'">
     </md-sidenav>
+
     <div flex layout="column" tabIndex="-1" role="main">
         <div ng-include="'components/navbar/navbar.html'" height="500" width="800"></div>
         <div ui-view=""></div>
     </div>
+    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
     (function(i, s, o, g, r, a, m) {
@@ -92,10 +94,13 @@
     <script src="app/account/settings/settings.controller.js"></script>
     <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/account/signup/signup.factory.js"></script>
+    <script src="app/account/userpage/userpage.controller.js"></script>
+    <script src="app/account/userpage/userpage.factory.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
     <script src="app/admin/category.service.js"></script>
     <script src="app/category/filter.controller.js"></script>
+    <script src="app/createButton/button.js"></script>
     <script src="app/details/details.controller.js"></script>
     <script src="app/details/details.js"></script>
     <script src="app/details/job.service.js"></script>
@@ -105,6 +110,7 @@
     <script src="app/main/modal/modal.controller.js"></script>
     <script src="app/main/modal/modal.factory.js"></script>
     <script src="components/auth/auth.service.js"></script>
+    <script src="components/auth/job.service.js"></script>
     <script src="components/auth/user.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>

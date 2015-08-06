@@ -1,4 +1,4 @@
-
+<div style="padding-top:50px;"></div>
 <md-content layout="row">
     <md-card flex class="md-whiteframe-z3"> 
         <md-card-content>
@@ -11,7 +11,7 @@
     <md-card flex class="md-whiteframe-z3">
         <md-card-content>
             <div layout="column" >
-                <h2> Posted by: </h2> {{job.owner}}
+                <h2> Posted by: </h2> {{user.firstName}} {{user.lastName}}
                 <h3> Helpers needed: </h3> {{job.helpers}}
                 <h3> Job Date: </h3> {{job.jobDate | date}}
                 <h3> Paycheck: </h3> {{job.paycheck}}
@@ -25,20 +25,40 @@
     </md-card>
 </md-content>
 
-
+<!-- checkbox -->
+<div ng-show="test">
+  <div layout="row">
+    <div flex="50" flex-md="100" layout="column">
+      <fieldset class="standard" flex>
+        <legend><h3>List of applicants</h3></legend>
+        <div layout="row" layout-wrap>
+          <div flex="50" ng-repeat="item in applicants">
+            <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+              {{ item.firstName + " "+item.lastName }} <span ng-if="exists(item, selected)">selected</span>
+            </md-checkbox>
+          </div>
+          <md-button class="md-raised md-warn">Confirm</md-button>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <h2 class="md-title">Selected applicants ({{selected.length}}) </h2>
+</div>
+<!--  end checkbox -->
+<br>
 <md-content>
-    <h1 offset="5">Comments</h1>
+    <h1 offset="5">Comments ({{job.comments.length}})</h1>
     <div layout="column" flex>
         <md-container layout="column" flex>
-            <div layout="row">
+            <div layout="row" ng-show="isLoggedIn()">
                 <span flex ="10"></span>
-                <span flex>
-                    <md-input-container>
+                <span flex layout="row">
+                    <md-input-container flex>
                         <label>Comment</label>
-                        <input  name="clientName" required>
+                        <input  ng-model="commentText" type="text" required>
                     </md-input-container>
                     <div class="md-actions" layout="row" layout-align="center center">
-                        <md-button class="md-raised">Submit</md-button> 
+                        <md-button class="md-raised" ng-click="addComment()">Submit</md-button> 
                     </div>
                 </span>
                 <span flex ="10"></span>
@@ -47,12 +67,12 @@
                 
             <div layout="column">
                 <md-list>
-                    <md-list-item class="md-3-line">
+                    <md-list-item class="md-3-line" ng-repeat="item in job.comments">
                         <img src="http://i.imgur.com/uN1SCcs.jpg" class="face" alt="Avatar">
                         <div class="md-list-item-text">
-                            <h3>Who</h3>
+                            <h3>{{item.owner}}</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id finibus sapien. Integer vitae velit quis dui vehicula dapibus. Quisque consectetur, ex maximus ultrices varius, ex ex maximus enim, eu bibendum sem libero sit amet nulla. In hendrerit rutrum volutpat. Duis ut nisl egestas, 
+                                {{item.text}}
                             </p>
                         </div>
                     <md-divider md-inset></md-divider>

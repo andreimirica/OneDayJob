@@ -26,7 +26,7 @@
                                     <label>Phone number</label>
                                     <input ng-model="user.phone" type="number" maxlength="12" required>
                                 </md-input-container>
-                                <md-select placeholder="State" ng-model="user.state" class="md-padding">
+                                <md-select placeholder="State" ng-model="user.state" class="md-padding" required>
                                     <md-option ng-repeat="item in states" value="{{item}}">{{item.stateName}}</md-option>
                                 </md-select>
                             </span>
