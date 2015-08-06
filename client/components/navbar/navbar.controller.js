@@ -1,11 +1,18 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-    .controller('NavbarCtrl', function($scope, $location, Auth, $mdSidenav) {
+    .controller('NavbarCtrl', function($scope, $location, Auth, $mdSidenav,$rootScope) {
         $scope.menu = [{
             'title': 'Home',
             'link': '/'
         }];
+
+        $scope.searchTerm='';
+        
+        $scope.search=function(){
+          $rootScope.$emit('searchOn', $scope.searchTerm);
+          $location.path('/');
+        };
         $scope.showSearch = false;
         $scope.isCollapsed = true;
         $scope.isLoggedIn = Auth.isLoggedIn;
