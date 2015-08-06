@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Populate DB with sample data on server start
+ * to disable, edit config/environment/index.js, and set `seedDB: false`
+ */
+
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Category = require('../api/category/category.model');
@@ -22,23 +27,35 @@ Job.find({}).remove(function() {
     Job.create({
         title: 'Sapator',
         description: 'Dat la sapa 100m garduri',
-        owner: 'Admin',
+        owner: 'a1',
         location: 'Adjud',
 
         category: 'Gradinarit',
         helpers: '4',
         paycheck: '100',
         jobDate: '2015-08-10 19:43:37 +0100',
+        applicants: ['a3','a2']
     }, {
         title: 'Tamplar',
         description: 'Dat la tamplarie',
-        owner: 'Test',
+        owner: 'a1',
         location: 'Cluj',
         category: 'Tamplarie',
         helpers: '1',
         paycheck: '10',
         jobDate: '2015-08-14 19:43:37 +0100',
-        applicants: ['abc','Test', 'Admin']
+        applicants: ['a2','a3']
+    },
+    {
+        title: 'Muncitor',
+        description: 'Dat la grebla',
+        owner: 'a2',
+        location: 'Adjud',
+        category: 'Tamplarie',
+        helpers: '3',
+        paycheck: '400',
+        jobDate: '2015-08-10 19:43:37 +0100',
+        applicants: ['a1']
     });
 });
 

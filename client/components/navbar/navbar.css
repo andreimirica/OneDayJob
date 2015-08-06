@@ -1,0 +1,23 @@
+.searchbutton{
+  background-color: #4d90fe;
+  border: 0;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  height: 32px;
+  left: 400px;
+  text-align: center;
+  top: 0;
+  width: 72px;
+  z-index: -1;
+  margin-left: 0;
+   background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
+}
+.searchbutton::before{
+  background:url("../../assets/images/download.png");
+  background-size: 17px;
+  content: "";
+  display: block;
+  height: 17px;
+  margin: 0 auto;
+  width: 17px;
+}

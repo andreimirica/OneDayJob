@@ -1,0 +1,64 @@
+
+<md-content layout="row">
+    <md-card flex class="md-whiteframe-z3"> 
+        <md-card-content>
+            <div layout="column">
+                <h1> {{job.title}}</h1> 
+                <p>{{job.description}}</p>
+            </div>
+        </md-card-content>
+    </md-card>
+    <md-card flex class="md-whiteframe-z3">
+        <md-card-content>
+            <div layout="column" >
+                <h2> Posted by: </h2> {{job.owner}}
+                <h3> Helpers needed: </h3> {{job.helpers}}
+                <h3> Job Date: </h3> {{job.jobDate | date}}
+                <h3> Paycheck: </h3> {{job.paycheck}}
+                <h3> Location: </h3> {{job.location}}
+                <h3> Job Category: </h3> {{job.category}}
+                <div class="md-actions" layout="row" layout-align="end end">
+                    <md-button href = "/" class="md-raised md-warn">Back</md-button>
+                </div>
+            </div>
+        </md-card-content>    
+    </md-card>
+</md-content>
+
+
+<md-content>
+    <h1 offset="5">Comments</h1>
+    <div layout="column" flex>
+        <md-container layout="column" flex>
+            <div layout="row" ng-show="isLoggedIn()">
+                <span flex ="10"></span>
+                <span flex layout="row">
+                    <md-input-container flex>
+                        <label>Comment</label>
+                        <input  ng-model="commentText" type="text" required>
+                    </md-input-container>
+                    <div class="md-actions" layout="row" layout-align="center center">
+                        <md-button class="md-raised" ng-click="addComment()">Submit</md-button> 
+                    </div>
+                </span>
+                <span flex ="10"></span>
+                <md-divider></md-divider>
+            </div>
+                
+            <div layout="column">
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="item in job.comments">
+                        <img src="http://i.imgur.com/uN1SCcs.jpg" class="face" alt="Avatar">
+                        <div class="md-list-item-text">
+                            <h3>{{item.owner}}</h3>
+                            <p>
+                                {{item.text}}
+                            </p>
+                        </div>
+                    <md-divider md-inset></md-divider>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </md-container>
+    </div>
+</md-content>   

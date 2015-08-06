@@ -16,10 +16,11 @@ angular.module('oneDayJobApp')
             if ($scope.newJob === '') {
                 return;
             }
+
             $http.post('/api/jobs', {
                 title: $scope.newTitle,
                 description: $scope.newDescription,
-                owner: $scope.getCurrentUser().firstName,
+                owner: $scope.getCurrentUser()._id,
                 location: $scope.ctrl.userState,
                 category: $scope.ctrl.category,
                 helpers: $scope.helpers,
@@ -31,19 +32,22 @@ angular.module('oneDayJobApp')
             // redirect to home
             $location.path('/');
         };
-        getCat.getMongoStuff()
-            .then(function(categories) {
-                $scope.cat = categories;
-            }),
-            function(error) {
-                console.error(error);
-            }
 
-        this.userState = '';
+
+
+            getCat.getMongoStuff()
+                .then(function(categories) {
+                    $scope.cat = categories;
+                }),
+                function(error) {
+                    console.error(error);
+                }
+
+        this.userState = '';      
         this.states = ('Arad Bacău Brăila Brașov Bucureşti Buzau Cluj-Napoca Constanța Craiova Iași Oradea Pitești Ploiești Satu-Mare Sibiu Târgu-Mureș Timișoara')
-            .split(' ').map(function(state) {
-                return {
-                    abbrev: state
-                };
-            });
+        .split(' ').map(function(state) {
+            return {
+                abbrev: state
+            };
+        });
     });

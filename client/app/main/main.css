@@ -44,3 +44,25 @@
     position: fixed;
     right: 350px;
 }
+.mini-avatar{
+        height: 48px;
+    width: 48px;
+    margin: 10px;
+    border-radius: 100px;
+}
+
+.cards{
+    padding-left: 12%;
+    width: 65%;
+}
+
+.text-pad{
+    margin-right: 15px;
+    margin-left: :15px;
+}
+.filter-card{
+    height: 400px;
+}
+.main{
+    padding-top: 70px;
+}

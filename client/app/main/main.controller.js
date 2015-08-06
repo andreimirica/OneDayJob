@@ -1,35 +1,34 @@
-'use strict';
+angular.module('oneDayJobApp').filter('cut', function() {
+    return function(value, wordwise, max, tail) {
+        if (!value) return '';
+
+        max = parseInt(max, 10);
+        if (!max) return value;
+        if (value.length <= max) return value;
+
+        value = value.substr(0, max);
+        if (wordwise) {
+            var lastspace = value.lastIndexOf(' ');
+            if (lastspace != -1) {
+                value = value.substr(0, lastspace);
+            }
+        }
+        return value + (tail || ' …');
+    };
+});
+
 
 angular.module('oneDayJobApp')
+    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
 
-    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory,$mdDialog) {
 
-        $scope.awesomeThings = [];
+        $scope.customer = {
+        name: 'David',
+        street: '1234 Anywhere St.'
+    };
 
-        $http.get('/api/things').success(function(awesomeThings) {
-            $scope.awesomeThings = awesomeThings;
-            socket.syncUpdates('thing', $scope.awesomeThings);
-        });
 
-        $scope.addThing = function() {
-            if ($scope.newThing === '') {
-                return;
-            }
-            $http.post('/api/things', {
-                name: $scope.newThing
-            });
-            $scope.newThing = '';
-        };
-
-        $scope.deleteThing = function(thing) {
-            $http.delete('/api/things/' + thing._id);
-        };
-
-        $scope.$on('$destroy', function() {
-            socket.unsyncUpdates('thing');
-        });
-
-        $scope.tasks = {};
+        $scope.tasks = [];
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
@@ -39,34 +38,59 @@ angular.module('oneDayJobApp')
             }
         $scope.isLoggedIn = Auth.isLoggedIn;
 
+        $scope.alert = '';
+        $scope.showModal = function(ev) {
+            $mdDialog.show({
+                controller: ModalController,
+                templateUrl: 'app/main/modal/modal.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+            })
+        };
+
+        function ModalController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        };
+
+ function ModalController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        };
+
+        $http.get("/api/categories").success(function(response){
+            $scope.categories = response;
+        });
+        $http.get("api/states").success(function(response){
+            $scope.locations = response;
+        });
+
+        $scope.search={};
+        $scope.search.location="";
+        $scope.search.category="";
+        $scope.clearFilter = function(){
+            $scope.search.location ="";
+            $scope.search.category="";
+        };
 
 
 
-//----------------------------------------------------------
-          $scope.alert = '';
-         $scope.showAlert = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    // Modal dialogs should fully cover application
-    // to prevent interaction outside of dialog
-    $mdDialog.show(
-      $mdDialog.alert()
-        .parent(angular.element(document.body))
-        .title('This is an alert title')
-        .content('You can specify some description text in here.')
-        .ariaLabel('Alert Dialog Demo')
-        .ok('Got it!')
-        .targetEvent(ev)
-    );
-  };
-
-
-
-
-  //-------------------------------------------------------------
-    }
-);
-
-
+    });
 
 
 

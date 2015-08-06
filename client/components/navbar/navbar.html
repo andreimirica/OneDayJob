@@ -1,42 +1,54 @@
-<md-toolbar layout="row" class="md-whiteframe-z1 md-toolbar-tools" ng-controller="NavbarCtrl">
-    <md-button class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
-        <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
-    </md-button>
-
-    <a href="/">
-    <h3>One day job</h3>
-    </a>
-
-    <span flex></span>
-    <md-menu md-position-mode="target-right target">
-        <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
-            <md-icon md-menu-origin md-svg-icon="assets/images/moreVert.svg"></md-icon>
-        </md-button>
-        <md-menu-content width="4">
-            <md-menu-item ng-if="isLoggedIn()">
-                <md-button ng-click="logout()">
-                    <p>Logout</p>
+<div ng-controller="NavbarCtrl">
+    <md-toolbar layout="column" class="md-whiteframe-z1 md-toolbar-tools md-tall" style="
+   background-color: rgb(0,102,0);color:whitesmoke;">
+        <div layout="column" flex>
+            <div layout="row">
+                <md-button class="menu" hide-gt-sm ng-click="toggleList()" ng-if="isLoggedIn()" aria-label="Show User List">
+                    <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
                 </md-button>
-            </md-menu-item>
-            <md-menu-item ng-if="!isLoggedIn()">
-                <md-button href="/login">
-                    <p>Login</p>
-                </md-button>
-            </md-menu-item>
-            <md-menu-item ng-if="!isLoggedIn()">
-                <md-button href="/signup">
-                    <p>Sign Up</p>
-                </md-button>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
-    <!-- <div>
-  <div style="float:left" ng-hide="isLoggedIn()" href="/login" ><h5>Login</h5></div>
-  <div style="float:left" ng-hide="isLoggedIn()" href="/signup" ><h5>Sign Up</h5></div>
-</div> -->
-    <!-- 
-
-<h3 ng-show="isLoggedIn()" flex="10"><p>Hello {{ getCurrentUser().name }}</p> </h3>
-
-<h3 ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></h3>        <md-button class="md-icon-button" ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" href="" ng-click="logout()" flex="5">Logout</md-button> -->
+                <a href="/">
+                    <h2>One day job</h2>
+                </a>
+                <span flex></span>
+                <md-list-item ng-if="isLoggedIn()">
+                    <md-button href="#" hide show-gt-sm>My Posts</md-button>
+                </md-list-item>
+                <md-list-item ng-if="isLoggedIn()">
+                    <md-button href="/dashboard" hide show-gt-sm>Dashboard</md-button>
+                    <a href="/settings">
+                    <img src="assets/images/profile.png" height="40" width="40">
+                  </a>
+                </md-list-item>
+                <md-menu md-position-mode="target-right target">
+                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                        <md-icon md-menu-origin md-svg-icon="assets/images/moreVert.svg"></md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item ng-if="isLoggedIn()">
+                            <md-button ng-click="logout()">
+                                <p>Logout</p>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="!isLoggedIn()">
+                            <md-button href="/login">
+                                <p>Login</p>
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if="!isLoggedIn()">
+                            <md-button href="/signup">
+                                <p>Sign Up</p>
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+            <div layout="row">
+                <span flex></span>
+                <input type="search" placeholder="Search..." style="border: none; padding: 0px; margin: 0px; height: auto; z-index: 6; left: 0px; outline: none;transparent;">
+                <button aria-label="Căutare" class="searchbutton"></button>
+                <span flex></span>
+            </div>
+        </div>
 </md-toolbar>
+
+</div>
