@@ -41,11 +41,15 @@ exports.addComment = function(req, res, next) {
     newComment.text = req.body.newComment;
     newComment.owner=req.body.userName;
 
+
+
     Job.findById(jobId, function(err, job) {
 
-        job.comments.push(newComment);
-        job.applicants.push(req.body.userId);
-       //_.extend(job.comments,req.body)
+        job.comments.push(newComment)
+        if(job.applicants.indexOf(req.body.userId)<0)
+        {
+            job.applicants.push(req.body.userId);
+        }
         job.save(function(err) {
             if (err) return validationError(res, err);
             res.status(200).send('OK');
