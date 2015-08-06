@@ -23,6 +23,13 @@ angular.module('oneDayJobApp')
 
         $scope.tasks = [];
         $scope.search= { location : '',category:""};
+
+        $scope.customer = {
+        name: 'David',
+        street: '1234 Anywhere St.'
+    };
+
+
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
@@ -55,6 +62,18 @@ angular.module('oneDayJobApp')
             };
         };
 
+ function ModalController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
+        };
+
         $http.get("/api/categories").success(function(response){
             $scope.categories = response;
         });
@@ -68,4 +87,10 @@ angular.module('oneDayJobApp')
         };
 
 
+
     });
+
+
+
+
+

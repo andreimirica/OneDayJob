@@ -35,7 +35,7 @@
             <md-card-content>
                 <h3>Filter</h3>
                 <br>
-               
+                <md-button class="md-raised md-warn" ng-click="clearFilter()">Clear filter</md-button>
                 <md-select ng-model="search.category" placeholder="Categories">
                     <md-option ng-repeat="item in categories">{{item.name}}</md-option>
                 </md-select>
@@ -43,14 +43,6 @@
                     <md-option ng-repeat="item in locations">{{item.stateName}}</md-option>
                 </md-select>
             </md-card-content>
-
-              <div class="md-actions" layout="column" flex>
-                   <md-card-content layout="row">
-   
-                        <md-button class="md-raised md-warn" ng-click="clearFilter()">Clear filter</md-button>
-            
-                    </md-card-content>
-                </div>
         </md-card>
         <div flex></div>
     </div>
