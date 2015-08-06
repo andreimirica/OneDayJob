@@ -28,7 +28,7 @@ angular.module('oneDayJobApp')
     };
 
 
-        $scope.tasks = {};
+        $scope.tasks = [];
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
@@ -80,6 +80,9 @@ angular.module('oneDayJobApp')
             $scope.locations = response;
         });
 
+        $scope.search={};
+        $scope.search.location="";
+        $scope.search.category="";
         $scope.clearFilter = function(){
             $scope.search.location ="";
             $scope.search.category="";
