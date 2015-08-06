@@ -34,9 +34,9 @@
 
   <div layout="row" layout-margin layout-sm="column">
 
-   <div flex="33">
+   <div flex="33" >
     <label>Select category:</label>
-      <md-select required placeholder="Category" ng-model="ctrl.category">
+      <md-select  required placeholder="Category" ng-model="ctrl.category">
       <md-option ng-repeat="category in cat" value="{{category.name}}">{{category.name}}</md-option>
     </md-select>
   

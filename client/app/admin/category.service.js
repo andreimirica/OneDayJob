@@ -5,7 +5,7 @@ angular.module('oneDayJobApp')
         return $resource('/api/categories/:id/:controller', {
             id: '@_id'
         }, {
-            get: {
+            query: {
                 method: 'GET',
                 params: {
                     id: 'me'

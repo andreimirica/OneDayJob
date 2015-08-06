@@ -21,7 +21,8 @@ angular.module('oneDayJobApp').filter('cut', function() {
 angular.module('oneDayJobApp')
     .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
 
-        $scope.tasks = {};
+        $scope.tasks = [];
+        $scope.search= { location : '',category:""};
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
