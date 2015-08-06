@@ -1,15 +1,17 @@
 <div >
     <md-toolbar layout="column" class="md-whiteframe-z1 md-toolbar-tools md-tall" style="
    background-color: rgb(0,102,0);color:whitesmoke;" ng-controller="NavbarCtrl">
+    <a href="/">
+                   <img src="assets/images/logoone.png" height="100" width="100" > 
+          <!--       <h3>One Day Job</h3> -->
+                </a>
         <div layout="column" flex>
+
             <div layout="row">
                 <md-button class="menu" hide-gt-sm ng-click="toggleList()" ng-if="isLoggedIn()" aria-label="Show User List">
                     <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
                 </md-button>
-                <a href="/">
-                   <img src="assets/images/logoone.png" height="100" width="100" > 
-          <!--       <h3>One Day Job</h3> -->
-                </a>
+              
                 <span flex></span>
                 <md-list-item ng-if="isLoggedIn()">
                     <md-button href="/dashboard" hide show-gt-sm>Dashboard</md-button>
