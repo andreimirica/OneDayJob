@@ -23,6 +23,7 @@
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
     <!-- injector:css -->
+    <link rel="stylesheet" href="app/account/dashboard/dashboard.css">
     <link rel="stylesheet" href="app/account/login/login.css">
     <link rel="stylesheet" href="app/account/post/post.css">
     <link rel="stylesheet" href="app/admin/admin.css">
@@ -35,7 +36,7 @@
 </head>
 
 <body ng-app="oneDayJobApp" layout="row">
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2 md-toolbar-tools" md-component-id="left" md-is-locked-open="$mdMedia('st-md')" ng-include="'components/sidenav/sidenav.html'">
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('st-md')" style="background-color: rgb(0, 204, 102); color:whitesmoke; opacity:0.95;" ng-include="'components/sidenav/sidenav.html'">
     </md-sidenav>
 
     <div flex layout="column" tabIndex="-1" role="main">
@@ -85,6 +86,8 @@
     <!-- injector:js -->
     <script src="app/account/account.js"></script>
     <script src="app/account/addPost/postController.js"></script>
+    <script src="app/account/dashboard/dashboard.controller.js"></script>
+    <script src="app/account/dashboard/dashboard.factory.js"></script>
     <script src="app/account/login/login.controller.js"></script>
     <script src="app/account/post/post.controller.js"></script>
     <script src="app/account/post/post.factory.js"></script>

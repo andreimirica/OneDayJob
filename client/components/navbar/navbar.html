@@ -1,8 +1,9 @@
 <div ng-controller="NavbarCtrl">
-    <md-toolbar layout="column" class="md-whiteframe-z1 md-toolbar-tools md-tall">
+    <md-toolbar layout="column" class="md-whiteframe-z1 md-toolbar-tools md-tall" style="
+   background-color: rgb(0,102,0);color:whitesmoke;">
         <div layout="column" flex>
             <div layout="row">
-                <md-button class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
+                <md-button class="menu" hide-gt-sm ng-click="toggleList()" ng-if="isLoggedIn()" aria-label="Show User List">
                     <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
                 </md-button>
                 <a href="/">
@@ -13,8 +14,10 @@
                     <md-button href="#" hide show-gt-sm>My Posts</md-button>
                 </md-list-item>
                 <md-list-item ng-if="isLoggedIn()">
-                    <md-button href="#" hide show-gt-sm>Dashboard</md-button>
+                    <md-button href="/dashboard" hide show-gt-sm>Dashboard</md-button>
+                    <a href="/settings">
                     <img src="assets/images/profile.png" height="40" width="40">
+                  </a>
                 </md-list-item>
                 <md-menu md-position-mode="target-right target">
                     <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
@@ -46,49 +49,6 @@
                 <span flex></span>
             </div>
         </div>
-        <!-- <div>
-  <div style="float:left" ng-hide="isLoggedIn()" href="/login" ><h5>Login</h5></div>
-  <div style="float:left" ng-hide="isLoggedIn()" href="/signup" ><h5>Sign Up</h5></div>
-</div> -->
-        <!-- 
+</md-toolbar>
 
-<h3 ng-show="isLoggedIn()" flex="10"><p>Hello {{ getCurrentUser().name }}</p> </h3>
-
-<h3 ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></h3>        <md-button class="md-icon-button" ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}" href="" ng-click="logout()" flex="5">Logout</md-button> -->
-    </md-toolbar>
-    <!-- <md-toolbar layout="row" class="md-whiteframe-z1 md-toolbar-tools">
-<center>
-      <input  type="search" placeholder="Search...">
-     
-       <md-button class="md-raised md-primary">Search</md-button>
-    </center>
-</md-toolbar> -->
-    <!--  <div layout="row">
-        <md-input-container>
-        <input  type="text" placeholder="Phone Number">
-    </md-input-container>
-     <md-input-container>
-        <md-button ng-click="" aria-label="Search">
-          <md-icon md-svg-icon="assets/images/magnifier13.svg" ></md-icon>
-          </md-button>
-          </md-input-container>
-  </div> -->
-    </form>
 </div>
-</div>
-</div>
-<!--  <md-toolbar ng-show="showSearch" layout="row" class="md-hue-5">
-        <div class="md-toolbar-tools">
-          <md-button ng-click="showSearch = !showSearch" aria-label="Back">
-          <md-icon md-svg-icon="assets/images/back.svg" ></md-icon>
-          </md-button>
-          <h3 flex="10">
-            Back
-          </h3>
-          <md-input-container md-theme="input" flex>
-            <label>&nbsp;</label>
-            <input ng-model="search.who" placeholder="enter search">
-          </md-input-container>
-        </div>
-      </md-toolbar>
- -->

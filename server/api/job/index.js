@@ -9,6 +9,8 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+router.get('/userjob/:id', controller.myUserJob);
+router.get('/userapplied/:id', controller.myUserApplied);
 router.post('/', controller.create);
 router.put('/:id',controller.addComment);
 

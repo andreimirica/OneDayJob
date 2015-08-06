@@ -22,6 +22,23 @@ exports.show = function(req, res) {
     });
 };
 
+
+exports.myUserJob = function(req, res) {     
+       Job.find({ 'owner': req.params.id }, function (err, job) {
+           if(err) { return handleError(res, err); }
+           if(!job) { return res.status(404).send('Not Found'); }
+           return res.json(job);
+         })
+   };
+
+exports.myUserApplied = function(req, res) {     
+       Job.find({ 'applicants': req.params.id }, function (err, job) {
+           if(err) { return handleError(res, err); }
+           if(!job) { return res.status(404).send('Not Found'); }
+           return res.json(job);
+         })
+   };
+
 exports.create = function(req, res) {
     Job.create(req.body, function(err, job) {
         if (err) {
@@ -57,23 +74,6 @@ exports.addComment = function(req, res, next) {
         
     });
 
-
-
-// Thing.findById(req.params.id, function(err, thing) {
-//         if (err) {
-//             return handleError(res, err);
-//         }
-//         if (!thing) {
-//             return res.status(404).send('Not Found');
-//         }
-//         var updated = _.merge(thing, req.body);
-//         updated.save(function(err) {
-//             if (err) {
-//                 return handleError(res, err);
-//             }
-//             return res.status(200).json(thing);
-//         });
-//     });
 
 
 };
