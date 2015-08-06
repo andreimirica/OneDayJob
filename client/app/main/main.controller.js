@@ -80,6 +80,9 @@ angular.module('oneDayJobApp')
             $scope.locations = response;
         });
 
+        $scope.search={};
+        $scope.search.location="";
+        $scope.search.category="";
         $scope.clearFilter = function(){
             $scope.search.location ="";
             $scope.search.category="";
