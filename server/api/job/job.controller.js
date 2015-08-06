@@ -22,6 +22,23 @@ exports.show = function(req, res) {
     });
 };
 
+
+exports.myUserJob = function(req, res) {     
+       Job.find({ 'owner': req.params.id }, function (err, job) {
+           if(err) { return handleError(res, err); }
+           if(!job) { return res.status(404).send('Not Found'); }
+           return res.json(job);
+         })
+   };
+
+exports.myUserApplied = function(req, res) {     
+       Job.find({ 'applicants': req.params.id }, function (err, job) {
+           if(err) { return handleError(res, err); }
+           if(!job) { return res.status(404).send('Not Found'); }
+           return res.json(job);
+         })
+   };
+
 exports.create = function(req, res) {
     Job.create(req.body, function(err, job) {
         if (err) {
