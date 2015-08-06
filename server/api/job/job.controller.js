@@ -4,12 +4,26 @@ var _ = require('lodash');
 var Job = require('./job.model');
 
 exports.index = function(req, res) {
+  if(req.query.searchTerm){
+
+
+
+       Job.find({ 'title': req.params.searchTerm }, function(err, event) {
+           if(err) { return handleError(res, err); }
+           if(!event) { return res.status(404).send('Not Found'); }
+           return res.json(event);
+         });
+  }
+else {
     Job.find(function(err, jobs) {
         if (err) {
             return handleError(res, err);
         }
         return res.status(200).json(jobs);
     });
+}
+
+  
 };
 
 // Get a single job

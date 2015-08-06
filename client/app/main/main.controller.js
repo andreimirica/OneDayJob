@@ -19,7 +19,18 @@ angular.module('oneDayJobApp').filter('cut', function() {
 
 
 angular.module('oneDayJobApp')
-    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
+    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog,$rootScope) {
+
+$scope.tasks = [];
+        $rootScope.$on('searchOn', function(event, data) {
+            taskFactory.getSearchStuff(data)
+            .then(function(jobs) {
+                $scope.tasks = jobs;
+            }),
+            function(error) {
+                console.error(error);
+            }
+        });
 
 
         $scope.customer = {
@@ -28,7 +39,6 @@ angular.module('oneDayJobApp')
     };
 
 
-        $scope.tasks = [];
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
