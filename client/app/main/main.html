@@ -1,10 +1,21 @@
-<header class="hero-unit" id="banner">
-    <h1 class="md-toolbar">Welcome to OneDayJobs!</h1>
-</header>
+<div class="main">
     <div my-button layout-sm="column" layout-align-sm="end end" layout-align-sm="end end" style="z-index: +1"></div>
 <div class="card__container" layout-align="center">
 
-    <div layout="row">
+    <div layout="column" layout-gt-sm="row">
+                <md-card flex ng-class="{ 'md-whiteframe-z4' : hovering}" ng-mouseenter="hovering = true" ng-mouseleave="hovering = false" style="height:400px">
+            <md-card-content>
+                <h3>Filter</h3>
+                <br>
+                <md-button class="md-raised md-warn" ng-click="clearFilter()">Clear filter</md-button>
+                <md-select ng-model="search.category" placeholder="Categories">
+                    <md-option ng-repeat="item in categories">{{item.name}}</md-option>
+                </md-select>
+                <md-select ng-model="search.location" placeholder="Location">
+                    <md-option ng-repeat="item in locations">{{item.stateName}}</md-option>
+                </md-select>
+            </md-card-content>
+        </md-card>
         <md-content class="cards" layout="column">
             <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: '-jobDate'">
                 <div layout="row">
@@ -31,19 +42,7 @@
             </md-card>
         </md-content>
 
-        <md-card flex ng-class="{ 'md-whiteframe-z4' : hovering}" ng-mouseenter="hovering = true" ng-mouseleave="hovering = false" style="height:400px">
-            <md-card-content>
-                <h3>Filter</h3>
-                <br>
-                <md-button class="md-raised md-warn" ng-click="clearFilter()">Clear filter</md-button>
-                <md-select ng-model="search.category" placeholder="Categories">
-                    <md-option ng-repeat="item in categories">{{item.name}}</md-option>
-                </md-select>
-                <md-select ng-model="search.location" placeholder="Location">
-                    <md-option ng-repeat="item in locations">{{item.stateName}}</md-option>
-                </md-select>
-            </md-card-content>
-        </md-card>
+
         <div flex></div>
     </div>
 </div>
@@ -56,3 +55,4 @@
             <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a>
         </p>
     </div>
+</div>
