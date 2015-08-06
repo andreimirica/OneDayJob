@@ -17,7 +17,7 @@ angular.module('oneDayJobApp')
                 return;
             }
 
-            $http.post('/api/jobs', {
+            $scope.newPost= {
                 title: $scope.newTitle,
                 description: $scope.newDescription,
                 owner: $scope.getCurrentUser()._id,
@@ -26,11 +26,15 @@ angular.module('oneDayJobApp')
                 helpers: $scope.helpers,
                 paycheck: $scope.paycheck,
                 jobDate: $scope.newJobDate.setDate($scope.newJobDate.getDate() + 1)
-            });
+            };
+
+            $http.post('/api/jobs', $scope.newPost);
             $scope.newJob = '';
 
             // redirect to home
             $location.path('/');
+
+            return $scope.newPost;
         };
 
 

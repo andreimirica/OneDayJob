@@ -21,7 +21,7 @@ angular.module('oneDayJobApp').filter('cut', function() {
 angular.module('oneDayJobApp')
     .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog) {
 
-        $scope.tasks = [];
+        $scope.tasks = new Array();
         $scope.search= { location : '',category:""};
 
         $scope.customer = {
@@ -47,7 +47,11 @@ angular.module('oneDayJobApp')
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
-            })
+            })  
+             .then(function(answer) {
+      $scope.temp = answer;
+      $scope.tasks.push($scope.temp);
+    });
         };
 
         function ModalController($scope, $mdDialog) {
@@ -59,18 +63,7 @@ angular.module('oneDayJobApp')
             };
             $scope.answer = function(answer) {
                 $mdDialog.hide(answer);
-            };
-        };
-
- function ModalController($scope, $mdDialog) {
-            $scope.hide = function() {
-                $mdDialog.hide();
-            };
-            $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-            $scope.answer = function(answer) {
-                $mdDialog.hide(answer);
+                
             };
         };
 
@@ -81,6 +74,9 @@ angular.module('oneDayJobApp')
             $scope.locations = response;
         });
 
+        $scope.search={};
+        $scope.search.location="";
+        $scope.search.category="";
         $scope.clearFilter = function(){
             $scope.search.location ="";
             $scope.search.category="";
