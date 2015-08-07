@@ -16,7 +16,11 @@ angular.module('oneDayJobApp', [
         $locationProvider.html5Mode(true);
         $httpProvider.interceptors.push('authInterceptor');
     })
-
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('indigo');
+})
 .factory('authInterceptor', function($rootScope, $q, $cookieStore, $location) {
     return {
         // Add authorization token to headers

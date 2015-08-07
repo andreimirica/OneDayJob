@@ -23,9 +23,9 @@ angular.module('oneDayJobApp')
 
          $scope.changeFirstName = function(form) {
             $scope.submitted = true;
-                Auth.changeFirstName($scope.user.newFirstName)
+                Auth.changeFirstName($scope.user.newFirstName,$scope.user.newLastName,$scope.user.newPhone)
                     .then(function() {
-                        $scope.message = 'firstName successfully changed.';
+                        $scope.message = 'Successfully changed!';
                     })
                     .catch(function() {
                         form.firstName.$setValidity('mongoose', false);
