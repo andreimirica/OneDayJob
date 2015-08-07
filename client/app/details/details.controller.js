@@ -6,7 +6,7 @@ angular.module('oneDayJobApp')
 
     $scope.job = Job.get({id: $stateParams.id});
 
-    $scope.test = false;
+    $scope.showIfOwner = false;
     $scope.isOwner=function(){
         $scope.job.$promise.then(function(response){
             if ($scope.getCurrentUser()._id == response.owner){
