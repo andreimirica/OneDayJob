@@ -26,7 +26,7 @@
 </md-content>
 
 <!-- checkbox -->
-<div ng-show="test">
+<div ng-show="showIfOwner">
   <div layout="row">
     <div flex="50" flex-md="100" layout="column">
       <fieldset class="standard" flex>
@@ -34,10 +34,10 @@
         <div layout="row" layout-wrap>
           <div flex="50" ng-repeat="item in applicants">
             <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-              {{ item.firstName + " "+item.lastName }} <span ng-if="exists(item, selected)">selected</span>
+              {{ item.firstName + " "+item.lastName }}
             </md-checkbox>
           </div>
-          <md-button class="md-raised md-warn">Confirm</md-button>
+          <md-button class="md-raised md-warn" ng-click="confirmApplicants()">Confirm</md-button>
         </div>
       </fieldset>
     </div>
@@ -45,6 +45,8 @@
   <h2 class="md-title">Selected applicants ({{selected.length}}) </h2>
 </div>
 <!--  end checkbox -->
+
+
 <br>
 <md-content>
     <h1 offset="5">Comments ({{job.comments.length}})</h1>
@@ -53,12 +55,14 @@
             <div layout="row" ng-show="isLoggedIn()">
                 <span flex ="10"></span>
                 <span flex layout="row">
-                    <md-input-container flex>
-                        <label>Comment</label>
-                        <input  ng-model="commentText" type="text" required>
-                    </md-input-container>
+                    <form class="form" name="form" ng-submit="addComment()" flex>
+                        <md-input-container >
+                            <label>Comment</label>
+                            <input  ng-model="commentText" type="text" required>
+                        </md-input-container>
+                    </form>
                     <div class="md-actions" layout="row" layout-align="center center">
-                        <md-button class="md-raised" ng-click="addComment()">Submit</md-button> 
+                        <md-button class="md-raised" ng-click="addComment(); answer('closed')" ng-disabled="form.$invalid">Submit</md-button> 
                     </div>
                 </span>
                 <span flex ="10"></span>

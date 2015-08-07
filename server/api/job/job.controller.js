@@ -124,3 +124,18 @@ exports.destroy = function(req, res) {
         });
     });
 };
+exports.confirmApplicants= function(req,res,next){
+  var accepted=req.body.acceptedList;
+  console.log(accepted);
+  var jobId = req.body._id;
+  console.log(accepted);
+    Job.findById(jobId, function(err, job){
+       job.accepted.push(accepted); 
+       job.applicants.splice(accepted);
+       
+       job.save(function(err) {
+            if (err) return validationError(res, err);
+            res.status(200).send('OK');
+        });
+    });
+}
