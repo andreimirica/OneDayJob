@@ -13,12 +13,12 @@
                             <span layout="row">
                                 <md-input-container class="md-icon-float" flex>
                                     <label>First name</label>
-                                    <input ng-model="user.firstName" type="text" required>
+                                    <input ng-model="user.firstName" type="text" required ng-pattern="/^[a-zA-Z]*$/">
                                 </md-input-container>
 
                                 <md-input-container class="md-icon-float" flex>
                                     <label>Last name</label>
-                                    <input ng-model="user.lastName" type="text" required>
+                                    <input ng-model="user.lastName" type="text" required ng-pattern="/^[a-zA-Z]*$/">
                                 </md-input-container>
                             </span>
                             <span layout="row">

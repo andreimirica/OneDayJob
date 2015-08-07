@@ -21,6 +21,7 @@ angular.module('oneDayJobApp')
                     })
                     .then(function() {
                         // Account created, redirect to home
+                        console.log($scope.user.state.stateName);
                         $location.path('/');
                     })
                     .catch(function(err) {
@@ -48,4 +49,9 @@ angular.module('oneDayJobApp')
                 console.error(error);
             }
 
+        //     $scope.numbers = function(){
+        //         if ($scope.user.firstName==1) {
+        //     $scope.user.firstName = null;
+        // }
+        //     }
     });
