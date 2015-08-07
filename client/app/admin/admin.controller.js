@@ -85,7 +85,7 @@ angular.module('oneDayJobApp')
             };
             var bb = false;
             for (var i in $scope.categories) {
-                if ($scope.categories[i].name === $scope.newCat) {
+                if ($scope.categories[i].name.toLowerCase() === $scope.newCat.toLowerCase()) {
                     bb = true;
                 }
             }

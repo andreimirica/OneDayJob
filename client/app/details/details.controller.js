@@ -63,7 +63,6 @@ angular.module('oneDayJobApp')
         });
         $scope.commentText='';
     };
-
        $scope.job.$promise.then(function(response){
        $scope.temp = response.owner;
        $scope.user = User.get({id: $scope.temp});

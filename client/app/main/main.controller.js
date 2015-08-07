@@ -32,6 +32,8 @@ $scope.tasks = [];
             }
         });
 
+        $scope.tasks = new Array();
+        $scope.search= { location : '',category:""};
 
         $scope.customer = {
         name: 'David',
@@ -56,7 +58,11 @@ $scope.tasks = [];
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
-            })
+            })  
+             .then(function(answer) {
+      $scope.temp = answer;
+      $scope.tasks.push($scope.temp);
+    });
         };
 
         function ModalController($scope, $mdDialog) {
@@ -68,18 +74,7 @@ $scope.tasks = [];
             };
             $scope.answer = function(answer) {
                 $mdDialog.hide(answer);
-            };
-        };
-
- function ModalController($scope, $mdDialog) {
-            $scope.hide = function() {
-                $mdDialog.hide();
-            };
-            $scope.cancel = function() {
-                $mdDialog.cancel();
-            };
-            $scope.answer = function(answer) {
-                $mdDialog.hide(answer);
+                
             };
         };
 

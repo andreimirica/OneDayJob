@@ -13,12 +13,11 @@
                             <span layout="row">
                                 <md-input-container class="md-icon-float" flex>
                                     <label>First name</label>
-                                    <input ng-model="user.firstName" type="text" required>
+                                    <input ng-model="user.firstName" type="text" ng-pattern="/^[a-zA-Z-]*$/" required>
                                 </md-input-container>
-
                                 <md-input-container class="md-icon-float" flex>
                                     <label>Last name</label>
-                                    <input ng-model="user.lastName" type="text" required>
+                                    <input ng-model="user.lastName" type="text" ng-pattern="/^[a-zA-Z-]*$/" required>
                                 </md-input-container>
                             </span>
                             <span layout="row">
@@ -26,8 +25,8 @@
                                     <label>Phone number</label>
                                     <input ng-model="user.phone" type="number" maxlength="12" required>
                                 </md-input-container>
-                                <md-select placeholder="State" ng-model="user.state" class="md-padding" required>
-                                    <md-option ng-repeat="item in states" value="{{item}}">{{item.stateName}}</md-option>
+                                <md-select required placeholder="State" ng-model="user.state" class="md-padding" required>
+                                    <md-option ng-repeat="item in states" value="{{item.stateName}}">{{item.stateName}}</md-option>
                                 </md-select>
                             </span>
                             <md-input-container class="md-icon-float">
