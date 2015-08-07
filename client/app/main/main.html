@@ -1,6 +1,5 @@
 <div class="main">
     <div my-button layout-sm="column" layout-align-sm="end end" layout-align-sm="end end" style="z-index: +1"></div>
-
     <div class="card__container" layout-align="center">
         <div layout="column" layout-gt-sm="row">
             <md-card flex ng-class="{ 'md-whiteframe-z4' : hovering}" ng-mouseenter="hovering = true" ng-mouseleave="hovering = false" style="height:300px">
@@ -17,7 +16,7 @@
                 </md-card-content>
             </md-card>
             <md-content class="cards" layout="column">
-                <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: 'title'">
+                <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: '-jobDate'">
                     <div layout="row">
                         <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
                     </div>
@@ -36,6 +35,9 @@
                                 <md-button>Show details</md-button>
                             </a>
                         </div>
+                        <md-button ng-show="isAdmin() || (currentUser()._id == item.owner)" ng-click="deleteJob(item)" class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
+                        </md-button>
                     </md-card-content>
                     <md-divider></md-divider>
                 </md-card>
