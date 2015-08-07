@@ -113,6 +113,11 @@
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="Edit Profile">
         <md-content class="md-padding">
+          <div layout="column">
+    <p></p>
+<div layout="row">
+ <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
+            <md-card-content>
            <h3>
                    Change First Name
                 </h3>
@@ -120,16 +125,37 @@
         <form class="form" name="form" ng-submit="changeFirstName(form)" novalidate>
                 <div class="form-group">
                     <md-input-container>
-                    <label>New firstName</label>
+                    <label>New First Name</label>
                     <input type="text" name="newFirstName" class="form-control" ng-model="user.newFirstName" ng-minlength="3" required/>
                     </md-input-container>
                 </div>
-            
+
+                       <div class="form-group">
+                    <md-input-container>
+                    <label>New Last Name</label>
+                    <input type="text" name="newLastName" class="form-control" ng-model="user.newLastName" ng-minlength="3" required/>
+                    </md-input-container>
+                </div>
+
+                <div class="form-group">
+                    <md-input-container>
+                    <label>New Phone Number</label>
+                    <input type="text" name="newPhone" class="form-control" ng-model="user.newPhone" ng-minlength="3" required/>
+                    </md-input-container>
+                </div>
+
+
+             <p class="help-block"> {{ message }} </p>
                 <div class="md-actions" layout="column" layout-align="end center">
                 <md-button class="md-raised" type="submit">Save changes</md-button>
             </div>
             </form>
     </div>
+</md-card-content>
+</md-card>
+<div flex-gt-md="25"></div>
+</div>
+</div>
         </md-content>
       </md-tab>
       <md-tab label="Edit Account Settings">
