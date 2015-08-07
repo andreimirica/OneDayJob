@@ -17,18 +17,48 @@ angular.module('oneDayJobApp')
     $scope.isOwner();
 
 
-
+      $scope.list=[];
       $scope.selected = [];
-      $scope.toggle = function (item, list) {
+      $scope.toggle = function (item) {
 
 
-        var idx = list.indexOf(item);
-        if (idx > -1) list.splice(idx, 1);
-        else list.push(item);
+        var idx = $scope.list.indexOf(item);
+        if (idx > -1) 
+          {
+            $scope.list.splice(idx, 1);
+            console.log($scope.list);
+          }
+        else 
+          {
+            $scope.list.push(item);
+            console.log($scope.list);
+          }
       };
       $scope.exists = function (item, list) {
-        return list.indexOf(item) > -1;
+
+        return $scope.list.indexOf(item) > -1;
+
       };
+
+
+
+      $scope.confirmApplicants =function(){
+        $scope.job.$promise.then(function(response){
+          console.log($scope.list.length);
+          for (var x in $scope.list)
+          {
+             $scope.list[x].$promise.then(function(resp){
+             console.log($scope.list[x]._id);
+             $http.put('api/jobs/'+ $stateParams.id,{
+              _id:$stateParams.id,
+               acceptedList:$scope.list[x]._id,
+              })
+          })
+          }
+
+
+        })
+      }
 
 
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -54,7 +84,7 @@ angular.module('oneDayJobApp')
         // }
     	
         $scope.job.comments.push({owner:$scope.getCurrentUser().firstName, text:$scope.commentText});
-        $http.put('api/jobs/'+ $stateParams.id,{
+        $http.put('api/jobs/'+ $stateParams.id + '/comments',{
             _id:$stateParams.id,
             newComment:$scope.commentText,
             userName:$scope.getCurrentUser().firstName,

@@ -12,6 +12,7 @@ router.get('/:id', controller.show);
 router.get('/userjob/:id', controller.myUserJob);
 router.get('/userapplied/:id', controller.myUserApplied);
 router.post('/', controller.create);
-router.put('/:id',controller.addComment);
+router.put('/:id/comments',controller.addComment);
+router.put('/:id',controller.confirmApplicants);
 
 module.exports = router;
