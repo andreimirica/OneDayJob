@@ -43,7 +43,7 @@
                 </div>
             </md-card-content>
             <div class="md-actions" layout="column" layout-align="end center">
-                <md-button class="md-raised md-primary" ng-click="register(form)">Submit</md-button>
+                <md-button class="md-raised md-primary" ng-click="register(form); answer('closed')"  ng-disabled="form.$invalid">Submit</md-button>
                 <p>Already have an account?</p>
                 <md-button class="md-raised" href="/login">Login</md-button>
             </div>
