@@ -13,5 +13,5 @@ router.get('/userjob/:id', controller.myUserJob);
 router.get('/userapplied/:id', controller.myUserApplied);
 router.post('/', controller.create);
 router.put('/:id',controller.addComment);
-
+router.get('/searchTerm/:id', controller.searchTerm);
 module.exports = router;

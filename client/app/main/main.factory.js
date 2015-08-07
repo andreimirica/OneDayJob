@@ -18,7 +18,7 @@ angular.module('oneDayJobApp')
             },
             getSearchStuff: function(searchTerm) {
                 var deferred = $q.defer(),
-                    httpPromise = $http.get('/api/jobs?searchTerm='+searchTerm);
+                    httpPromise = $http.get('/api/jobs/searchTerm/'+searchTerm);
 
                 httpPromise.success(function(jobs) {
                         deferred.resolve(jobs);
