@@ -86,7 +86,6 @@ angular.module('oneDayJobApp')
             var bb = false;
             for (var i in $scope.categories) {
                 if ($scope.categories[i].name) {
-                    console.log($scope.categories[i].name + "\n" + $scope.newCat);
                     if ($scope.categories[i].name.toLowerCase() === $scope.newCat.toLowerCase()) {
                         bb = true;
                     }
