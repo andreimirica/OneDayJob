@@ -16,7 +16,7 @@
                 </md-card-content>
             </md-card>
             <md-content class="cards" layout="column">
-                <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: '-jobDate'">
+                <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: 'title'">
                     <div layout="row">
                         <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
                     </div>
