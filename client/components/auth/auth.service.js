@@ -93,6 +93,19 @@ angular.module('oneDayJobApp')
                     return cb(err);
                 }).$promise;
             },
+             changeFirstName: function(newFirstName, callback) {
+                var cb = callback || angular.noop;
+
+                return User.changeFirstName({
+                    id: currentUser._id
+                }, {
+                    newFirstName: newFirstName
+                }, function(user) {
+                    return cb(user);
+                }, function(err) {
+                    return cb(err);
+                }).$promise;
+            },
 
             /**
              * Gets all available info on authenticated user

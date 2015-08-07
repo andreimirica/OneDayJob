@@ -6,12 +6,12 @@ angular.module('oneDayJobApp')
             'title': 'Home',
             'link': '/'
         }];
-$state.go('main');
         $scope.searchTerm='';
         
         $scope.search=function(){
+                    $state.go('main');
           $rootScope.$emit('searchOn', $scope.searchTerm);
-          $location.path('/').search($scope.searchTerm);
+          
         };
         $scope.showSearch = false;
         $scope.isCollapsed = true;

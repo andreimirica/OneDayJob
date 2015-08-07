@@ -11,6 +11,12 @@ angular.module('oneDayJobApp')
                     controller: 'password'
                 }
             },
+            changeFirstName: {
+                method: 'PUT',
+                params: {
+                    controller: 'firstName'
+                }
+            },
             get: {
                 method: 'GET',
                 params: {
