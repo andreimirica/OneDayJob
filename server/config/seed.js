@@ -19,7 +19,7 @@ Category.find({}).remove(function() {
     }, {
         name: 'Tamplarie'
     }, {
-        name: 'Agricultura, pana mea'
+        name: 'Agricultura'
     });
 });
 

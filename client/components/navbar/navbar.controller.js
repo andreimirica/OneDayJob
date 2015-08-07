@@ -6,7 +6,7 @@ angular.module('oneDayJobApp')
             'title': 'Home',
             'link': '/'
         }];
-$state.go('main');
+// $state.go('main');
         $scope.searchTerm='';
         
         $scope.search=function(){
