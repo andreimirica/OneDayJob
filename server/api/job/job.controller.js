@@ -15,6 +15,7 @@ exports.searchTerm = function(req, res) {
         return res.json(event);
     })
 };
+
 exports.index = function(req, res) {
 
     Job.find(function(err, jobs) {
@@ -24,7 +25,14 @@ exports.index = function(req, res) {
         return res.status(200).json(jobs);
     });
 };
-
+exports.searchTerm = function(req, res) {    
+       
+       Job.find({ 'title': req.params.id}, function (err, event) {
+           if(err) { return handleError(res, err); }
+           if(!event) { return res.status(404).send('Not Found'); }
+           return res.json(event);
+         })
+   };
 // Get a single job
 exports.show = function(req, res) {
     Job.findById(req.params.id, function(err, job) {

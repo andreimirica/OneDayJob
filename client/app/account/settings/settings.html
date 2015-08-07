@@ -109,12 +109,27 @@
 
 
 <div>
-  <md-content>
+  <md-content >
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="Edit Profile">
         <md-content class="md-padding">
-          
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+           <h3>
+                   Change First Name
+                </h3>
+               <div class="column">
+        <form class="form" name="form" ng-submit="changeFirstName(form)" novalidate>
+                <div class="form-group">
+                    <md-input-container>
+                    <label>New firstName</label>
+                    <input type="text" name="newFirstName" class="form-control" ng-model="user.newFirstName" ng-minlength="3" required/>
+                    </md-input-container>
+                </div>
+            
+                <div class="md-actions" layout="column" layout-align="end center">
+                <md-button class="md-raised" type="submit">Save changes</md-button>
+            </div>
+            </form>
+    </div>
         </md-content>
       </md-tab>
       <md-tab label="Edit Account Settings">

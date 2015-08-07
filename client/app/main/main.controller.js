@@ -19,19 +19,35 @@ angular.module('oneDayJobApp').filter('cut', function() {
 
 
 angular.module('oneDayJobApp')
-    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $rootScope, Job) {
+    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $rootScope, $state, $timeout, Job) {
         $scope.isAdmin = Auth.isAdmin;
         $scope.currentUser = Auth.getCurrentUser;
         $scope.tasks = [];
-        $rootScope.$on('searchOn', function(event, data) {
-            taskFactory.getSearchStuff(data)
-                .then(function(jobs) {
-                    $scope.tasks = jobs;
-                }),
-                function(error) {
-                    console.error(error);
-                }
-        });
+        _scope=$scope;
+    $rootScope.$on('searchOn', function(event, data) {
+            $rootScope.searchNo=true;
+            event.preventDefault();
+        if(data){
+        taskFactory.getSearchStuff(data)
+        .then(function(jobs) {
+            $timeout(function(){
+                _scope.tasks = jobs;
+            },500)
+        }),
+        function(error) {
+            console.error(error);
+        }
+    }
+    else{ 
+             taskFactory.getMongoStuff()
+    .then(function(jobs) {
+        $scope.tasks = jobs;
+    }),
+    function(error) {
+        console.error(error);
+    }
+            }
+    });
 
         $scope.tasks = new Array();
         $scope.search = {
@@ -43,7 +59,6 @@ angular.module('oneDayJobApp')
             name: 'David',
             street: '1234 Anywhere St.'
         };
-
 
         taskFactory.getMongoStuff()
             .then(function(jobs) {
@@ -79,6 +94,12 @@ angular.module('oneDayJobApp')
                 $mdDialog.hide(answer);
 
             };
+        };
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function(answer) {
+            $mdDialog.hide(answer);
         };
 
         $http.get("/api/categories").success(function(response) {

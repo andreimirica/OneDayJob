@@ -19,6 +19,7 @@ angular.module('oneDayJobApp')
                     })
                     .catch(function(err) {
                         $scope.errors.other = err.message;
+                        window.alert($scope.errors.other);
                     });
             }
         };

@@ -84,7 +84,18 @@ exports.changePassword = function(req, res, next) {
         }
     });
 };
+exports.changeFirstName = function(req, res, next) {
+    var userId = req.user._id;
+    var newName = String(req.body.newFirstName);
 
+    User.findById(userId, function(err, user) {
+            user.firstName = newName;
+            user.save(function(err) {
+                if (err) return validationError(res, err);
+                res.status(200).send('OK');
+            });
+    });
+};
 /**
  * Change a users status
  */

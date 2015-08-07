@@ -4,6 +4,7 @@ angular.module('oneDayJobApp')
     .controller('SettingsCtrl', function($scope, User, Auth) {
         $scope.errors = {};
         $scope.getCurrentUser = Auth.getCurrentUser;
+        $scope.user={};
         $scope.changePassword = function(form) {
             $scope.submitted = true;
             if (form.$valid) {
@@ -16,15 +17,21 @@ angular.module('oneDayJobApp')
                         $scope.errors.other = 'Incorrect password';
                         $scope.message = '';
                     });
-                      Auth.changePhone($scope.user.oldPhone, $scope.user.newPhone)
+            }
+        };
+
+
+         $scope.changeFirstName = function(form) {
+            $scope.submitted = true;
+                Auth.changeFirstName($scope.user.newFirstName)
                     .then(function() {
-                        $scope.message = 'Phone successfully changed.';
+                        $scope.message = 'firstName successfully changed.';
                     })
                     .catch(function() {
                         form.firstName.$setValidity('mongoose', false);
-                        $scope.errors.other = 'Incorrect phone';
+                        $scope.errors.other = 'Incorrect firstName';
                         $scope.message = '';
                     });
-            }
-        };
+            };
+
     });
