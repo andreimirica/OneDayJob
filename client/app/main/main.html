@@ -15,7 +15,7 @@
                     </md-select>
                 </md-card-content>
             </md-card>
-            <md-content style="background: transparent;" class="cards" layout="column">
+            <md-content style="background: transparent;"class="cards" layout="column">
                 <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks |filter:search |orderBy: '-jobDate'">
                     <div layout="row">
                         <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <h4>{{item.title}}</h4>

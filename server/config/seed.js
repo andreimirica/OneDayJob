@@ -37,7 +37,7 @@ Job.find({}).remove(function() {
         applicants: ['a3','a2']
     }, {
         title: 'Tamplar',
-        description: 'Dat la tamplarie',
+        description: 'Dat la dalta, 20cm rumegus',
         owner: 'a1',
         location: 'Cluj',
         category: 'Tamplarie',
