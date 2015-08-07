@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -25,4 +25,142 @@
             </form>
         </div>
     </div>
+</div>
+ -->
+<!-- <div layout="column">
+    <p></p>
+    <div layout="row">
+        <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
+            <md-card-content>
+                <h3>
+                   Change Password
+                </h3>
+                <div layout="column">
+                    <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+                        <md-input-container>
+                           <label>Current Password</label>
+                            <input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error/>
+                     <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ errors.other }}
+                    </p>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>New Password</label>
+                    <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" ng-minlength="3" required/>
+                    <p class="help-block" ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                        Password must be at least 3 characters.
+                    </p>
+                        </md-input-container>
+
+                    
+                </div>
+            
+            <div class="md-actions" layout="column" layout-align="end center">
+                <p class="help-block"> {{ message }} </p>
+               <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+                <hr/>
+            </div>
+            </form>
+            </md-card-content>
+            </md-card>
+        <div flex-gt-md="25"></div>
+    </div>
+</div> -->
+
+<!-- <div layout="column">
+    <p></p>
+    <div layout="row">
+        <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
+            <md-card-content>
+              <h3>
+                   Change Password
+                </h3>
+               <div class="column">
+        <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+                <div class="form-group">
+                    <md-input-container>
+                        <label>Current Password</label>
+                        <input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error/>
+                    </md-input-container>
+                    <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ errors.other }}
+                    </p>
+                </div>
+                <div class="form-group">
+                    <md-input-container>
+                    <label>New Password</label>
+                    <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" ng-minlength="3" required/>
+                    </md-input-container>
+                    <p class="help-block" ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                        Password must be at least 3 characters.
+                    </p>
+                </div>
+                <p class="help-block"> {{ message }} </p>
+                <div class="md-actions" layout="column" layout-align="end center">
+                <md-button class="md-raised" type="submit">Save changes</md-button>
+            </div>
+            </form>
+    </div>
+            </md-card-content>
+            </md-card>
+        <div flex-gt-md="25"></div>
+    </div>
+</div> -->
+
+
+<div>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Edit Profile">
+        <md-content class="md-padding">
+          
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Edit Account Settings">
+        <md-content class="md-padding">
+        
+          <div layout="column">
+    <p></p>
+    <div layout="row">
+        <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
+            <md-card-content>
+              <h3>
+                   Change Password
+                </h3>
+               <div class="column">
+        <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+                <div class="form-group">
+                    <md-input-container>
+                        <label>Current Password</label>
+                        <input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error/>
+                    </md-input-container>
+                    <p class="help-block" ng-show="form.password.$error.mongoose">
+                        {{ errors.other }}
+                    </p>
+                </div>
+                <div class="form-group">
+                    <md-input-container>
+                    <label>New Password</label>
+                    <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword" ng-minlength="3" required/>
+                    </md-input-container>
+                    <p class="help-block" ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+                        Password must be at least 3 characters.
+                    </p>
+                </div>
+                <p class="help-block"> {{ message }} </p>
+                <div class="md-actions" layout="column" layout-align="end center">
+                <md-button class="md-raised" type="submit">Save changes</md-button>
+            </div>
+            </form>
+    </div>
+            </md-card-content>
+            </md-card>
+        <div flex-gt-md="25"></div>
+    </div>
+</div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
 </div>

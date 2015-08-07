@@ -12,6 +12,7 @@ var Job = require('../api/job/job.model');
 var State = require("../api/state/state.model");
 
 
+
 Category.find({}).remove(function() {
     Category.create({
         name: 'Gradinarit'
@@ -28,6 +29,7 @@ Job.find({}).remove(function() {
         description: 'Dat la sapa 100m garduri',
         owner: 'a1',
         location: 'Adjud',
+
         category: 'Gradinarit',
         helpers: '4',
         paycheck: '100',

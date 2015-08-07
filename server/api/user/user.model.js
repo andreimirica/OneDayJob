@@ -48,6 +48,7 @@ UserSchema
         return {
 
             'firstName': this.firstName,
+            'lastName' : this.lastName,
             'role': this.role
         };
     });

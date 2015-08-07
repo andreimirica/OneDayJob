@@ -25,7 +25,7 @@ angular.module('oneDayJobApp')
                 category: $scope.ctrl.category,
                 helpers: $scope.helpers,
                 paycheck: $scope.paycheck,
-                jobDate: $scope.newJobDate.setDate($scope.newJobDate.getDate() + 1)
+                jobDate: $scope.newJobDate.setDate($scope.newJobDate.getDate())
             };
 
             $http.post('/api/jobs', $scope.newPost);
@@ -33,7 +33,7 @@ angular.module('oneDayJobApp')
 
             // redirect to home
             $location.path('/');
-
+            window.location.reload();
             return $scope.newPost;
         };
 

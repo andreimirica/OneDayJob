@@ -34,11 +34,10 @@
                             <a href="/details//{{item._id}}">
                                 <md-button>Show details</md-button>
                             </a>
-                          
-                            <md-button class="md-raised md-primary">
-                            Apply</md-button>
-                        </a>
                         </div>
+                        <md-button ng-show="isAdmin() || (currentUser()._id == item.owner)" ng-click="deleteJob(item)" class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
+                        </md-button>
                     </md-card-content>
                     <md-divider></md-divider>
                 </md-card>

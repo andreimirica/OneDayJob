@@ -35,13 +35,19 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="oneDayJobApp" layout="row">
+<body ng-app="oneDayJobApp" layout="row" style="background-image: url('assets/images/back.jpg');">
     <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('st-md')" style="background-color: rgb(0, 204, 102); color:whitesmoke; opacity:0.95;" ng-include="'components/sidenav/sidenav.html'">
     </md-sidenav>
 
+
     <div flex layout="column" tabIndex="-1" role="main">
         <div ng-include="'components/navbar/navbar.html'" height="500" width="800"></div>
-        <div ui-view=""></div>
+
+<div layout-fill  class="container_overlay" style="
+ background-image: url('assets/images/back.jpg');
+ background-size: cover; "></div>
+         <md-content style="background: transparent;" ui-view=""></md-content>
+
     </div>
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -94,6 +100,8 @@
     <script src="app/account/settings/settings.controller.js"></script>
     <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/account/signup/signup.factory.js"></script>
+    <script src="app/account/userpage/userpage.controller.js"></script>
+    <script src="app/account/userpage/userpage.factory.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/admin/admin.js"></script>
     <script src="app/admin/category.service.js"></script>

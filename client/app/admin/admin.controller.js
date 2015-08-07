@@ -4,7 +4,7 @@ angular.module('oneDayJobApp')
     .controller('AdminCtrl', function($scope, $http, $mdDialog, Auth, User, Category, socket) {
 
         if (!Auth.isAdmin()) {
-            document.location.href='/';
+            document.location.href = '/';
         }
 
         $scope.alert = '';
@@ -28,7 +28,7 @@ angular.module('oneDayJobApp')
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                 .parent(angular.element(document.body))
-                .title('Would you like to delete user ' + user.lastName + '?' )
+                .title('Would you like to delete user ' + user.lastName + '?')
                 .ariaLabel('Delete user')
                 .ok('Please do it!')
                 .cancel('Don\'t do it')
@@ -62,25 +62,39 @@ angular.module('oneDayJobApp')
                         $scope.users.splice(i, 1);
                     }
                 });
-
             }
         }
 
         $scope.deleteCat = function(category) {
-            Category.remove({
-                id: category._id
-            });
-            $scope.categories = Category.query();
+            if (!category._id) {
+                alert("You must refresh the page before deleting newly added categories!");
+            } else {
+                Category.remove({
+                    id: category._id
+                });
+                $scope.categories.splice($scope.categories.indexOf(category), 1);
+            }
         };
 
         $scope.addCat = function() {
             if ($scope.newCat === '') {
                 return;
             }
-            Category.save({
+            var newCategory = {
                 name: $scope.newCat
-            });
-            $scope.categories = Category.query();
+            };
+            var bb = false;
+            for (var i in $scope.categories) {
+                if ($scope.categories[i].name.toLowerCase() === $scope.newCat.toLowerCase()) {
+                    bb = true;
+                }
+            }
+            if (bb) {
+                alert("You cannot add a category with an existing name!!!")
+            } else {
+                Category.save(newCategory);
+                $scope.categories.push(newCategory);
+            }
             $scope.newCat = '';
         }
 

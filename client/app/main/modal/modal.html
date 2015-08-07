@@ -1,108 +1,85 @@
 <md-dialog aria-label="Add Post" flex="66">
-<md-toolbar style="
+    <md-toolbar style="
    background-color: rgb(0,102,0);color:whitesmoke;">
-<div class="md-toolbar-tools">
-  <h2>Add New Post</h2>
-  <span flex></span>
-  <md-button class="md-icon-button" ng-click="answer('Closed')">
-  <md-icon md-svg-src="/assets/images/close.svg" aria-label="Close dialog"></md-icon>
-</md-button>
-</div>
-</md-toolbar>
 
-<md-dialog-content>
-<div ng-controller="PostCtrl as ctrl" class="md-padding">
-  <form novalidate class="form" name="postForm">
-    <div>
-
-
-
-
-    <div layout="row" layout-margin>
-        <md-input-container>
-        <label>Title</label>
-        <input required type="text" ng-model='newTitle' />
-        </md-input-container>
-    </div>
-
-    <div layout="row" layout-margin>
-      <md-input-container>
-      <label>Description</label>
-      <textarea ng-model="newDescription" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
-    </md-input-container>
-  </div>
-
-  <div layout="row" layout-margin layout-sm="column">
-
-   <div flex="33" >
-    <label>Select category:</label>
-      <md-select  required placeholder="Category" ng-model="ctrl.category">
-      <md-option ng-repeat="category in cat" value="{{category.name}}">{{category.name}}</md-option>
-    </md-select>
-  
-  </div>
-
-<div flex="33">
- <label>Select your city:</label>
-    <md-select required placeholder="Location" ng-model="ctrl.userState">
-    <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
-  </md-select>
-
-</div>
-
-</div>
-
-<div layout='row' layout-margin layout-sm="column">
-
-  <div flex="33">
-  <md-input-container>
-  <label>Paycheck</label>
-  <input required type="number" step="any" name="paycheck" ng-model="paycheck" min="1" max="10000">
-
-  <div ng-messages="postForm.paycheck.$error">
-
-    <div ng-message="required" ng-if='postForm.paycheck.$dirty'>Nothing's free.</div>
-
-    <div ng-message="max">More than 10000? Are you building a missile? </div>
-
-</div>
-</md-input-container>
-</div>
-
- <div flex="33">
- <md-input-container>
-  <label>Number of Helpers</label>
-  <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
-  <div ng-messages="postForm.helpers.$error">
-    <div ng-message="required">You've got to hire someone.</div>
-    <div ng-message="max">More than 10? Are you recruiting an army? </div>
-  </div>
-</md-input-container>
-</div>
-
-
-
-<div flex="33">
-  <md-input-container>
-  <label>Job Date</label>
-  <input required type="date" name="newJobDate" ng-model="newJobDate" min="{{currentDate}}">
-  <div ng-messages="postForm.newJobDate.$error">
-    <div ng-message="required">Select a date</div>
-    <div ng-message="min">Don't live in the past!</div>
-  </div>
-</md-input-container>
-</div>
-
-</div>
-
-<div class="md-actions" layout="row">
-  <span flex></span>
-    <a href="#" onclick="window.location.reload();">
-  <md-button ng-click="addJob(); answer(newPost)" class="md-raised md-primary" ng-show="isLoggedIn()" ng-disabled="postForm.$invalid" href="">Add Post</md-button>
-</a>
-</div>
-
-</div>
-</form>
-</div>
+        <div class="md-toolbar-tools">
+            <h2>Add New Post</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="answer('Closed')">
+                <md-icon md-svg-src="/assets/images/close.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div ng-controller="PostCtrl as ctrl" class="md-padding">
+            <form novalidate class="form" name="postForm">
+                <div>
+                    <div layout="row" layout-margin>
+                        <md-input-container>
+                            <label>Title</label>
+                            <input required type="text" name="newTitle" ng-model='newTitle' />
+                            <div ng-messages="postForm.newTitle.$error">
+                                <div ng-message="required"><span ng-if="postForm.newTitle.$touched">Please enter a title.</span></div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" layout-margin>
+                        <md-input-container>
+                            <label>Description</label>
+                            <textarea ng-model="newDescription" required columns="1" md-minlength="5" md-maxlength="150"></textarea>
+                        </md-input-container>
+                    </div>
+                    <div layout="row" layout-margin layout-sm="column">
+                        <div flex="33">
+                            <label>Select category:</label>
+                            <md-select required placeholder="Category" ng-model="ctrl.category">
+                                <md-option ng-repeat="category in cat" value="{{category.name}}">{{category.name}}</md-option>
+                            </md-select>
+                        </div>
+                        <div flex="33">
+                            <label>Select your city:</label>
+                            <md-select required placeholder="Location" ng-model="ctrl.userState">
+                                <md-option ng-repeat="state in ctrl.states" value="{{state.abbrev}}">{{state.abbrev}}</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                    <div layout='row' layout-margin layout-sm="column">
+                        <div flex="33">
+                            <md-input-container>
+                                <label>Paycheck</label>
+                                <input required type="number" step="any" name="paycheck" ng-model="paycheck" min="1" max="10000">
+                                <div ng-messages="postForm.paycheck.$error">
+                                    <div ng-message="required"> <span ng-if="postForm.paycheck.$touched">Nothing's free.</span></div>
+                                    <div ng-message="max">More than 10000? Are you building a missile? </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div flex="33">
+                            <md-input-container>
+                                <label>Number of Helpers</label>
+                                <input required type="number" step="any" name="helpers" ng-model="helpers" min="1" max="100">
+                                <div ng-messages="postForm.helpers.$error">
+                                    <div ng-message="required"><span ng-if="postForm.helpers.$touched">You've got to hire someone.</span></div>
+                                    <div ng-message="max">More than 10? Are you recruiting an army? </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div flex="33">
+                            <md-input-container>
+                                <label>Job Date</label>
+                                <input required type="date" name="newJobDate" ng-model="newJobDate" min="{{currentDate}}">
+                                <div ng-messages="postForm.newJobDate.$error">
+                                    <div ng-message="required"><span ng-if="postForm.newJobDate.$touched">Select a date</span></div>
+                                    <div ng-message="min">Don't live in the past!</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="md-actions" layout="row">
+                        <span flex></span>
+                        <md-button ng-click="addJob(); answer(newPost);" class="md-raised md-primary" ng-show="isLoggedIn()" ng-disabled="postForm.$invalid">Add Post</md-button>
+                    </div>
+                </div>
+            </form>
+        </div>
 </md-dialog>
