@@ -119,30 +119,38 @@
  <md-card flex offset-gt-md = "25" class="md-whiteframe-z3"> 
             <md-card-content>
            <h3>
-                   Change First Name
+                   Change personal info
                 </h3>
                <div class="column">
         <form class="form" name="form" ng-submit="changeFirstName(form)" novalidate>
                 <div class="form-group">
                     <md-input-container>
-                    <label>New First Name</label>
-                    <input type="text" name="newFirstName" class="form-control" ng-model="user.newFirstName" ng-minlength="3" required/>
+                    <label>First Name</label>
+                    <input type="text" name="newFirstName" class="form-control" ng-model="getCurrentUser.firstName" ng-minlength="3" required/>
                     </md-input-container>
                 </div>
 
                        <div class="form-group">
                     <md-input-container>
-                    <label>New Last Name</label>
-                    <input type="text" name="newLastName" class="form-control" ng-model="user.newLastName" ng-minlength="3" required/>
+                    <label>Last Name</label>
+                    <input type="text" name="newLastName" class="form-control" ng-model="getCurrentUser.lastName" ng-minlength="3" required/>
                     </md-input-container>
                 </div>
 
                 <div class="form-group">
                     <md-input-container>
-                    <label>New Phone Number</label>
-                    <input type="text" name="newPhone" class="form-control" ng-model="user.newPhone" ng-minlength="3" required/>
+                    <label>Phone Number</label>
+                    <input type="text" name="newPhone" class="form-control" ng-model="getCurrentUser.phone" ng-minlength="3" required/>
                     </md-input-container>
                 </div>
+
+            <div class="form-group">
+                    <md-button ngf-pattern="'image/*'"
+                               ngf-accept="'image/*'" ngf-max-size="20MB" ngf-select="upload($file)">Upload picture</md-button>
+            </div>
+            <div class="form-group" ng-if="getCurrentUser.photo">
+                <img src="{{getCurrentUser.photo}}" width="150" height="150"/>
+            </div>
 
 
              <p class="help-block"> {{ message }} </p>

@@ -24,6 +24,7 @@ var UserSchema = new Schema({
         default: true
     },
     phone: String,
+    photo: String,
     state: String
 });
 

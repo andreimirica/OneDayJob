@@ -29,6 +29,9 @@ var socketio = require('socket.io')(server, {
     serveClient: config.env !== 'production',
     path: '/socket.io-client'
 });
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);

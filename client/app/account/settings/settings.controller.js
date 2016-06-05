@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-    .controller('SettingsCtrl', function($scope, User, Auth) {
+    .controller('SettingsCtrl', function($scope, User, Auth, Upload) {
         $scope.errors = {};
-        $scope.getCurrentUser = Auth.getCurrentUser;
+        $scope.getCurrentUser = Auth.getCurrentUser();
         $scope.user={};
         $scope.changePassword = function(form) {
             $scope.submitted = true;
@@ -20,10 +20,20 @@ angular.module('oneDayJobApp')
             }
         };
 
+        $scope.upload = function (file) {
+            if(file){
+                Upload.base64DataUrl(file).then(function(url){
+                    $scope.imageEncoded = url;
+                    $scope.getCurrentUser.photo = $scope.imageEncoded;
+                });
+            } else {
+                alert('No File Selected!');
+            }
+        };
 
          $scope.changeFirstName = function(form) {
             $scope.submitted = true;
-                Auth.changeFirstName($scope.user.newFirstName,$scope.user.newLastName,$scope.user.newPhone)
+                Auth.changeFirstName($scope.getCurrentUser.photo, $scope.getCurrentUser.firstName,$scope.getCurrentUser.lastName,$scope.getCurrentUser.phone)
                     .then(function() {
                         $scope.message = 'Successfully changed!';
                     })

@@ -7,7 +7,9 @@ angular.module('oneDayJobApp', [
         'btford.socket-io',
         'ui.router',
         'ngMaterial',
-        'ngMessages'
+        'ngMessages',
+    'base64',
+    'ngFileUpload'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

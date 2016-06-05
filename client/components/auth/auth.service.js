@@ -93,12 +93,13 @@ angular.module('oneDayJobApp')
                     return cb(err);
                 }).$promise;
             },
-             changeFirstName: function(newFirstName,newLastName,newPhone, callback) {
+             changeFirstName: function(photo, newFirstName,newLastName,newPhone, callback) {
                 var cb = callback || angular.noop;
 
                 return User.changeFirstName({
                     id: currentUser._id
                 }, {
+                    photo: photo,
                     newFirstName: newFirstName,
                     newLastName: newLastName,
                     newPhone: newPhone

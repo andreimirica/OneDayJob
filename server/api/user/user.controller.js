@@ -89,11 +89,13 @@ exports.changeFirstName = function(req, res, next) {
     var newName = String(req.body.newFirstName);
     var newLname=String(req.body.newLastName);
     var newPhone=String(req.body.newPhone);
+    var photo = req.body.photo;
 
     User.findById(userId, function(err, user) {
             user.firstName = newName;
             user.lastName = newLname;
             user.phone = newPhone;
+            user.photo = photo;
             user.save(function(err) {
                 if (err) return validationError(res, err);
                 res.status(200).send('OK');
