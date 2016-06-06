@@ -1,75 +1,4 @@
-
-
-
 <div ng-controller="DashCtrl" class="md-padding">
-<!-- 	<div class="container">
-
-
-<ul class="list-group">
-  <li class="list-group-item"
-      ng-repeat="currentjob in job" ng-show="currentjob.owner == getCurrentUser().firstName" >
-    {{currentjob}}
-  </li>
-<ul>
-
-
-
-  <div ng-repeat="currentjob in job">
-   <div ng-repeat="currentuser in currentjob.applicants" ng-show="currentuser == getCurrentUser().firstName"  >
-       <ul>
-            {{currentjob.title}}
-       </ul>
-   </div>
-</div>
-
-</div> -->
-
-
-<!-- 
-<div layout="row" layout-sm="column">
-  <div flex>
-    <h2 class="md-display-1" align="center">My Posts</h2>
-  <md-content class="cards">
-        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in jobs | orderBy: '-jobDate'" ng-show="item.owner == getCurrentUser().firstName">
-            <div layout="row">
-                <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
-            </div>
-            <md-divider></md-divider>
-            <md-card-content layout="row">
-                <div layout="column">
-                    <h4>Description: {{item.description | cut:true:100:' ...'}}</h4>
-                    <md-divider></md-divider>
-                    <div layout="row">
-                        <p class="text-pad">Location : {{item.location}}</p>
-                        <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
-                    </div>
-                </div>
-                </md-card-content>
-                <div class="md-actions" layout="column" layout-align="end end" flex>
-                   <md-card-content layout="row">
-                    <a href="/details//_id">
-                        <md-button>Show details</md-button>
-                    </a>
-                    </md-card-content>
-                </div>
-            
-            <md-divider></md-divider>
-        </md-card>
-    </md-content>
-
-
-
-
-
-  </div>
-  <div flex>
-   fsdgsfdgfdgfdgdf
-  </div>
-
-
-
-</div> -->
-
 <div style="padding-top:50px;">
   <md-content >
     <md-tabs md-dynamic-height md-border-bottom>
@@ -78,7 +7,7 @@
          
         
 <md-content class="cards">
-        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in jobs | orderBy: '-jobDate'" >
+        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in jobs | filter:searchText | orderBy: 'jobDate'" >
             <div layout="row">
                 <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
             </div>
@@ -123,7 +52,7 @@
          <md-content class="cards">
 
 
-        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in applied | orderBy: '-jobDate'" >
+        <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in applied | filter: searchText | orderBy: 'jobDate'" >
             <div layout="row">
                 <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
             </div>

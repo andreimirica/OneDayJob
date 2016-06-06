@@ -3,8 +3,9 @@
 var _ = require('lodash');
 var Job = require('./job.model');
 exports.searchTerm = function(req, res) {
+    console.log('diwa');
     Job.find({
-        'title': req.params.id
+        title: {'$regex' : req.params.id, "$options": "i" }
     }, function(err, event) {
         if (err) {
             return handleError(res, err);
