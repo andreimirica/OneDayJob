@@ -19,22 +19,20 @@
                     <img style="border-radius: 30px" src="{{getCurrentUser.photo ? getCurrentUser.photo : 'assets/images/profile.png'}}" height="40" width="40">
                   </a>
                 </md-list-item>
-                <md-menu md-position-mode="target-right target">
+                <md-button ng-if="isLoggedIn()" ng-click="logout()">
+                    <p>Logout</p>
+                </md-button>
+                <md-menu md-position-mode="target-right target" ng-if="!isLoggedIn()">
                     <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
                         <md-icon md-menu-origin md-svg-icon="assets/images/moreVert.svg"></md-icon>
                     </md-button>
                     <md-menu-content width="4">
-                        <md-menu-item ng-if="isLoggedIn()">
-                            <md-button ng-click="logout()">
-                                <p>Logout</p>
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item ng-if="!isLoggedIn()">
+                        <md-menu-item >
                             <md-button href="/login">
                                 <p>Login</p>
                             </md-button>
                         </md-menu-item>
-                        <md-menu-item ng-if="!isLoggedIn()">
+                        <md-menu-item>
                             <md-button href="/signup">
                                 <p>Sign Up</p>
                             </md-button>
