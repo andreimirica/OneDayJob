@@ -5,11 +5,12 @@ angular.module('oneDayJobApp')
 .controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User) {
 
     $scope.job = Job.get({id: $stateParams.id});
+    $scope.getCurrentUser=Auth.getCurrentUser();
 
     $scope.showIfOwner = false;
     $scope.isOwner=function(){
         $scope.job.$promise.then(function(response){
-            if ($scope.getCurrentUser()._id == response.owner){
+            if ($scope.getCurrentUser.email == response.owner){
                 $scope.showIfOwner = true;
             }
         })
@@ -58,7 +59,6 @@ angular.module('oneDayJobApp')
 
 
     $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.getCurrentUser=Auth.getCurrentUser;
     $scope.commentText = '';
     $scope.newComment={};
 
@@ -66,11 +66,12 @@ angular.module('oneDayJobApp')
     $scope.job.$promise.then(function(res){
 
         for ($scope.i in res.applicants){
-          $scope.user2 = User.get({id: res.applicants[$scope.i]});
-         $scope.applicants.push($scope.user2);
-
+          User.get({id: res.applicants[$scope.i]}).$promise.then(function (resp) {
+              $scope.user2 = resp;
+              $scope.applicants.push($scope.user2);
+          });
       }
-    })
+    });
     
 
     $scope.addComment = function() {
@@ -91,7 +92,9 @@ angular.module('oneDayJobApp')
     };
        $scope.job.$promise.then(function(response){
        $scope.temp = response.owner;
-       $scope.user = User.get({id: $scope.temp});
+       User.get({id: $scope.temp}).$promise.then(function (resp) {
+           $scope.user = resp;
+       });
 
    });
 })

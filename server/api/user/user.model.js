@@ -52,6 +52,8 @@ UserSchema
             'lastName' : this.lastName,
             'role': this.role,
             '_id':this._id,
+            'phone' : this.phone,
+            'photo' : this.photo
         };
     });
 

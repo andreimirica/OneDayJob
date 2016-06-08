@@ -1,22 +1,29 @@
 <div style="padding-top:50px;"></div>
 <md-content layout="row">
-    <md-card flex class="md-whiteframe-z3"> 
-        <md-card-content>
-            <div layout="column">
-                <h1> {{job.title}}</h1> 
-                <p>{{job.description}}</p>
-            </div>
-        </md-card-content>
-    </md-card>
     <md-card flex class="md-whiteframe-z3">
         <md-card-content>
+            <div layout="column">
+                <h1> Denumire job: {{job.title}}</h1>
+                <h2> Postat de: </h2>
+                <md-list>
+                    <md-list-item class="md-3-line">
+                        <img src="{{user.photo ? user.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
+                        <div class="md-list-item-text">
+                            <h3>{{user.firstName + ' ' + user.lastName}}</h3>
+                            <p>
+                                <b>Telefon: </b>{{user.phone}}
+                            </p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
             <div layout="column" >
-                <h2> Posted by: </h2> {{user.firstName}} {{user.lastName}}
-                <h3> Helpers needed: </h3> {{job.helpers}}
-                <h3> Job Date: </h3> {{job.jobDate | date}}
-                <h3> Paycheck: </h3> {{job.paycheck}}
-                <h3> Location: </h3> {{job.location}}
-                <h3> Job Category: </h3> {{job.category}}
+                <h3> Categorie: </h3> {{job.category}}
+                <h3> Descriere job: </h3> {{job.description}}
+                <h3> Nr. posturi libere: </h3> {{job.helpers}}
+                <h3> Deadline: </h3> {{job.jobDate | date}}
+                <h3> Salariu: </h3> {{job.paycheck}}
+                <h3> Locatie: </h3> {{job.location}}
                 <div class="md-actions" layout="row" layout-align="end end">
                     <md-button href = "/" class="md-raised md-warn">Back</md-button>
                 </div>
@@ -26,9 +33,9 @@
 </md-content>
 
 <!-- checkbox -->
-<div ng-show="showIfOwner">
+<md-content ng-show="showIfOwner">
   <div layout="row">
-    <div flex="50" flex-md="100" layout="column">
+    <div flex="100" flex-md="100" layout="column">
       <fieldset class="standard" flex>
         <legend><h3>List of applicants</h3></legend>
         <div layout="row" layout-wrap>
@@ -43,7 +50,7 @@
     </div>
   </div>
   <h2 class="md-title">Selected applicants ({{selected.length}}) </h2>
-</div>
+</md-content>
 <!--  end checkbox -->
 
 

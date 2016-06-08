@@ -27,35 +27,35 @@ Job.find({}).remove(function() {
     Job.create({
         title: 'Sapator',
         description: 'Dat la sapa 100m garduri',
-        owner: 'a1',
+        owner: 'ion@ion.com',
         location: 'Adjud',
 
         category: 'Gradinarit',
         helpers: '4',
         paycheck: '100',
-        jobDate: '2015-08-10 19:43:37 +0100',
-        applicants: ['a3','a2']
+        jobDate: '2016-07-23 19:43:37 +0100',
+        applicants: ['test@test.com']
     }, {
         title: 'Tamplar',
         description: 'Dat la dalta, 20cm rumegus',
-        owner: 'a1',
+        owner: 'test@test.com',
         location: 'Cluj',
         category: 'Tamplarie',
         helpers: '1',
         paycheck: '10',
-        jobDate: '2015-08-14 19:43:37 +0100',
-        applicants: ['a2','a3']
+        jobDate: '2016-07-22 19:43:37 +0100',
+        applicants: ['ion@ion.com']
     },
     {
         title: 'Muncitor',
         description: 'Dat la grebla',
-        owner: 'a2',
+        owner: 'ion@ion.com',
         location: 'Adjud',
         category: 'Tamplarie',
         helpers: '3',
         paycheck: '400',
-        jobDate: '2015-08-10 19:43:37 +0100',
-        applicants: ['a1']
+        jobDate: '2016-07-10 19:43:37 +0100',
+        applicants: []
     });
 });
 
