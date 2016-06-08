@@ -27,10 +27,14 @@ angular.module('oneDayJobApp')
         if (idx > -1) 
           {
             $scope.list.splice(idx, 1);
+              $scope.job.helpers += 1;
           }
         else 
           {
-            $scope.list.push(item);
+              if($scope.job.helpers > 0){
+                  $scope.list.push(item);
+                  $scope.job.helpers -= 1;
+              }
           }
       };
       $scope.exists = function (item, list) {
@@ -75,17 +79,15 @@ angular.module('oneDayJobApp')
     
 
     $scope.addComment = function() {
-        // if($scope.job.applicants.indexOf($scope.getCurrentUser()._id)<0)
-        // {
-        //     $scope.job.applicants.push($scope.getCurrentUser().firstName);
-        // }
-    	
-        $scope.job.comments.push({owner:$scope.getCurrentUser.firstName, text:$scope.commentText});
+        $scope.job.comments.push({phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});
         $http.put('api/jobs/'+ $stateParams.id + '/comments',{
             _id:$stateParams.id,
             newComment:$scope.commentText,
-            userName:$scope.getCurrentUser.firstName,
-            userId:$scope.getCurrentUser._id
+            userName:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName,
+            userId:$scope.getCurrentUser._id,
+            photo: $scope.getCurrentUser.photo,
+            phone: $scope.getCurrentUser.phone,
+            email: $scope.getCurrentUser.email
         });
         $scope.commentText='';
     };

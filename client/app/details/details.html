@@ -34,7 +34,7 @@
 
 <br>
 <md-content>
-    <h1 offset="5">Comments ({{job.comments.length}})</h1>
+    <h1 style="margin: 20px 0 0 15px" >Comments ({{job.comments.length}})</h1>
     <div layout="column" flex>
         <md-container layout="column" flex>
             <div layout="row" ng-show="isLoggedIn()">
@@ -57,14 +57,17 @@
             <div layout="column">
                 <md-list>
                     <md-list-item class="md-3-line" ng-repeat="item in job.comments">
-                        <img src="http://i.imgur.com/uN1SCcs.jpg" class="face" alt="Avatar">
+                        <img src="{{item.photo ? item.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
                         <div class="md-list-item-text">
-                            <h3>{{item.owner}}</h3>
+                            <h3>Postat de :{{item.owner}}</h3>
                             <p>
-                                {{item.text}}
+                                <b>Mesaj: </b>{{item.text}}
+                            </p>
+                            <p>
+                                <b>Telefon: </b>{{item.phone}}
                             </p>
                         </div>
-                        <md-checkbox style="margin-top: 20px" ng-click="toggle(item, selected)">
+                        <md-checkbox ng-if="showIfOwner" style="margin-top: 20px" ng-click="toggle(item, selected)">
                         </md-checkbox>
                     <md-divider md-inset></md-divider>
                     </md-list-item>

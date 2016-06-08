@@ -91,14 +91,14 @@ exports.addComment = function(req, res, next) {
     var newComment = {};
     newComment.text = req.body.newComment;
     newComment.owner = req.body.userName;
-
-
+    newComment.photo = req.body.photo;
+    newComment.phone = req.body.phone;
 
     Job.findById(jobId, function(err, job) {
 
-        job.comments.push(newComment)
-        if (job.applicants.indexOf(req.body.userId) < 0) {
-            job.applicants.push(req.body.userId);
+        job.comments.push(newComment);
+        if (job.applicants.indexOf(req.body.email) < 0) {
+            job.applicants.push(req.body.email);
         }
         job.save(function(err) {
             if (err) return validationError(res, err);
