@@ -46,20 +46,11 @@ angular.module('oneDayJobApp')
 
 
       $scope.confirmApplicants =function(){
-        $scope.job.$promise.then(function(response){
-          for (var x in $scope.list)
-          {
-             $scope.list[x].$promise.then(function(resp){
-             $http.put('api/jobs/'+ $stateParams.id,{
+          $http.put('api/jobs/'+ $stateParams.id,{
               _id:$stateParams.id,
-               acceptedList:$scope.list[x]._id,
-              })
+              acceptedList:$scope.list
           })
-          }
-
-
-        })
-      }
+      };
 
 
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -79,7 +70,7 @@ angular.module('oneDayJobApp')
     
 
     $scope.addComment = function() {
-        $scope.job.comments.push({phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});
+        $scope.job.comments.push({_id:$scope.getCurrentUser._id, phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});
         $http.put('api/jobs/'+ $stateParams.id + '/comments',{
             _id:$stateParams.id,
             newComment:$scope.commentText,

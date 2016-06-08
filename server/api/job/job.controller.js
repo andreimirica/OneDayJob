@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
+var _ = require('underscore');
 var Job = require('./job.model');
 exports.searchTerm = function(req, res) {
     console.log('diwa');
@@ -88,24 +88,61 @@ function handleError(res, err) {
 
 exports.addComment = function(req, res, next) {
     var jobId = req.body._id;
-    var newComment = {};
-    newComment.text = req.body.newComment;
-    newComment.owner = req.body.userName;
-    newComment.photo = req.body.photo;
-    newComment.phone = req.body.phone;
+    if(req.body.newComment){
+        var newComment = {};
+        newComment.text = req.body.newComment;
+        newComment.owner = req.body.userName;
+        newComment.photo = req.body.photo;
+        newComment.phone = req.body.phone;
+        newComment._id = req.body.userId;
 
-    Job.findById(jobId, function(err, job) {
+        Job.findById(jobId, function(err, job) {
 
-        job.comments.push(newComment);
-        if (job.applicants.indexOf(req.body.email) < 0) {
-            job.applicants.push(req.body.email);
-        }
-        job.save(function(err) {
-            if (err) return validationError(res, err);
-            res.status(200).send('OK');
+            job.comments.push(newComment);
+            if (job.applicants.indexOf(req.body.email) < 0) {
+                job.applicants.push(req.body.email);
+            }
+            job.save(function(err) {
+                if (err) return validationError(res, err);
+                res.status(200).send('OK');
+            });
+
         });
+    } else {
+        Job.findById(jobId, function(err, job) {
 
-    });
+            var comments = job.comments;
+            var acceptedUsers = req.body.acceptedList;
+            var newComments = [];
+            _.each(acceptedUsers, function (acceptedUser) {
+                _.each(comments, function (comment) {
+                    var comm = {
+                        text: comment.text,
+                        owner: comment.owner,
+                        photo: comment.photo,
+                        phone: comment.phone,
+                        _id: comment._id
+                    };
+                    console.log(comment);
+                    console.log(acceptedUser);
+                    if(comment._id == acceptedUser._id){
+                        comm.isAccepted = true;
+                    }
+                    newComments.push(comm);
+                })
+            });
+            console.log(newComments);
+            Job.update({_id: jobId}, {$set: {comments: newComments, helpers: 0, closed: true}}, function (err, wRes) {
+                if(err){
+                    res.status(500).send(err);
+                }else{
+                    res.status(200).send('OK');
+                }
+            });
+
+        });
+    }
+    
 };
 
 // Deletes a job from the DB.

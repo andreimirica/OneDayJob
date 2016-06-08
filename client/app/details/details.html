@@ -34,10 +34,12 @@
 
 <br>
 <md-content>
-    <h1 style="margin: 20px 0 0 15px" >Comments ({{job.comments.length}})</h1>
-    <div layout="column" flex>
+    <h1 style="margin: 20px 0 0 15px" >Comments ({{job.comments.length}})
+        <md-button style="float: right;" ng-if="showIfOwner && job.helpers == 0 && !job.closed" ng-click="confirmApplicants()" class="md-raised md-warn">Hire selected</md-button>
+    </h1>
+    <div layout="column" flex style="width: 100%">
         <md-container layout="column" flex>
-            <div layout="row" ng-show="isLoggedIn()">
+            <div layout="row" ng-show="isLoggedIn() && job.helpers">
                 <span flex ="10"></span>
                 <span flex layout="row">
                     <form class="form" name="form" ng-submit="addComment()" flex>
@@ -56,18 +58,21 @@
                 
             <div layout="column">
                 <md-list>
-                    <md-list-item class="md-3-line" ng-repeat="item in job.comments">
+                    <md-list-item  class="md-3-line" ng-repeat="item in job.comments" ng-class="{'lightGray' : item.isAccepted}">
                         <img src="{{item.photo ? item.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
-                        <div class="md-list-item-text">
-                            <h3>Postat de :{{item.owner}}</h3>
+                        <div class="md-list-item-text" >
+                            <h3>Postat de :{{item.owner}} - </h3>
                             <p>
                                 <b>Mesaj: </b>{{item.text}}
                             </p>
                             <p>
                                 <b>Telefon: </b>{{item.phone}}
                             </p>
+                            <p ng-if="item.isAccepted">
+                              <b style="color: red">HIRED</b>
+                            </p>
                         </div>
-                        <md-checkbox ng-if="showIfOwner" style="margin-top: 20px" ng-click="toggle(item, selected)">
+                        <md-checkbox ng-if="showIfOwner && !job.closed" style="margin-top: 20px" ng-click="toggle(item, selected)">
                         </md-checkbox>
                     <md-divider md-inset></md-divider>
                     </md-list-item>

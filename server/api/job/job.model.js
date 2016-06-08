@@ -10,6 +10,7 @@ var JobSchema = new Schema({
     location: String,
     category: String,
     helpers: Number,
+    closed: Boolean,
     paycheck: Number,
     jobDate: Date,
     accepted: [],
