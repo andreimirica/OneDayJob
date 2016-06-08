@@ -45,8 +45,8 @@ exports.create = function(req, res, next) {
  */
 exports.show = function(req, res, next) {
     var userId = req.params.id;
-
-    User.findOne({email: userId}, function(err, user) {
+    var query = userId.indexOf('@') > -1 ? User.findOne({email: userId}) : User.findOne({_id: userId});
+    query.exec(function(err, user) {
         if (err) return next(err);
         if (!user) return res.status(401).send('Unauthorized');
         res.json(user.profile);
