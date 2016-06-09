@@ -2,12 +2,28 @@
 
 angular.module('oneDayJobApp')
 
-.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User) {
+.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User, $state) {
 
     $scope.job = Job.get({id: $stateParams.id});
     $scope.getCurrentUser=Auth.getCurrentUser();
 
     $scope.showIfOwner = false;
+
+    $scope.numberOfStars = {
+        currentNumber: 0
+    };
+
+    $scope.rateComment = function (currentUs) {
+        $http.post('api/jobs/rateComments',{
+            _id: currentUs._id,
+           rating: currentUs.rating
+        }).then(
+            function (response) {
+                $scope.user = response.data;
+            }
+        );
+    };
+
     $scope.isOwner=function(){
         $scope.job.$promise.then(function(response){
             if ($scope.getCurrentUser.email == response.owner){
@@ -67,7 +83,7 @@ angular.module('oneDayJobApp')
           });
       }
     });
-    
+
 
     $scope.addComment = function() {
         $scope.job.comments.push({_id:$scope.getCurrentUser._id, phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});

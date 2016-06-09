@@ -9,7 +9,8 @@ angular.module('oneDayJobApp', [
         'ngMaterial',
         'ngMessages',
     'base64',
-    'ngFileUpload'
+    'ngFileUpload',
+    'angular-input-stars'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

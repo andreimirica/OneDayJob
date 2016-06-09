@@ -89,7 +89,8 @@ User.find({}).remove(function() {
         email: 'test@test.com',
         password: 'test',
         phone: '2939-231-231',
-        state: 'Bihor'
+        state: 'Bihor',
+        rating: '3'
     }, {
         provider: 'local',
         firstName: 'Admin',

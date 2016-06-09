@@ -25,7 +25,8 @@ var UserSchema = new Schema({
     },
     phone: String,
     photo: String,
-    state: String
+    state: String,
+    rating: Number
 });
 
 /**
@@ -53,7 +54,8 @@ UserSchema
             'role': this.role,
             '_id':this._id,
             'phone' : this.phone,
-            'photo' : this.photo
+            'photo' : this.photo,
+            'rating' : this.rating
         };
     });
 

@@ -2,6 +2,7 @@
 
 var _ = require('underscore');
 var Job = require('./job.model');
+var User = require('../user/user.model');
 exports.searchTerm = function(req, res) {
     console.log('diwa');
     Job.find({
@@ -84,6 +85,33 @@ exports.create = function(req, res) {
 
 function handleError(res, err) {
     return res.status(500).send(err);
+};
+
+exports.rateComments = function (req, res) {
+    var userId = req.body._id;
+    console.log(userId);
+    User.findOne({_id: userId}).exec(function (err, user) {
+        if (err) return validationError(res, err);
+        var userRating = user.rating;
+        if(userRating){
+            var newRating = Math.round((userRating + req.body.rating) / 2);
+            User.findOneAndUpdate({_id: userId}, {$set: {rating: newRating}}, {new: true}, function (err, wRes) {
+                if(err){
+                    res.status(500).send(err);
+                }else{
+                    res.status(200).json(wRes);
+                }
+            });
+        } else {
+            User.findOneAndUpdate({_id: userId}, {$set: {rating: req.body.rating}}, {new: true}, function (err, wRes) {
+                if(err){
+                    res.status(500).send(err);
+                }else{
+                    res.status(200).json(wRes);
+                }
+            });
+        }
+    })
 };
 
 exports.addComment = function(req, res, next) {
