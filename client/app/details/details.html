@@ -68,7 +68,7 @@
                             <p>
                                 <b>Telefon: </b>{{item.phone}}
                             </p>
-                            <p>
+                            <p ng-if="user.email != item.email">
                                 <b>Rate comment: <input-stars max="5" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="item.rating"></input-stars></b>
                                 <md-button style="float: right;" class="md-raised" ng-click="rateComment(item)">Submit rating</md-button>
                             </p>

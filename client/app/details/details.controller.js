@@ -6,6 +6,7 @@ angular.module('oneDayJobApp')
 
     $scope.job = Job.get({id: $stateParams.id});
     $scope.getCurrentUser=Auth.getCurrentUser();
+    $scope.user = $scope.getCurrentUser;
 
     $scope.showIfOwner = false;
 
@@ -98,11 +99,4 @@ angular.module('oneDayJobApp')
         });
         $scope.commentText='';
     };
-       $scope.job.$promise.then(function(response){
-       $scope.temp = response.owner;
-       User.get({id: $scope.temp}).$promise.then(function (resp) {
-           $scope.user = resp;
-       });
-
-   });
 })
