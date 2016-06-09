@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('oneDayJobApp')
-    .factory("getJob", function($q, $http) {
+    .factory("getJoben", function($q, $http) {
 
         return {
             getMongoStuff: function() {

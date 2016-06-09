@@ -1,12 +1,10 @@
 <div ng-controller="DashCtrl" class="md-padding">
 <div style="padding-top:50px;">
-  <md-content >
+  <md-content style="background: transparent">
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="My posts">
-        <md-content >
-         
-        
-<md-content class="cards">
+        <md-content style="background: transparent">
+<md-content class="cards" style="background: transparent">
         <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in jobs | filter:searchText | orderBy: 'jobDate'" >
             <div layout="row">
                 <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <a href="#"><h4>{{item.title}}</h4></a>
@@ -45,7 +43,7 @@
 
 
       <md-tab label="Applied to">
-        <md-content class="md-padding">
+        <md-content class="md-padding" style="background: transparent">
          
 
 

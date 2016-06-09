@@ -86,7 +86,7 @@ angular.module('oneDayJobApp')
 
 
     $scope.addComment = function() {
-        $scope.job.comments.push({_id:$scope.getCurrentUser._id, phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});
+        $scope.job.comments.push({email: $scope.getCurrentUser.email, _id:$scope.getCurrentUser._id, phone: $scope.getCurrentUser.phone, photo: $scope.getCurrentUser.photo, owner:$scope.getCurrentUser.firstName + ' ' + $scope.getCurrentUser.lastName, text:$scope.commentText});
         $http.put('api/jobs/'+ $stateParams.id + '/comments',{
             _id:$stateParams.id,
             newComment:$scope.commentText,

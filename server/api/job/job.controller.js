@@ -48,7 +48,7 @@ exports.show = function(req, res) {
 
 exports.myUserJob = function(req, res) {
     Job.find({
-        'owner': req.params.id
+        owner: req.params.id
     }, function(err, job) {
         if (err) {
             return handleError(res, err);
@@ -61,9 +61,7 @@ exports.myUserJob = function(req, res) {
 };
 
 exports.myUserApplied = function(req, res) {
-    Job.find({
-        'applicants': req.params.id
-    }, function(err, job) {
+    Job.find({}, function(err, job) {
         if (err) {
             return handleError(res, err);
         }
@@ -123,6 +121,7 @@ exports.addComment = function(req, res, next) {
         newComment.photo = req.body.photo;
         newComment.phone = req.body.phone;
         newComment._id = req.body.userId;
+        newComment.email = req.body.email;
 
         Job.findById(jobId, function(err, job) {
 
@@ -149,17 +148,15 @@ exports.addComment = function(req, res, next) {
                         owner: comment.owner,
                         photo: comment.photo,
                         phone: comment.phone,
-                        _id: comment._id
+                        _id: comment._id,
+                        email: comment.email
                     };
-                    console.log(comment);
-                    console.log(acceptedUser);
                     if(comment._id == acceptedUser._id){
                         comm.isAccepted = true;
                     }
                     newComments.push(comm);
                 })
             });
-            console.log(newComments);
             Job.update({_id: jobId}, {$set: {comments: newComments, helpers: 0, closed: true}}, function (err, wRes) {
                 if(err){
                     res.status(500).send(err);

@@ -4,7 +4,7 @@
 angular.module('oneDayJobApp')
     .controller('DashCtrl', function($scope, $http, $location, Auth, getJob, getApplied) {
 
-        $scope.getCurrentUser = Auth.getCurrentUser;
+        $scope.getCurrentUser = Auth.getCurrentUser();
         $scope.isLoggedIn = Auth.isLoggedIn;
 
 
