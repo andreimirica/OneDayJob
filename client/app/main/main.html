@@ -20,9 +20,9 @@
                 </md-card-content>
             </md-card>
             <md-content style="background: transparent;"class="cards" layout="column">
-                <md-card ng-class="{ 'md-whiteframe-z5' : hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | filter:searchText |orderBy: '-jobDate'">
+                <md-card ng-class="{ 'md-whiteframe-z5' : hover, 'lightGray':item.closed}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" ng-repeat="item in tasks | filter:searchText |orderBy: '-jobDate'">
                     <div layout="row">
-                        <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <h4>{{item.title}}</h4>
+                        <a href="#"><img ng-src="http://www.projecthappyhearts.com/wp-content/uploads/2015/04/green-nature-dual-monitor-other.jpg" class="mini-avatar "></a> <h4>{{item.title}} - <b ng-if="item.closed" style="color: red">CLOSED</b></h4>
                     </div>
                     <md-divider></md-divider>
                     <md-card-content layout="row" layout-sm="column">
@@ -57,4 +57,5 @@
                 <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a>
             </p>
         </div>
+        </footer>
 </div>

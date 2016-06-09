@@ -58,12 +58,15 @@
 
 .text-pad{
     margin-right: 15px;
-    margin-left: :15px;
+    margin-left:15px;
 }
 .filter-card{
     height: 400px;
 }
 .main{
     padding-top: 70px;
+}
+.lightGray{
+    background-color: lightgray;
 }
 
