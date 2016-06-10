@@ -17,7 +17,7 @@ angular.module('oneDayJobApp')
         $scope.showSearch = false;
         $scope.isCollapsed = true;
         $scope.isLoggedIn = Auth.isLoggedIn;
-        $scope.isAdmin = Auth.isAdmin;
+        $scope.isAdmin = Auth.isAdmin();
         $scope.getCurrentUser = Auth.getCurrentUser();
         $scope.toggleList = toggleUsersList;
 

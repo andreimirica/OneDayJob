@@ -14,7 +14,7 @@
               
                 <span flex></span>
                 <md-list-item ng-if="isLoggedIn()">
-                    <md-button href="/dashboard" hide show-gt-sm>Dashboard</md-button>
+                    <md-button href="{{isAdmin ? '/admin' : 'dashboard'}}" hide show-gt-sm>Dashboard</md-button>
                     <a href="/settings">
                     <img style="border-radius: 30px" src="{{getCurrentUser.photo ? getCurrentUser.photo : 'assets/images/profile.png'}}" height="40" width="40">
                   </a>
