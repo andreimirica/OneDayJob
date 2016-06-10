@@ -17,7 +17,9 @@ angular.module('oneDayJobApp')
     $scope.rateComment = function (currentUs) {
         $http.post('api/jobs/rateComments',{
             _id: currentUs._id,
-           rating: currentUs.rating
+            jobId: $scope.job._id,
+           rating: currentUs.rating,
+            raterId: $scope.user._id
         }).then(
             function (response) {
                 $scope.applicants=[];
@@ -28,6 +30,7 @@ angular.module('oneDayJobApp')
                             $scope.applicants.push($scope.user2);
                         });
                     }
+                    $scope.job = response.data;
                 });
             }
         );

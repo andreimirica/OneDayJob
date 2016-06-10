@@ -34,7 +34,7 @@
                                 <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
                             </div>
                         </div>
-                        <div class="md-actions" layout="column" layout-align="end end" flex>
+                        <div ng-if="isLoggedIn()" class="md-actions" layout="column" layout-align="end end" flex>
                             <a href="/details//{{item._id}}">
                                 <md-button>Show details</md-button>
                             </a>

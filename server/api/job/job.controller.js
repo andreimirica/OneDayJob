@@ -97,7 +97,38 @@ exports.rateComments = function (req, res) {
                 if(err){
                     res.status(500).send(err);
                 }else{
-                    res.status(200).json(wRes);
+                    Job.findOne({_id: req.body.jobId}).exec(function (err, jobFound) {
+                        if (err) return validationError(res, err);
+                        if(!jobFound) return validationError(res, err);
+                        var comments = jobFound.comments;
+                        var newComments = [];
+                        _.each(comments, function (comment) {
+                            var comm = {
+                                text: comment.text,
+                                owner: comment.owner,
+                                photo: comment.photo,
+                                phone: comment.phone,
+                                _id: comment._id,
+                                email: comment.email
+                            };
+                            if(comment._id == userId){
+                                if(comm.raters){
+                                    comm.raters.push(req.body.raterId);
+                                } else {
+                                    comm.raters = [];
+                                    comm.raters.push(req.body.raterId);
+                                }
+                            }
+                            newComments.push(comm);
+                        });
+                        Job.findOneAndUpdate({_id: req.body.jobId}, {$set: {comments: newComments}}, {new: true}, function (err, wRes) {
+                            if(err){
+                                res.status(500).send(err);
+                            }else{
+                                res.status(200).send(wRes);
+                            }
+                        });
+                    })
                 }
             });
         } else {
@@ -105,7 +136,38 @@ exports.rateComments = function (req, res) {
                 if(err){
                     res.status(500).send(err);
                 }else{
-                    res.status(200).json(wRes);
+                    Job.findOne({_id: req.body.jobId}).exec(function (err, jobFound) {
+                        if (err) return validationError(res, err);
+                        if(!jobFound) return validationError(res, err);
+                        var comments = jobFound.comments;
+                        var newComments = [];
+                        _.each(comments, function (comment) {
+                            var comm = {
+                                text: comment.text,
+                                owner: comment.owner,
+                                photo: comment.photo,
+                                phone: comment.phone,
+                                _id: comment._id,
+                                email: comment.email
+                            };
+                            if(comment._id == userId){
+                                if(comm.raters){
+                                    comm.raters.push(req.body.raterId);
+                                } else {
+                                    comm.raters = [];
+                                    comm.raters.push(req.body.raterId);
+                                }
+                            }
+                            newComments.push(comm);
+                        });
+                        Job.findOneAndUpdate({_id: req.body.jobId}, {$set: {comments: newComments}}, {new: true}, function (err, wRes) {
+                            if(err){
+                                res.status(500).send(err);
+                            }else{
+                                res.status(200).send(wRes);
+                            }
+                        });
+                    })
                 }
             });
         }
@@ -122,6 +184,7 @@ exports.addComment = function(req, res, next) {
         newComment.phone = req.body.phone;
         newComment._id = req.body.userId;
         newComment.email = req.body.email;
+        newComment.raters = [];
 
         Job.findById(jobId, function(err, job) {
 
