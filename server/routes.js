@@ -27,6 +27,7 @@ module.exports = function(app) {
     app.route('/*')
         .get(function(req, res) {
             if(req.params['0']=='legeZilieri'){
+                res.setHeader('Content-type', 'application/pdf');
                 res.sendFile('/legeZilieri.pdf', {root: __dirname});
             } else {
                 res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
