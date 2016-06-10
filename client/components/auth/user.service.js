@@ -22,6 +22,12 @@ angular.module('oneDayJobApp')
                 params: {
                     id: 'me'
                 }
+            },
+            getUserComments: {
+                method: 'GET',
+                params: {
+                    id: '@_id'
+                }
             }
         });
     });

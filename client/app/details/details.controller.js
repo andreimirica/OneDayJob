@@ -20,7 +20,15 @@ angular.module('oneDayJobApp')
            rating: currentUs.rating
         }).then(
             function (response) {
-                $scope.user = response.data;
+                $scope.applicants=[];
+                $scope.job.$promise.then(function(res){
+                    for ($scope.i in res.comments){
+                        User.getUserComments({id: res.comments[$scope.i]._id}).$promise.then(function (resp) {
+                            $scope.user2 = resp;
+                            $scope.applicants.push($scope.user2);
+                        });
+                    }
+                });
             }
         );
     };
@@ -66,7 +74,7 @@ angular.module('oneDayJobApp')
           $http.put('api/jobs/'+ $stateParams.id,{
               _id:$stateParams.id,
               acceptedList:$scope.list
-          })
+          });
       };
 
 
@@ -77,8 +85,8 @@ angular.module('oneDayJobApp')
     $scope.applicants=[];
     $scope.job.$promise.then(function(res){
 
-        for ($scope.i in res.applicants){
-          User.get({id: res.applicants[$scope.i]}).$promise.then(function (resp) {
+        for ($scope.i in res.comments){
+          User.getUserComments({id: res.comments[$scope.i]._id}).$promise.then(function (resp) {
               $scope.user2 = resp;
               $scope.applicants.push($scope.user2);
           });
@@ -98,5 +106,13 @@ angular.module('oneDayJobApp')
             email: $scope.getCurrentUser.email
         });
         $scope.commentText='';
+        $scope.job.$promise.then(function(res){
+            for ($scope.i in res.comments){
+                User.getUserComments({id: res.comments[$scope.i]._id}).$promise.then(function (resp) {
+                    $scope.user2 = resp;
+                    $scope.applicants.push($scope.user2);
+                });
+            }
+        });
     };
 })

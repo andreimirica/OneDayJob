@@ -61,7 +61,7 @@
                     <md-list-item  class="md-3-line" ng-repeat="item in job.comments" ng-class="{'lightGray' : item.isAccepted}">
                         <img src="{{item.photo ? item.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
                         <div class="md-list-item-text" >
-                            <h3>Postat de :{{item.owner}} - <input-stars max="5" readonly="true" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="user.rating"></input-stars></h3>
+                            <h3>Postat de :{{item.owner}} - <input-stars max="5" readonly="true" icon-base="fa fa-fw" icon-empty="fa-star-o" icon-hover="hover" icon-full="fa-star" ng-model="applicants[$index].rating"></input-stars></h3>
                             <p>
                                 <b>Mesaj: </b>{{item.text}}
                             </p>
@@ -76,7 +76,7 @@
                               <b style="color: red">HIRED</b>
                             </p>
                         </div>
-                        <md-checkbox ng-if="showIfOwner && !job.closed" style="margin-top: 70px" ng-click="toggle(item, selected)">
+                        <md-checkbox ng-if="showIfOwner && !job.closed && item.email != user.email" style="margin-top: 70px" ng-click="toggle(item, selected)">
                         </md-checkbox>
                     <md-divider md-inset></md-divider>
                     </md-list-item>
