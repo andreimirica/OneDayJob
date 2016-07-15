@@ -35,7 +35,14 @@
                             </div>
                         </div>
                         <div layout="column">
-                            <leaflet id="{{'map' + item._id}}" width="100%" height="480px"></leaflet>
+                            <leaflet id="{{'map' + item._id}}" width="100%" height="480px"
+                                     defaults="map.defaults"
+                                     center="map.center"
+                                     markers="map.markers"
+                                     maxbounds="map.maxbounds"
+                                     data-drop="true"
+                                     jqyoui-droppable="{onDrop : 'dropLocation($event)',containment:'offset', multiple: true }"
+                                     firefox-compatibility></leaflet>
                         </div>
                         <div layout="row">
                             <div ng-if="isLoggedIn()" class="md-actions" layout="row" layout-align="end end" flex>
