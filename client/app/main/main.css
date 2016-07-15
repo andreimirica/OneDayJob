@@ -72,4 +72,9 @@
 .lightGray{
     background-color: lightgray;
 }
+.delBtn{
+    position: relative;
+    float: left;
+    right: 470px;
+}
 

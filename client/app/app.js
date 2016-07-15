@@ -10,7 +10,8 @@ angular.module('oneDayJobApp', [
         'ngMessages',
     'base64',
     'ngFileUpload',
-    'angular-input-stars'
+    'angular-input-stars',
+    'leaflet-directive'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

@@ -25,7 +25,7 @@
                         <a href="#"><img ng-src="assets/icon.png" class="mini-avatar "></a> <h4>{{item.title}} - <b ng-if="item.closed" style="color: red">CLOSED</b></h4>
                     </div>
                     <md-divider></md-divider>
-                    <md-card-content layout="row" layout-sm="column">
+                    <md-card-content layout="column" layout-sm="column">
                         <div layout="column">
                             <h4>Description: {{item.description | cut:true:100:' ...'}}</h4>
                             <md-divider></md-divider>
@@ -34,14 +34,19 @@
                                 <p class="text-pad">Job Date: {{item.jobDate | date}}</p>
                             </div>
                         </div>
-                        <div ng-if="isLoggedIn()" class="md-actions" layout="column" layout-align="end end" flex>
-                            <a href="/details//{{item._id}}">
-                                <md-button>Show details</md-button>
-                            </a>
+                        <div layout="column">
+                            <leaflet id="{{'map' + item._id}}" width="100%" height="480px"></leaflet>
                         </div>
-                        <md-button ng-show="isAdmin() || (currentUser()._id == item.owner)" ng-click="deleteJob(item)" class="md-icon-button" aria-label="More">
-                            <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
-                        </md-button>
+                        <div layout="row">
+                            <div ng-if="isLoggedIn()" class="md-actions" layout="row" layout-align="end end" flex>
+                                <md-button ng-show="isAdmin() || (currentUser()._id == item.owner)" ng-click="deleteJob(item)" class="delBtn md-icon-button" aria-label="More">
+                                    <md-icon md-svg-src="assets/images/trash1.svg"></md-icon>
+                                </md-button>
+                                <a href="/details//{{item._id}}">
+                                    <md-button>Show details</md-button>
+                                </a>
+                            </div>
+                        </div>
                     </md-card-content>
                     <md-divider></md-divider>
                 </md-card>
