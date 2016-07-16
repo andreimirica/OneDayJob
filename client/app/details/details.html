@@ -7,17 +7,17 @@
                 <h2> Postat de: </h2>
                 <md-list>
                     <md-list-item class="md-3-line">
-                        <img src="{{user.photo ? user.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
+                        <img src="{{ownerOfJob.photo ? ownerOfJob.photo : 'http://i.imgur.com/uN1SCcs.jpg'}}" class="face" alt="Avatar">
                         <div class="md-list-item-text">
-                            <h3><b>Nume: </b>{{user.firstName + ' ' + user.lastName}}</h3>
+                            <h3><b>Nume: </b>{{ownerOfJob.firstName + ' ' + ownerOfJob.lastName}}</h3>
                             <p>
-                                <b>Telefon: </b>{{user.phone}}
+                                <b>Telefon: </b>{{ownerOfJob.phone}}
                             </p>
                         </div>
                     </md-list-item>
                 </md-list>
             </div>
-            <div layout="column">
+            <div layout="column" ng-if="job.coords || job.owner == user.email">
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" events="map.events" options="options">
                     <ui-gmap-marker ng-if="job.coords" coords="job.coords" idkey="job.coords.id" fit="true">
                     </ui-gmap-marker>

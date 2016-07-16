@@ -20,7 +20,7 @@ angular.module('oneDayJobApp')
             $scope.newPost= {
                 title: $scope.newTitle,
                 description: $scope.newDescription,
-                owner: $scope.getCurrentUser()._id,
+                owner: $scope.getCurrentUser().email,
                 location: $scope.ctrl.userState,
                 category: $scope.ctrl.category,
                 helpers: $scope.helpers,

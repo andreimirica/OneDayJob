@@ -19,7 +19,7 @@ angular.module('oneDayJobApp')
             $http.post('/api/jobs', {
                 title: $scope.newTitle,
                 description: $scope.newDescription,
-                owner: $scope.getCurrentUser().firstName,
+                owner: $scope.getCurrentUser().email,
                 location: $scope.ctrl.userState,
                 category: $scope.ctrl.category,
                 helpers: $scope.helpers,

@@ -30,4 +30,16 @@ angular.module('oneDayJobApp')
                 }
             }
         });
+    })
+    .factory('UserByEmail', function ($resource) {
+        return $resource('/api/users/getByEmail/:id', {
+            id: '@_id'
+        }, {
+            getByEmail: {
+                method: 'GET',
+                params: {
+                    id: '@_id'
+                }
+            }
+        });
     });

@@ -2,7 +2,7 @@
 
 angular.module('oneDayJobApp')
 
-.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User, JobLocation) {
+.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User, JobLocation, UserByEmail) {
 
     $scope.job = Job.get({id: $stateParams.id});
     $scope.getCurrentUser=Auth.getCurrentUser();
@@ -10,7 +10,7 @@ angular.module('oneDayJobApp')
     $scope.map = { center: { latitude: 45, longitude: 25 }, zoom: 7,
         events : {
             click: function (map, eventName, handlerArgs) {
-                if($scope.getCurrentUser.role === 'admin'){
+                if($scope.getCurrentUser.role === 'admin' || $scope.getCurrentUser.email == $scope.ownerOfJob.email){
                     $scope.$apply(function () {
                         $scope.job.coords = {
                             id: $scope.job._id,
@@ -103,7 +103,7 @@ angular.module('oneDayJobApp')
 
     $scope.applicants=[];
     $scope.job.$promise.then(function(res){
-
+        $scope.ownerOfJob = UserByEmail.getByEmail({id: $scope.job.owner});
         for ($scope.i in res.comments){
           User.getUserComments({id: res.comments[$scope.i]._id}).$promise.then(function (resp) {
               $scope.user2 = resp;
