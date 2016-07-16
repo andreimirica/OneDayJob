@@ -45,6 +45,15 @@ exports.show = function(req, res) {
     });
 };
 
+exports.addPlace = function(req, res){
+    Job.update({_id: req.params.id}, {$set: {coords: req.body}}, function (err, wRes) {
+        if(err){
+            res.status(500).send(err);
+        }else{
+            res.status(200).send('OK');
+        }
+    });
+};
 
 exports.myUserJob = function(req, res) {
     Job.find({

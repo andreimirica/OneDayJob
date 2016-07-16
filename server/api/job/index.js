@@ -14,6 +14,7 @@ router.get('/userapplied/:id', controller.myUserApplied);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id',auth.isAuthenticated(), controller.addComment);
 router.put('/:id/comments',controller.addComment);
+router.put('/addPlace/:id',controller.addPlace);
 router.post('/rateComments',auth.isAuthenticated(), controller.rateComments);
 router.get('/searchTerm/:id', controller.searchTerm);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy);

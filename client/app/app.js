@@ -11,7 +11,7 @@ angular.module('oneDayJobApp', [
     'base64',
     'ngFileUpload',
     'angular-input-stars',
-    'leaflet-directive'
+    'uiGmapgoogle-maps'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

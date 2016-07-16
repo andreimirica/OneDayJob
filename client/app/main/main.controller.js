@@ -19,120 +19,11 @@ angular.module('oneDayJobApp').filter('cut', function() {
 
 
 angular.module('oneDayJobApp')
-    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $rootScope, $state, $timeout, Job, leafletData) {
+    .controller('MainCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $rootScope, $state, $timeout, Job) {
         $scope.isAdmin = Auth.isAdmin;
         $scope.currentUser = Auth.getCurrentUser;
         $scope.tasks = [];
         _scope=$scope;
-        var self = this;
-        self.options = {
-            zoomLevel: null,
-            map: null,
-            pointOnMap: null,
-            mozilla: {
-                xpos: 0,
-                ypos: 0
-            },
-            userMarker: null
-        };
-        var popup = L.popup({offset: L.point(0, -60, false)});
-
-        self.locateUser = function (args, map) {
-
-            var userMarker;
-            self.options.userLocation = args.leafletEvent.latlng;
-
-            var markerOpts = {
-                name: 'Me',
-                draggable: true,
-                icon: L.icon({
-                    iconUrl: 'assets/icons/pins-07.svg',
-                    iconSize: [40, 64],
-                    iconAnchor: [20, 64]
-                })
-            };
-
-
-            if (!self.options.userMarker) {
-                //get user location and pin in to map
-                userMarker = L.marker([self.options.userLocation.lat, self.options.userLocation.lng], markerOpts);
-                angular.extend(map.layers.baselayers, {
-                    Me: {
-                        name: "Me",
-                        type: "xyz",
-                        visible: true,
-                        url: 'https://api.mapbox.com/v4/mapbox.streets-basic/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicXVhbGl0YW5jZSIsImEiOiJkYTY0ODQzMGM1MDFlOGVhM2FiZjc3M2ZkYmQ2MjA0NSJ9.3bxLXwcDaG_V0H3reJzLBg',
-                        "layerOptions": {
-                            continuousWorld: true,
-                            subdomains: ['a', 'b', 'c']
-                        }
-                    }
-                });
-                // make user pin on top
-                userMarker.setZIndexOffset(9999999);
-                userMarker.addTo(self.options.map);
-                userMarker.on("dragend", function (event) {
-                    $rootScope.location = event.target._latlng;
-                });
-                self.options.userMarker = userMarker;
-            } else {
-                self.options.userMarker.setLatLng(args.leafletEvent.latlng);
-            }
-
-            return self.options.userMarker;
-        };
-
-        $scope.regionBounds = {
-            southWest: {
-                lat: 43.635167,
-                lng: 20.025397
-            },
-            northEast: {
-                lat: 49.4,
-                lng: 30.264654
-            }
-        };
-
-        $scope.map = {
-            defaults: {
-                //tileLayer: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-                tileLayer: 'https://api.mapbox.com/v4/mapbox.streets-basic/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicXVhbGl0YW5jZSIsImEiOiJkYTY0ODQzMGM1MDFlOGVhM2FiZjc3M2ZkYmQ2MjA0NSJ9.3bxLXwcDaG_V0H3reJzLBg',
-                maxZoom: 18,
-                minZoom: 8,
-                zoomControlPosition: 'bottomleft'
-            },
-            maxbounds: $scope.regionBounds,
-            events: {
-                map: {
-                    enable: ['load', 'locationfound', 'popupopen'],
-                    logic: 'emit'
-                }
-            },
-            center: {},
-            layers: {
-                baselayers: {}
-            }
-        };
-        
-        leafletData.getMap().then(function (map) {
-            self.options.zoomLevel = map.getZoom();
-            self.options.map = map;
-            map.locate({setView: true});
-            $scope.userMarker = self.locateUser({
-                leafletEvent: {
-                    latlng: {
-                        lat: 45.954968795113395,
-                        lng: 24.98291015625
-                    }
-                }
-            }, $scope.map);
-        });
-
-        $scope.$on('leafletDirectiveMap.locationfound', function (event, args) {
-            $scope.userMarker = self.locateUser(args, $scope.map);
-            $rootScope.location = self.options.userLocation;
-
-        });
 
         $rootScope.$on('searchOn', function(event, data) {
             $rootScope.searchNo=true;
@@ -142,6 +33,16 @@ angular.module('oneDayJobApp')
         .then(function(jobs) {
             $timeout(function(){
                 _scope.tasks = jobs;
+                angular.forEach(_scope.tasks, function(value, key){
+                    _scope.tasks[key].map = { center: { latitude: 45, longitude: 25 }, zoom: 7 };
+                    if(value.coords){
+                        _scope.tasks[key].marker = {
+                            id: value._id,
+                            coords : value.coords ? value.coords : null,
+                            options: { draggable: false }
+                        }
+                    }
+                });
             },500)
         }),
         function(error) {
@@ -152,6 +53,16 @@ angular.module('oneDayJobApp')
              taskFactory.getMongoStuff()
     .then(function(jobs) {
         $scope.tasks = jobs;
+        angular.forEach($scope.tasks, function(value, key){
+            $scope.tasks[key].map = { center: { latitude: 45, longitude: 25 }, zoom: 7 };
+            if(value.coords){
+                $scope.tasks[key].marker = {
+                    id: value._id,
+                    coords : value.coords ? value.coords : null,
+                    options: { draggable: false }
+                }
+            }
+        });
     }),
     function(error) {
         console.error(error);
@@ -173,6 +84,16 @@ angular.module('oneDayJobApp')
         taskFactory.getMongoStuff()
             .then(function(jobs) {
                 $scope.tasks = jobs;
+                angular.forEach($scope.tasks, function(value, key){
+                    $scope.tasks[key].map = { center: { latitude: 45, longitude: 25 }, zoom: 7 };
+                    if(value.coords){
+                        $scope.tasks[key].marker = {
+                            id: value._id,
+                            coords : value.coords ? value.coords : null,
+                            options: { draggable: false }
+                        }
+                    }
+                });
             }),
             function(error) {
                 console.error(error);

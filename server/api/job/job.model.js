@@ -17,8 +17,7 @@ var JobSchema = new Schema({
     applicants: [],
     comments: [],
     createdAt: Date,
-    lat: Number,
-    lng: Number
+    coords: Object
 });
 
 module.exports = mongoose.model('Job', JobSchema);

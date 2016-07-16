@@ -2,11 +2,27 @@
 
 angular.module('oneDayJobApp')
 
-.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User, $state) {
+.controller('DetailsCtrl', function($scope, $http, socket, Auth, taskFactory, $mdDialog, $stateParams, Job,User, JobLocation) {
 
     $scope.job = Job.get({id: $stateParams.id});
     $scope.getCurrentUser=Auth.getCurrentUser();
     $scope.user = $scope.getCurrentUser;
+    $scope.map = { center: { latitude: 45, longitude: 25 }, zoom: 7,
+        events : {
+            click: function (map, eventName, handlerArgs) {
+                if($scope.getCurrentUser.role === 'admin'){
+                    $scope.$apply(function () {
+                        $scope.job.coords = {
+                            id: $scope.job._id,
+                            latitude: handlerArgs[0].latLng.lat(),
+                            longitude: handlerArgs[0].latLng.lng()
+                        };
+                        JobLocation.setPlace({id: $stateParams.id},$scope.job.coords);
+                    });
+                }
+            }
+        }
+    };
 
     $scope.showIfOwner = false;
 
